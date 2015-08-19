@@ -1807,7 +1807,7 @@ div.editor-controls .control-wrapper > a {
 	font-size: 1.6em;
 }
 div.editor-controls .control-wrapper > a:hover{
-	color: #23C9FF;
+	color: #2381b4;
 	
 }
 .control-wrapper{
@@ -2352,11 +2352,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     top:87px;
     }
     .home-header{padding-bottom:0em;}
-     .ul-header{
-      height: 0px;
-      margin:0px;
-      padding:0px;
-    }
+ 
   
     .ul-tools{
     margin-top:.2em;
@@ -2451,11 +2447,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', end
     .user-article-text-list p{
       font-size: .7em;
    }
-    .ul-header{
-      height: 0px;
-      margin:0px;
-      padding:0px;
-    }
+ 
    .search-your-articles{
       margin-top: 100px;
    } 

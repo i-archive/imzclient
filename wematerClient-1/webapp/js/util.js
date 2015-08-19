@@ -268,6 +268,7 @@ var progressBar = {
 		headerclass: "",
 		top: 0,
 		append: false,
+		position: "fixed",
 		build : function(headerclass,top){
 			log('pb build');
 			if(top != undefined) this.top = top;
@@ -282,11 +283,24 @@ var progressBar = {
 				log("PB prepended to"+headerclass);
 			}
 		
-		$('.loading').css('position',"absolute")
+		$('.loading').css('position',this.position)
 					.css('top',this.top+'px')
 					.css('height',this.height+'px')
 					.css('margin',"0")
-					.css('left','0');
+					.css('left','0')
+					.css('z-index','999');
+		
+		
+		if(this.position === 'fixed'){
+			
+			$(window).scroll(function() {
+				var scrollTop = $(this).scrollTop();
+				if (scrollTop > 0) {
+		            $('.loading').css('top',0+'px');
+				}
+				
+			});
+		}
 			
 		},
 		initialize:function(event){

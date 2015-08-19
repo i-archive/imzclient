@@ -33,6 +33,15 @@ var MainArticle = {
 			log("user is null " + lv);
 		}
 		$('.comment-author').html(message);
+	},
+	updateSignupButton : function(){
+		if (this.user) {
+			$('.signUp')
+					.html("<i class='fa fa-user'></i>" + this.user.username)
+					.attr("href", "./setting")
+					.css('border-radius','20px')
+					.css('border-color', "rgba(0,120,60,0.8)");
+		}
 	}
 }
 
@@ -40,6 +49,7 @@ MainArticle.buildCurrentArticle = function() {
 	if (this.article != null) {
 		log("inside build article " + this.article.title);
 		$('#a_t').html(Base64.decode(this.article.title) + " | wemater.org")
+		this.updateSignupButton();
 		$('.main-content').html(Base64.decode(this.article.content));
 		$('.main-article-cover')
 				.html(
@@ -178,9 +188,11 @@ MainArticle.validateCommentOnSubmit = function() {
 
 MainArticle.getTopArticleString = function(article) {
             var tr_id = 'tr_'+article.id;
-	var string= "<dt><a  id="+tr_id+" dt-ref="+Base64.encode(article.links[0].url)+" >"+ article.title + "</a></dt>"
+            
+	var string= "<dt><a  id="+tr_id+" dt-ref='"+Base64.encode(article.links[0].url)+"'>"+ article.title + "</a></dt>"
 			+ "<dd><a><span class='fa fa-user'></span>"
 			+ article.userModel.name + "</a></dd>";
+	
 	$('.suggest-wrapper').on('click','#'+tr_id,function(){
 		eachTrendingAjax.url =Base64.decode($('#'+tr_id).attr('dt-ref'));
 		Ajax.GET(eachTrendingAjax);
@@ -306,6 +318,7 @@ var getcommentAjax = {
 	next:0,
 	prejax : function() {
 		progressBar.append = false;
+		progressBar.position= 'absolute';
 		progressBar.height =1;
 		progressBar.build('.comment-but-wrapper', 0);
 		this.url = MainArticle.article.links[2].url+'?next='+this.next;
@@ -356,6 +369,7 @@ var postcommentAjax = {
 
 	prejax : function() {
 		progressBar.append = false;
+		progressBar.position= 'absolute';
 		progressBar.height =1;
 		progressBar.build('.main-comments-wrapper', 0);
 		this.url = MainArticle.article.links[2].url;
@@ -412,6 +426,7 @@ var trendingArticlsAjax = {
 	url : "",
 	prejax : function() {
 		progressBar.append = false;
+		progressBar.position= 'absolute';
 		progressBar.height =1;
 		progressBar.build('.main-article-suggest-wrapper', 0);
 		this.url = "http://backendapi-vbr.rhcloud.com/api/public/trending";
@@ -434,7 +449,7 @@ var trendingArticlsAjax = {
 		progressBar.success(obj);
 		log("success in latest");
 		log(obj); 
-		MainArticle.createTopArticles(obj.concat(obj));
+		MainArticle.createTopArticles(obj);
 
 	},
 	error : function(data) {

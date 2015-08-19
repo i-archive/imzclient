@@ -175,8 +175,8 @@ var registerUser = {
         	this.data =JSON.stringify(dataObj);
         },
         prejax : function(){
-        	   progressBar.append =false;
-			   progressBar.build(".form-wrapper",0);
+               progressBar.append = false;
+			   progressBar.build("body",0);
         	this.url = Ajax.AllUserURL;
         	log('post url: '+this.url);
         },

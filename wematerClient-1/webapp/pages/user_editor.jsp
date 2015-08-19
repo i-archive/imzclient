@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="../../css/app-font.css">
 <link rel="stylesheet" href="../../css/foundation.css">
 <link rel="stylesheet" href="../../css/jquery-ui.css">
+<link rel="stylesheet" href="../../css/sweetalert.css">
+
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
@@ -33,7 +35,6 @@
 
 <body class="body">
 
-
 	<div class=" user-wrapper  ">
 
 		<div class="editor hide-for-small-only  ">
@@ -45,7 +46,7 @@
 			<div id="uploaded-image" class="editor-controls">
 				<!-- upload image -->
 				<div class="control-wrapper float-right ">
-					<a class="editor-done" title="save the article"><span
+					<a id="ed-sl" class="editor-done" title="save the article"><span
 						class="fa  fa-floppy-o"></span></a> <a class="editor-pre"
 						title="preview article"><span class="fa  fa-binoculars  "></span></a>
 					<a class="editor-upload" title="upload the cover image"><span
@@ -128,10 +129,10 @@
 <script src="../../js/jquery-ui.js"></script>
 <script src="../../js/modernizr.js"></script>
 
-	<!-- Pushy JS -->
 	<script src="../../js/util.js"></script>
 		<script src="../../js/commons.js"></script>
 	<script src="../../js/u_editor.js"></script>
+	<script src="../../js/sweetalert.min.js"></script>
 	<script src="../../js/autosize.min.js"></script>
 	<script src="../../editor/editorScript/wmd.js"></script>
 </body>

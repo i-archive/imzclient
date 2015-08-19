@@ -28,7 +28,7 @@ userarticle.getArticleString = function(article, a_id, p_id, t_id){
 			+ "</div>  " + "<div class='user-article-info '>"
 			+ " <ul class='no-list-style object-info '>" + " <li><a id='" + t_id
 			+ "' class='art-info-title'><span class='fa fa-link'></span>"
-			+ article.title + "</a></li>" + "</ul>"
+			+ Base64.decode(article.title) + "</a></li>" + "</ul>"
 			+ "<ul class='no-list-style comment-like '>"
 			+ "<li><li><a><span class='fa fa-lg fa-heart'></span><b>"
 			+ article.likes + "</b></a></li>"
@@ -100,8 +100,9 @@ var userArticlesAjax = {
 	next:0,
 	encodedAuth : "",
 	prejax : function() {
-		progressBar.append=true;
-		progressBar.build(".home-header", 50);
+		progressBar.append=false;
+		progressBar.height = 3;
+		progressBar.build(".body", 0);
 		this.url = userarticle.user.links[2].url+"?next="+this.next;
 		++this.next;
 		this.encodedAuth = sessionStorage.getItem('_auth');
@@ -145,8 +146,7 @@ var fullArticleAjax = {
 	encodedAuth : "",
 	urlMap : [],
 	prejax : function(){
-		progressBar.append = true;
-		progressBar.build(".home-header", 50);
+		progressBar.build(".body", 0);
 		this.encodedAuth = sessionStorage.getItem('_auth');
 		log("full article ajax in side build :" + this.url);
 	},

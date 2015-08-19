@@ -42,6 +42,7 @@ syncEditorContents : function(){
 userPage={
 		user : null,
 		auth: null,
+		isheadClicked : false,
 		init : function(){
 			this.user = util.getObjectFromSession("_user");
 			this.auth = util.getItemFromSession('_auth');
@@ -53,7 +54,7 @@ userPage={
 
 userPage.showControls = function(){
 
-	var controlString = "<a class='editor-head-done right hide-for-small'"+
+	var controlString = "<a id='ed-hd' class='editor-head-done right hide-for-small'"+
 		"title='save the article'><span class='fa  fa-floppy-o'></span></a> " +
 		"<a class='editor-head-pre right hide-for-small' title='preview article'>" +
 		"<span class='fa  fa-binoculars  '></span></a>";
@@ -61,7 +62,7 @@ userPage.showControls = function(){
 	
 	
 	$('.editor-head-done span, .editor-head-pre span').hide();
-
+	
 		$(window).scroll(function(){
 			var top = $(this).scrollTop();
 			if(top > 35)
@@ -174,7 +175,7 @@ userPage.getCoverAfterRefresh = function(){
 userPage.manageCoverTitle =  function(){
     autosize($(".cover-title-input"));
     $('.cover-title-heading').hide();
-      if(!sessionStorage.getItem("cover-title"))
+      if(!Base64.decode(sessionStorage.getItem("cover-title")))
         $('.cover-title-input').focus().val("").val("Type a title here");
      else
     	 $('.cover-title-input').focus().val("").val(Base64.decode(sessionStorage.getItem("cover-title")));
@@ -257,22 +258,66 @@ userPage.openPreview = function(){
 	
 }
 
-userPage.saveArticle = function(){
-		
-		var htmlcontent = sessionStorage.getItem('htmlContent');
-		var covertitle = sessionStorage.getItem('cover-title');
-		var image = sessionStorage.getItem('cover');
-		var tags = util.getArrayFromSession('tag-array');
+userPage.resetArticle = function(){
+	 var fixedtitle = "Type a title here";
+	 sessionStorage.removeItem('htmlContent');
+	 sessionStorage.removeItem('contentValue');
+	 sessionStorage.removeItem('cover');
+	 sessionStorage.removeItem('tag-array');
+	 $("#uploaded-image").css("background-image", "none");
+	 $('#wmd-input').val('');
+	 $('#wmd-preview').html('');
+	 $('input.tags').val('');
+	 $(".tag-list").html("");
 	
-		$('.editor-done ,.editor-head-done').on('click',function(){
+	
+}
+userPage.setProgressOnButton = function(obj){
+	$('.editor-done ,.editor-head-done').html("<span class='fa fa-circle-o-notch fa-spin'></span>")
+    .css('color','rgba(180,0,0,0.8)');
+	if($(obj).attr('id') !== 'ed-hd')
+	$('.editor-head-done span').hide();
+	
+}
+userPage.resetProgressOnButton = function(){
 
-			$(this).html("<span class='fa fa-circle-o-notch fa-spin'></span>");
+	$('.editor-done ,.editor-head-done').html("<span class='fa fa-floppy-o'></span>")
+	 .css('color','#333');	
+	if($(window).scrollTop < 35){
+	
+		$('.editor-head-done span').hide();
+	}
+      
+	
+}
+
+userPage.saveArticle = function(){
+	 var fixedtitle = "Base VHlwZSBhIHRpdGxlIGhlcmU=";
+		log("check if visible: "+$('.editor-head-done').css('visibility'));
+		
+		$('.editor-done ,.editor-head-done').on('click',function(){
+		  
+			if($(this).attr('id') === 'ed-sl') 
+			  this.isheadClicked = false;
+		    else this.isheadClicked = true;
+          
+		  userPage.setProgressOnButton(this);
+			var htmlcontent = sessionStorage.getItem('htmlContent');
+			var image = sessionStorage.getItem('cover');
+			var tags = util.getArrayFromSession('tag-array');
 			
-			 newArticle = new clientArticle(covertitle, image, htmlcontent, tags);
-			 log(newArticle);
-			 NewArticlePost.setData(newArticle);
-			 Ajax.POST(NewArticlePost);
+			if(Base64.decode(sessionStorage.getItem('cover-title'))
+			   && sessionStorage.getItem('cover-title') !== fixedtitle)
+			var covertitle = sessionStorage.getItem('cover-title');
 			
+			articleobj = new clientArticle(covertitle, image, htmlcontent, tags);
+			log(articleobj);
+			NewArticlePost.setData(articleobj);
+			Ajax.POST(NewArticlePost);
+			  
+			
+			 
+			 
 		});
 	
 }
@@ -286,9 +331,8 @@ var NewArticlePost = {
 			this.data = JSON.stringify(dataObj);
 		},
 		prejax : function() {
-			progressBar.append=true;
-			progressBar.height = 3;
-			progressBar.build(".home-header", 50);
+			progressBar.height = 4;
+			progressBar.build("body", 0);
 			this.url = userPage.user.links[2].url;
 			this.encodedAuth = sessionStorage.getItem('_auth');
 			log(this.url);
@@ -311,13 +355,36 @@ var NewArticlePost = {
 		},
 		success : function(obj) {
 			progressBar.success();
-			$('.editor-done ,.editor-head-done').html("<span class='fa fa-floppy-o'></span>");
+			userPage.resetProgressOnButton();
 			log("success in post article");
 			log(obj);
+			  swal({
+				  title : "SUCCESS",
+				  text : "Article has been submitted",
+				  type :"success", 
+				  confirmButtonColor: "#333",
+				  confirmButtonText: "OK",
+				  closeOnConfirm: true	
+				  
+			  })
+		 userPage.resetArticle();
 		},
 		error : function(data) {
+			progressBar.error(data);
+			userPage.resetProgressOnButton();
 			log('fail in post article');
+			
 			log(data);
+		 
+			  swal({
+				  title : "error",
+				  text : data.responseJSON.error_message,
+				  type :"error", 
+				  confirmButtonColor: "rgba(120,0,0,0.8)",
+				  confirmButtonText: "let me change it",
+				  closeOnConfirm: true	
+				  
+			  });
 		}
 
 	}
@@ -330,8 +397,6 @@ userPage.processUserPage = function(){
 		this.init();
 		userheader.processHeader(this.user);
 	}
-	
-	
 	
 	EditorSync.syncEditorContents();
 	userPage.showControls();

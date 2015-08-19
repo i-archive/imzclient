@@ -2,10 +2,11 @@
  *  has html for all the common files of user
  */
 
-userheader ={};
+userheader ={
+};
 headerhtml = {
-		header: "<header class='home-header'></header>",
-		ul_header : " <section class=' ul-header large-4 medium-12 small-12 columns ' >" +
+		header: "<header class='home-header '></header>",
+		ul_header : " <section class=' ul-header large-4 medium-12 small-12 columns  ' >" +
 		"<a id='home' class='float-left' >" +
 		"<span class='fa fa-lg fa-bars black-color'></span>home</a>" +
 		" <a id='self_user' class='float-left push-1' >" +
@@ -27,15 +28,6 @@ headerhtml = {
 	
 }
 
-userheader.updateSignupButton = function() {
-	if (this.user) {
-		$('.signUp')
-				.html("<i class='fa fa-user'></i>" + this.user.username)
-				.attr("href", "./setting")
-				.css('border-radius','20px')
-				.css('border-color', "rgba(0,120,60,0.8)");
-	}
-}
 userheader.processHeader = function(user){
 	
 	log("inside header: user is "+user.username);
@@ -60,7 +52,6 @@ userheader.processHeader = function(user){
 	$('#u_title').html(user.username+"| wemater.org");
 	$('#self_user').html("<span class='fa fa-lg fa-user'></span>"+user.username);
 	
-	this.updateSignupButton();	
 }
 
 
