@@ -127,8 +127,17 @@ border-bottom: 1px solid rgba(0,0,0,0.3);
 .main-right h1{
 	font-variant: small-caps;
 	font-size: 4em;
-		text-align: center;
+	text-align: center;
+	color: #f1f1f1;
 }	
+.adv{
+	padding: .5em;
+	display:block;
+	border-radius:3px;
+	margin-bottom: 2em;
+	color: #f1f1f1;
+	display: none;
+}
 
 
 .main-comments-wrapper,.main-article-suggest-wrapper{
@@ -155,12 +164,12 @@ border-bottom: 1px solid rgba(0,0,0,0.3);
 
 
 .comment-write-wrapper textarea{
-	
+	min-height:150px;
 	height: auto;
 	resize: vertical;
-	border:0px solid transparent;
-	border-bottom: 1px solid rgba(0,0,0,0.4);
-	border-radius: 0px;
+	border:1px solid rgba(0,120,60,0.2);
+	background: rgba(0,120,0,0.05);
+	border-radius: 4px;
 	
 	
 }
@@ -633,14 +642,14 @@ ul.explore-side-heading > li.see-more a{
 }
 
 .main-content{
-	min-height:500px;}
-
-div#wmd-preview h2{
-	color: rgba(0,0,0,0.5);
+	min-height:500px;
 	font-family: "jaf-bernino-sans";
-	font-variant: normal;
-	font-size: 1.5em;
-}
+	font-weight: 400;
+	font-size:1em;
+	font-weight:600;
+	color: rgba(0, 0, 0, 0.66);
+	
+	}
 
 .preview-wrapper, .article-wrapper{
 	position: relative;
@@ -721,7 +730,7 @@ a#post-comment > i{
 }
 
 textarea#write-comment-content{
-	font-family: "jaf-bernino-sans";
+ font-family: "jaf-bernino-sans";
   font-style: normal;
   font-weight: 400;
 }
@@ -733,10 +742,9 @@ textarea#write-comment-content{
 	font-family: 'jaf-bernino-sans';
 	font-size: 1em;
 	font-weight: normal;
-	color: rgba(0,0,0,0.4);
-	background:  rgba(0,0,0,.05);
+	color: rgba(0,0,0,0.3);
+
 	margin-left:.3em;
-	border:1px solid rgba(0,0,0,.1);
 	border-radius: 4px;
 	transition: all 300ms ease;
 	
@@ -744,24 +752,16 @@ textarea#write-comment-content{
 }
 .author-bio p{
 	
-	color: rgba(0,0,0,0.6);
+	color: inherit;
 	text-align: justify;
 	font-family: 'jaf-bernino-sans';
-	font-size: .8em;
+	font-size: 1em;
 	font-weight: normal;
+	font-style: italic;
 	
 }
 
-.adv{
-	padding: .5em;
-	display:block;
-	border: 1px solid rgba(0,0,0,0.22);
-	border-radius:3px;
-	margin-bottom: 2em;
-	background: rgba(0,0,0,0.1);
-	display: none;
-	
-}
+
 .adv h1{
 	color: rgba(0,0,0,0.11);
 }
@@ -792,24 +792,32 @@ textarea#write-comment-content{
 	transition: all 300ms ease;
 
 }
-.preview-wrapper div.preview-container h2,
- .main-content h2
+ div.preview-container h2, div.preview-container h1,
+ .main-content h2, .main-content h1
  {
-	color: rgba(0, 0, 0, 0.44);
-	font-family: "jaf-bernino-sans";
-	font-variant: normal;
-	font-size: 1.5em;
+	color: rgba(0,0,0,0.77);
+	 font-family: "Oswald";
+	 text-transform: capitalize;
+	 font-weight: 700;
+ }
+ div.preview-container h2, 
+ .main-content h2{
+ font-size: 1.4em;
  }
  
 .preview-container blockquote em,
 .main-content blockquote em
-{ font-family: "freight-text-pro";	color: rgba(0,0,0,0.5);}
-
+{ color: rgba(0,0,0,0.8);}
+.main-content p strong, .preview-container p strong{
+	font-weight: 700;
+	  font-family: "open-sans";
+	
+}
 
 div.preview-container p, div.preview-container ol, div.preview-container ul, .preview-container p em,
 .main-content p, .main-content ol,  .main-content ul , .main-content p em
 {
-	
+
 	text-align: justify;
 	display: block;
 	line-height: 2.4rem;
@@ -820,11 +828,6 @@ div.preview-container p, div.preview-container ol, div.preview-container ul, .pr
 	
 	
 }
- .main-content p, div.preview-container p{
-font-family: "freight-text-pro";
-}
-
-.main-content h1, .main-content h2{color: rgba(0,0,0,0.44);}
 
 
 
@@ -833,9 +836,13 @@ div.preview-container ol, div.preview-container ul, .main-content ol, .main-cont
 	font-weight: normal;
 }
 
+.preview-container blockquote,.main-content blockquote{
+	
+	background: rgba(120,120,80,0.07);
+}
 .preview-container blockquote p, .main-content blockquote p{
 	font-family: "jaf-bernino-sans";
-	color: rgba(0,0,0,0.5);
+	color: rgba(0,0,0,0.77);
 	font-weight: normal;
 }
 
@@ -2282,24 +2289,24 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 	.footer em{ font-size: .6em;}
     
    .user-article-text-list{ overflow: auto; }
-     
-   div.preview-container, {
+     div.preview-container{
      padding-left:2em;
      padding-right:2em;
-   }
-   
-   
+   }    
    
    div.preview-container  p, div.preview-container p em, div.preview-container p strong,
    .main-content  p, .main-content p em, .main-content p strong
    {    
      font-size: 1.1rem;
-        }   
+     line-height: 1.7rem;
+    }   
 
    div.preview-container ul, div.preview-container ol,
    .main-content ul, .main-content ol
    {
-       font-size: .9rem;
+       font-size: 1.1rem;
+           line-height: 1.7rem;
+       
    }
 
 	 
@@ -2334,13 +2341,15 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 	  .main-content  p, .main-content p em, .main-content p strong
 	 {
      
-     		font-size: 1.3rem;
+     		font-size: 1.1rem;
+     		line-height: 1.7rem;
         }   
 
    div.preview-container ul, div.preview-container ol,
     .main-content ul, .main-content ol
    {
-       font-size: 1.2rem;
+       font-size: 1.1rem;
+       line-height: 1.7rem;
    }
 	
 	
@@ -2380,14 +2389,16 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 	 .main-content  p, .main-content p em, .main-content p strong
 	 {
      
-     		font-size: 1.4rem;
+     		font-size: 1.2rem;
+     		line-height: 2rem;
         }   
 
    div.preview-container ul , div.preview-container ol,
    .main-content ul, .main-content ol
    
    {
-       font-size: 1.3rem;
+       font-size: 1.2rem;
+       line-height: 2rem;
    }
 	
 	

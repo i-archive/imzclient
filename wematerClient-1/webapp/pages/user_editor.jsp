@@ -72,7 +72,7 @@
 
 
 			<div
-				class="editor-wrapper large-8 large-centered medium-12   columns">
+				class="editor-wrapper large-10 large-centered medium-12   columns">
 
 				<div id="wmd-preview" class="wmd-panel"></div>
 				<div id="wmd-output" class="wmd-panel"></div>
@@ -86,8 +86,7 @@
 			<div
 				class=" editor-side large-8 large-centered medium-12 large-centered medium-centered columns ">
 
-				<div
-					class="show-tags large-10 medium-10 large-centered medium-centered  columns">
+				<div class="show-tags large-12 medium-10 large-centered medium-centered  columns">
 					<div class="small-12 large-12 medium-12 columns">
 						<input class="tags" type="text" placeholder="put related tags"
 							title="tags should be seperated with comma" /> <span

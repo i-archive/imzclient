@@ -110,8 +110,10 @@
         <a class='article-date'></a>
         <a class='bookmark' title='bookmark'><i class='fa fa-lg fa-bookmark-o'></i></a>
 	   <a class='share' title='share'><i class='fa fa-lg fa-share-alt'></i></a>
-	   <a class='a_like right'> </a>
+	   <a class='a_like '> </a>
      </div>	
+     
+     
     <div class=' main-left small-12 large-1 medium-12 columns '> </div>
     <div class=' main-content small-12 large-8 medium-12 columns  '></div>
              
@@ -196,6 +198,7 @@
 	<script src='../../js/pushy.min.js'></script>
 	<script src='../../js/util.js'></script>
 	<script src='../../js/menu.js'></script>
+	<script src="../../js/autosize.min.js"></script>
 	<script src='../../js/main-article.js'></script>
 
 

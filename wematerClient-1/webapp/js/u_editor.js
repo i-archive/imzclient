@@ -273,21 +273,22 @@ userPage.resetArticle = function(){
 	
 }
 userPage.setProgressOnButton = function(obj){
-	$('.editor-done ,.editor-head-done').html("<span class='fa fa-circle-o-notch fa-spin'></span>")
-    .css('color','rgba(180,0,0,0.8)');
-	if($(obj).attr('id') !== 'ed-hd')
-	$('.editor-head-done span').hide();
 	
+	
+		$('.editor-head-done, .editor-done').html("<span class='fa fa-circle-o-notch fa-spin'></span>")
+	    .css('color','rgba(180,0,0,0.8)');
+
+		if($(obj).attr('id') !== 'ed-hd'){
+			$('.editor-head-done span').hide();
+		}
 }
 userPage.resetProgressOnButton = function(){
 
 	$('.editor-done ,.editor-head-done').html("<span class='fa fa-floppy-o'></span>")
 	 .css('color','#333');	
-	if($(window).scrollTop < 35){
 	
+	if($(window).scrollTop() <= 35)
 		$('.editor-head-done span').hide();
-	}
-      
 	
 }
 
@@ -301,7 +302,7 @@ userPage.saveArticle = function(){
 			  this.isheadClicked = false;
 		    else this.isheadClicked = true;
           
-		  userPage.setProgressOnButton(this);
+		    userPage.setProgressOnButton(this);
 			var htmlcontent = sessionStorage.getItem('htmlContent');
 			var image = sessionStorage.getItem('cover');
 			var tags = util.getArrayFromSession('tag-array');
@@ -396,20 +397,18 @@ userPage.processUserPage = function(){
 		log("user logged in");
 		this.init();
 		userheader.processHeader(this.user);
-	}
-	
-	EditorSync.syncEditorContents();
-	userPage.showControls();
-	userPage.hideEditorOnResize();
-    userPage.showEditorPreview();
-    userPage.clickUpload();
-    userPage.openPreview();
-	userPage.processUploadImage();
-	userPage.getCoverAfterRefresh();
-	userPage.manageCoverTitle();
-	userPage.processTags();
-    userPage.saveArticle();
-	
+		EditorSync.syncEditorContents();
+		userPage.showControls();
+		userPage.hideEditorOnResize();
+	    userPage.showEditorPreview();
+	    userPage.clickUpload();
+	    userPage.openPreview();
+		userPage.processUploadImage();
+		userPage.getCoverAfterRefresh();
+		userPage.manageCoverTitle();
+		userPage.processTags();
+	    userPage.saveArticle();
+}
 
 	
 }

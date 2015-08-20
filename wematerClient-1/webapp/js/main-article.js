@@ -7,10 +7,13 @@ var MainArticle = {
 		this.user = util.getObjectFromSession('_user');
 		var count = sessionStorage.getItem('c_Ct');
 		var lc = sessionStorage.getItem('_lc');
+		autosize($("#write-comment-content"));
 		if(count && lc && count > lc)
 			this.commentcount = count;
 		else this.commentcount = this.article.commentCount;
 		sessionStorage.setItem('_lc', this.article.articleCount);
+		
+		
 		log(this.article);
 
 	},
@@ -65,7 +68,8 @@ MainArticle.buildCurrentArticle = function() {
 				"<i class='fa fa-user'></i>" + this.article.userModel.name);
 		$('a.article-date').html(
 				"<i class='fa fa-lg fa-calendar'></i>" + this.article.date);
-		$('.author-bio').html("<p>" + this.article.userModel['bio'] + "</p>");
+		$('.author-bio').html("<p><i class='fa fa fa-quote-left  fa-pull-left fa-border'></i>" +
+				"" + this.article.userModel['bio'] +  "</p>");
 		MainArticle.buildtags(this.article.tags, "article-tags");
 		
 		MainArticle.updateLikes();
@@ -166,7 +170,7 @@ MainArticle.validateCommentOnSubmit = function() {
 	var emptyContent = "<i class='fa fa-diamond'></i> You didnt write a comment"
 	$('#comment-content-error').hide();
 	$('#write-comment-content').val('');
-	$('#post-comment').html(' <i class="fa fa-envelope-square "></i>post');
+	$('#post-comment').html(' <i class="fa fa-chevron-right "></i>post');
 	$('#post-comment').on('click',function() {
 
 	    var content = $('#write-comment-content').val().trim();
@@ -401,7 +405,7 @@ var postcommentAjax = {
 	success : function(data) {
 		progressBar.progress(data);
 		log('success post user');
-		$('#post-comment').html(' <i class="fa fa-envelope-square "></i>post');
+		$('#post-comment').html(' <i class="fa fa-chevron-right "></i>post');
 		errorcode.removeNoData();
 		MainArticle.showCommentCount(1);
 		Ajax.GET(getcommentAjax);

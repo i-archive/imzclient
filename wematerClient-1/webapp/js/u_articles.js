@@ -27,7 +27,7 @@ userarticle.getArticleString = function(article, a_id, p_id, t_id){
 			+ util.chunkString(Base64.decode(article.content), 100) + "</p>"
 			+ "</div>  " + "<div class='user-article-info '>"
 			+ " <ul class='no-list-style object-info '>" + " <li><a id='" + t_id
-			+ "' class='art-info-title'><span class='fa fa-link'></span>"
+			+ "' class='art-info-title'><span class='fa fa-external-link-square'></span>"
 			+ Base64.decode(article.title) + "</a></li>" + "</ul>"
 			+ "<ul class='no-list-style comment-like '>"
 			+ "<li><li><a><span class='fa fa-lg fa-heart'></span><b>"
