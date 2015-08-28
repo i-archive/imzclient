@@ -348,7 +348,20 @@ li.comment-content a:hover{
 	height: auto;
 }
 
-.explore-article{
+.explore-article-l{
+	color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.blur{
+	color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.explore-article-cover-l{
+	background-color: rgba(0,0,0,0.02);
+	box-shadow : 1px 1px 1px 4px rgba(0,0,0,0.02);
+}
+
+.explore-article, .explore-article-l{
 	padding-top: 1em;
 	padding-bottom: 1em;
 	background: rgba(255,255,255,0.2);
@@ -365,7 +378,7 @@ li.comment-content a:hover{
 }
 .explore-timeline:after{
 	clear: both;
-	height: 100px;
+	height: 50px;
 	
 }
 .explore-article-top{
@@ -420,19 +433,23 @@ li.comment-content a:hover{
 }
 
 
-.explore-article-cover{
+.explore-article-cover, .explore-article-cover-l{
 	height: 200px;
-	background: url(../img/bg1.jpg);
-	background-size: cover;
+	background-size: cover no-repeat 100% 100%;
 	margin-bottom:1em;
 }
-.explore-article-content{
+.explore-article-content, .explore-article-content-l{
 	padding-top: 1em;
 	padding-bottom:1em;
 	
 	
 }
-
+.explore-article-content ul{
+	margin: 0px;
+}
+.explore-article-content ul li ul{
+		margin-top: 1.2em;
+}
 .explore-article-content ul li ul li{
 	display: inline;
 	
@@ -443,7 +460,7 @@ li.comment-content a:hover{
 	 font-family: "proxima-nova";
 	 color: rgba(23,42,58,.9);
 	 font-weight: bold;
-	
+
 }
 
 .explore-article-content ul li ul li.continue-read{
@@ -453,14 +470,24 @@ li.comment-content a:hover{
 .explore-article-content ul li ul li.continue-read a{
 	
 	font-weight: lighter;
-	font-size: .7em;
+	font-size: .8em;
 }
-.explore-article-content ul li p{
-	font-family: "freight-text-pro";
-	font-size: 1.2em;
-	text-align: justify;
+.explore-article-content ul li div.exp-content{
+	height: 200px;
+	overflow: hidden;
 
 }
+div.exp-content p{
+	font-family: "jaf-bernino-sans";
+	font-size: 1.1em;
+	text-align: justify;
+	line-height: 1.4em;
+}
+div.exp-content iframe,  div.exp-content h1, div.exp-content h5,
+div.exp-content  blockquote, div.exp-content ul, div.exp-content ol, div.exp-content p strong,
+ div.exp-content code,div.exp-content p em, div.exp-content blockquote em,
+div.exp-content p ul, div.exp-content p ol
+{display: none;}
 
 
 
@@ -561,9 +588,16 @@ ul.explore-side-heading > li.see-more a{
 	color: rgba(0,0,0,0.7);
 	
 }
+.circle-load{
+	margin-top: 2em;
+	text-align: center;
+	color: rgba(0,120,80,0.8);
+}
+
 
 
 .dl-top-articles {
+	
 			counter-reset: top-counter;
 			margin-left: 0;
 		   }
@@ -2032,7 +2066,7 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
    display: block;
    height: auto;
    cursor: pointer;
-   border-radius: 4px;
+   border-radius: 2px;
   
   }
   
@@ -2059,9 +2093,8 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
 
  .user-article-pic{
   height: 200px;
-  border-top-left-radius:4px;
-  border-top-right-radius:4px;
-  border: 1px solid rgba(0,120,100,0.5)
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
   
   }
   .user-article-pic:HOVER{
@@ -2079,12 +2112,12 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
  .user-article-info{
 
    height: 180px;
-   background: white;
+   background: rgba(0,60,60,0.07);
    padding-bottom: 1em;
    padding-top: 1em;
    border-bottom-left-radius: 4px;
    border-bottom-right-radius:4px;
-  border: 1px solid rgba(0,120,100,0.5)
+ 
    
   
  }

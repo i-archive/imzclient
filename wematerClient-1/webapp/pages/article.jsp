@@ -19,6 +19,7 @@
     </head>
    
     <body class='article-body' >
+   
         <noscript >
   		<div class='small-12 large-12 medium-12 ' > <i class='fa fa-exclamation-triangle'></i>Please enable javascript. This site won't work properly</div>
   		</noscript>
@@ -169,8 +170,7 @@
              </div>  
               
       <div class='suggest-wrapper small-12 large-12 medium-12 '>
-             
-        
+    
       </div>
   </div>   
     

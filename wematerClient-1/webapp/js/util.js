@@ -264,7 +264,7 @@ Ajax.PUT  = function(obj){
 var progressBar = {
 		width:5,
 		height:2,
-		counter:.5,
+		counter:.1,
 		headerclass: "",
 		top: 0,
 		append: false,
@@ -326,16 +326,18 @@ var progressBar = {
              
 		},
 		success :function(data){
+			 this.width = 5;
 			 $('.loading').css('background-color',"blue"); 
 		},
 		error :function(data){
+			 this.width = 5;
 			 $('.loading').css('background-color',"red"); 
 		},
 		end: function(event){
 			$('.loading').css({'width' : 100+'%'});
 			log("load end : ");
 			setTimeout(function(){
-				$('.loading').hide(2000);
+				$('.loading').hide(3000);
 				$('.loading').remove();
 			}, 500);
 			
@@ -407,6 +409,17 @@ util.getArrayFromSession = function(key){
 	if(val !== null)
 	return JSON.parse(Base64.decode(sessionStorage.getItem(key)));
 },
+util.storeArrayInLocal = function(key,array){
+	if(array !== null && key !== null)
+	localStorage.setItem(key, Base64.encode(JSON.stringify(array)));
+}	
+
+util.getArrayFromLocal = function(key){
+	var val = localStorage.getItem(key);
+	if(val !== null)
+	return JSON.parse(Base64.decode(localStorage.getItem(key)));
+},
+
 util.storeObjectInSession = function(key,obj){
 	if(obj !== null && key !== null)
 	sessionStorage.setItem(key, Base64.encode(JSON.stringify(obj)));
@@ -429,19 +442,6 @@ util.getItemFromSession = function(key){
 }
 
 
-util.updateContentonScroll = function(parentId, HtmlString)
-{
-	$(window).scroll(function(){
-		log("checking end");
-		if($(window).scrollTop() >= $(document).height() - $(window).height()-200)
-		{
-			$(parentId).append(HtmlString);
-		}
-		
-	});
-	 
- 
-}
 
 util.getVerifyQueryString = function(){
 

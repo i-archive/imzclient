@@ -1,6 +1,9 @@
 userarticle = {
 		user : null,
-		articlecount: 0
+		articlecount: 0,
+		init : function(){
+			this.user = util.getObjectFromSession('_user');
+		}
 };
 userarticle.buildSearch = function() {
 	var searchString = "<div class='search-your-articles row'>"
@@ -9,7 +12,7 @@ userarticle.buildSearch = function() {
 			+ "<div class='small-12 large-2 medium-4 columns'>"
 			+ " <a class='button-a blue-button fade-border float-left '>search</a>"
 			+ "   </div> </div>"
-	$('.your-articles').prepend(searchString);
+	$('.your-articles').prepend(searchString).hide().show(1000);
 
 }
 userarticle.getArticleString = function(article, a_id, p_id, t_id){
@@ -59,8 +62,13 @@ userarticle.removeMoreButton = function(next){
 	log("the next value inside remove= "+next*10);
 	log("user article count= "+this.user.articlecount);
 	
-	if((next*10) > this.articlecount)
+	if((next * 10) > this.articlecount){
+		userArticlesAjax.next = 0;
 		$('.showmore-wrapper').remove();
+		log("all articles viewed. next set to 0");
+		
+	}
+	
 }
 
 userarticle.buildArticleWithEvents = function(article) {
@@ -87,13 +95,17 @@ userarticle.appendAllArticles = function(articleArray) {
 	for(i=0; i< arr.length; i++){
 		 articlesString += this.buildArticleWithEvents(arr[i]);
 	}
+	log('REM');
 	$('.showmore-wrapper').remove();
+	log('ADD');
 	articlesString +=this.getMoreButton();
 	$('.your-articles').append(articlesString);
-	userarticle.removeMoreButton(userArticlesAjax.next);
+
+	this.removeMoreButton(userArticlesAjax.next);
 	
 	
 }
+
 
 var userArticlesAjax = {
 	url : "",
@@ -104,7 +116,7 @@ var userArticlesAjax = {
 		progressBar.height = 3;
 		progressBar.build(".body", 0);
 		this.url = userarticle.user.links[2].url+"?next="+this.next;
-		++this.next;
+		this.next++;
 		this.encodedAuth = sessionStorage.getItem('_auth');
 		log(this.url);
 	},
@@ -124,10 +136,10 @@ var userArticlesAjax = {
 	beforeSend : function(request) {
 		request.setRequestHeader('Authorization', this.encodedAuth);
 	},
-	success : function(obj) {
+	success : function(obj_array) {
 		progressBar.success();
-		log(obj);
-		userarticle.appendAllArticles(obj);
+		userarticle.appendAllArticles(obj_array);
+
 	},
 	error : function(data) {
 		log('fail');
@@ -135,7 +147,7 @@ var userArticlesAjax = {
 		errorcode.append = true;
 		errorcode.margin='0 0 0 20%';
 		if(data.status === errorcode.NOT_FOUND)
-			errorcode.showNoData("no article found, head over to editor", ".user-wrapper","fa-file-o ");
+			errorcode.showNoData("no article found", ".user-wrapper","fa-file-o ");
 		else errorcode.showNoData(data.responseJSON.error_message,  ".comment-wrapper","fa-frown-o");
 	}
 
@@ -166,11 +178,12 @@ var fullArticleAjax = {
 		request.setRequestHeader('Authorization', this.encodedAuth);
 	},
 	success : function(obj) {
-		progressBar.success();
+		progressBar.success(obj);
 		util.storeObjectInSession('_cA', obj);
 		location.href = './article';
 	},
 	error : function(data) {
+		progressBar.error(data);
 		log('fail in full ajax');
 		log(data);
 	}
@@ -178,11 +191,10 @@ var fullArticleAjax = {
 }
 
 userarticle.processUserArticles = function() {
-	if (Auth.isLoggedIn()) {
-		log("user logged in");
-		this.user = util.getObjectFromSession('_user');
+	if (Auth.isLoggedIn()) { log("user logged in");
+		this.init();
 		userheader.processHeader(this.user);
-		userarticle.buildSearch();
+		//userarticle.buildSearch();
 		Ajax.GET(userArticlesAjax);
 		userarticle.getMoreArticles();
 

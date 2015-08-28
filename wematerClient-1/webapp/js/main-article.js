@@ -4,18 +4,21 @@ var MainArticle = {
 	commentcount:0,
 	init : function() {
 		this.article = util.getObjectFromSession('_cA');
+		log(this.article);
 		this.user = util.getObjectFromSession('_user');
+		autosize($("#write-comment-content"));
+		this.manageCommentCount();
+		log(this.article);
+
+	},
+	manageCommentCount : function(){
+
 		var count = sessionStorage.getItem('c_Ct');
 		var lc = sessionStorage.getItem('_lc');
-		autosize($("#write-comment-content"));
 		if(count && lc && count > lc)
 			this.commentcount = count;
 		else this.commentcount = this.article.commentCount;
 		sessionStorage.setItem('_lc', this.article.articleCount);
-		
-		
-		log(this.article);
-
 	},
 	buildtags : function(tags, parentclass) {
 		var tagString = "";
@@ -28,7 +31,7 @@ var MainArticle = {
 	processCommentAuthor : function() {
 		var message = "Login to post comment";
 		if (this.user) {
-			var message = " <i class='fa fa-user'></i> " + this.user.username;
+			 message = " <i class='fa fa-user'></i> " + this.user.username;
 		} else {
 			var lv = location.href;
 			sessionStorage.setItem('_lv', Base64.encode(lv));
@@ -71,9 +74,7 @@ MainArticle.buildCurrentArticle = function() {
 		$('.author-bio').html("<p><i class='fa fa fa-quote-left  fa-pull-left fa-border'></i>" +
 				"" + this.article.userModel['bio'] +  "</p>");
 		MainArticle.buildtags(this.article.tags, "article-tags");
-		
 		MainArticle.updateLikes();
-		MainArticle.processLikes();
 		MainArticle.processCommentAuthor();
 	}
 	
@@ -91,6 +92,7 @@ MainArticle.getMoreButton = function(){
 			"<i class='fa fa-chevron-circle-down'></i>show more</a></li>";
 }
 MainArticle.removeMoreButton = function(){
+	
 	$('.showmore_c').remove();
 }
 MainArticle.getMoreComments = function(){
@@ -117,8 +119,13 @@ MainArticle.attachComments = function(comments) {
 
 		commentString += this.createComment(comment.username, comment.content)
 	}
-	if((getcommentAjax.next+1)*10 < this.commentcount){
+	if((getcommentAjax.next+1) * 10 < this.commentcount){
 		commentString += this.getMoreButton();
+	}
+	else{
+		getcommentAjax.next = 0;
+		this.removeMoreButton();
+		log('Next after removal is :'+getcommentAjax.next);
 	}
 	
 	return " <ul class='no-bullet comments'>" + commentString + "</ul>";
@@ -127,7 +134,7 @@ MainArticle.attachComments = function(comments) {
 
 MainArticle.syncComments = function(comments) {
      this.removeMoreButton();
-	$('.comment-wrapper').append(this.attachComments(comments));
+     $('.comment-wrapper').append(this.attachComments(comments));
 
 }
 MainArticle.showCommentCount = function(increment) {
@@ -193,12 +200,14 @@ MainArticle.validateCommentOnSubmit = function() {
 MainArticle.getTopArticleString = function(article) {
             var tr_id = 'tr_'+article.id;
             
-	var string= "<dt><a  id="+tr_id+" dt-ref='"+Base64.encode(article.links[0].url)+"'>"+ article.title + "</a></dt>"
+	var string= "<dt><a  id="+tr_id+" dt-ref='"+Base64.encode(article.links[0].url)+"'>" +
+			""+ Base64.decode(article.title) + "</a></dt>"
 			+ "<dd><a><span class='fa fa-user'></span>"
 			+ article.userModel.name + "</a></dd>";
 	
 	$('.suggest-wrapper').on('click','#'+tr_id,function(){
 		eachTrendingAjax.url =Base64.decode($('#'+tr_id).attr('dt-ref'));
+
 		Ajax.GET(eachTrendingAjax);
 		
 		
@@ -230,10 +239,8 @@ MainArticle.createTopArticles = function(articleArray) {
 MainArticle.buildtopArticles = function() {
 	var isAlreadyFetched = false;
 	$(window).scroll(function() {
-		var scrollTop = $(this).scrollTop();
-
-		if (scrollTop > 1270 && !isAlreadyFetched) {
-
+		var scrollTop = $(this).scrollTop();	
+		if (scrollTop > 1000 && !isAlreadyFetched) {
 			Ajax.GET(trendingArticlsAjax);
 			isAlreadyFetched = true;
 		}
@@ -243,22 +250,27 @@ MainArticle.buildtopArticles = function() {
 
 
 MainArticle.updateLikes = function(){
+	log('updated likes');
 	
-	if(!this.article.isliked)
+	 if(Auth.isLoggedIn() && !this.article.isliked)
 		{
-		   $('.a_like').html("Like this article to show your support"+
+		   $('.a_like').html("<span>Like this article to show your support<span>"+
 	        "<i class='fa fa-lg fa-heart-o'></i>"+this.article.likes);
+			MainArticle.processLikes();
 		}
-	else{
+	else  if(Auth.isLoggedIn() && this.article.isliked){
 		
 		$('.a_like').html("<i class='fa fa-lg fa-heart'></i>"+this.article.likes);
-	}
+	 }
+	else $('.a_like').html("<i class='fa fa-lg fa-heart'></i>"+this.article.likes);
 	
 }
 MainArticle.processLikes = function(){
+	log('updated likes');
 	$('.a_like i').on('click',function(){	
-		$(this).parent().html("<i class='fa fa-lg fa-heart'></i>"+MainArticle.article.likes);
+		log('updated likes');
 		Ajax.PUT(putLikes);
+		$(this).parent().html("<i class='fa fa-lg fa-heart'></i>"+MainArticle.article.likes);
 	});
 }
 
@@ -300,10 +312,33 @@ var putLikes = {
 //end of like put
 var eachTrendingAjax = {
 		url : "",
+		encodedAuth : "",
 		prejax : function() {
+			log("here in each ajax");
+			$("html, body").animate({ scrollTop: 0 }, 200);
+			progressBar.append = false;
+			progressBar.height = 2;
+			progressBar.build('body', 0);
+			this.encodedAuth = sessionStorage.getItem('_auth');
 			log("url is:" + this.url);
 		},	
+		progress : function(event) {
+			if (event.lengthComputable) {
+				progressBar.set_MIN_MAX_with();
+			}
+			progressBar.progress(event);
+		},
+		loadStart : function(event) {
+			progressBar.initialize(event);
+		},
+		loadEnd : function(event) {
+			progressBar.end(event);
+		},
+		beforeSend : function(request) {
+			request.setRequestHeader('Authorization', this.encodedAuth);
+		},
 		success : function(obj) {
+			progressBar.success(obj);
 			log("trending success each");
 			log(obj);
 			util.storeObjectInSession('_cA', obj);
@@ -311,6 +346,7 @@ var eachTrendingAjax = {
 			MainArticle.showCommentCount(obj.commentCount);
 			},
 		error : function(data) {
+			progressBar.error(data);
 			log('fail in trending Each');
 			 log(data);
 		}
@@ -408,6 +444,7 @@ var postcommentAjax = {
 		$('#post-comment').html(' <i class="fa fa-chevron-right "></i>post');
 		errorcode.removeNoData();
 		MainArticle.showCommentCount(1);
+		getcommentAjax.next = 0;
 		Ajax.GET(getcommentAjax);
 		$('.comment-wrapper').show();
 		$('.comment-write-wrapper').hide();
@@ -433,7 +470,7 @@ var trendingArticlsAjax = {
 		progressBar.position= 'absolute';
 		progressBar.height =1;
 		progressBar.build('.main-article-suggest-wrapper', 0);
-		this.url = "http://backendapi-vbr.rhcloud.com/api/public/trending";
+		this.url = "http://backendapi-vbr.rhcloud.com/api/public/top";
 		log("url is:" + this.url);
 	},
 	progress : function(event) {

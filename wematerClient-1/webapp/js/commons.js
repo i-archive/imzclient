@@ -83,3 +83,15 @@ DisplayToggles.showGridView = function(){
 	
 }
 
+update ={
+	onScroll : function(callback)
+		{
+		  $(window).scroll(function(){
+			 var scrolltop = $(window).scrollTop();
+			 var bottom = $(document).height() - $(window).height();
+			 if(scrolltop === bottom) callback(); 		
+			});	 
+		 
+		}
+}
+
