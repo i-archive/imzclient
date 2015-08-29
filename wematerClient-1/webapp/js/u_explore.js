@@ -21,7 +21,7 @@ Explore.buildTimeLine = function(){
 
 Explore.buildArticle = function( article){
 	      var articleStructure="";
-	      articleStructure = "<article class=' explore-article small-12 medium-12 large-8  large-centered column'>" +
+	      articleStructure = "<article id='"+article.id+"'class=' explore-article small-12 medium-12 large-8  large-centered column'>" +
     		"<div class='explore-article-top '>" +
     		" <div class='article-date large-4 small-6 medium-4 columns '>" +
     		"<span><i class='fa fa-calendar-o'></i>" +
@@ -35,7 +35,7 @@ Explore.buildArticle = function( article){
     		"</div>" +
     		"</div>" +
     		"<div class='explore-article-title '>" +
-    		"<a>  "+Base64.decode(article.title)+"</a>" +
+    		"<a dt-ref='"+Base64.encode(article.links[0].url)+"'>  "+Base64.decode(article.title)+"</a>" +
     		"</div>" +
     		" <div class='explore-article-cover ' style = 'background-image	:url("+article.image+");'>" +
     		" </div>" +
@@ -169,6 +169,8 @@ var exploreArticlsAjax = {
 	next:0,
 	prejax : function() {
 		progressBar.append = false;
+		progressBar.counter = 2;
+		
 		progressBar.height = 3;
 		progressBar.build('body', 0);
 		this.url = "http://backendapi-vbr.rhcloud.com/api/public/explore?next="+this.next;

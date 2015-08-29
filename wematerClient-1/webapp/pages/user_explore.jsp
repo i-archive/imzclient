@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html class='no-js' >
 <head>
+<title>u_explore | wemater.org</title>
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<title>u_explore | wemater.org</title>
+<meta http-equiv="Cache-Control" content="max-age=1209600">
 <meta name='description' content='wemater.org'>
 <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
 
@@ -16,9 +17,6 @@
 		       	<link rel='stylesheet' href='../../css/foundation.css'>
         		<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 		        <!-- jQuery -->
-		        <script src='../../js/jquery-1.11.3.js'></script>
-		        <script src='../../js/modernizr.js'></script>
-		         <script src='../../js/jquery-ui.js'></script>
 		        <link rel='stylesheet' href='../../css/jquery-ui.css'>
 		        
 </head>
@@ -123,13 +121,16 @@
 
 </footer>
 
-        <!-- Pushy JS -->
-        <script src='../../js/util.js'></script>
-        <script src='../../js/commons.js'></script>
-        <script src='../../js/menu.js'></script>
-        <script src='../../js/u_explore.js'></script>
 
-    </body>
+	<script src='../../js/jquery-1.11.3.js'></script>
+	<script src='../../js/modernizr.js'></script>
+	<script src='../../js/jquery-ui.js'></script>
+	<script src='../../js/util.js'></script>
+	<script src='../../js/commons.js'></script>
+	<script src='../../js/menu.js'></script>
+	<script src='../../js/u_explore.js'></script>
+
+</body>
 </html>
 
     
