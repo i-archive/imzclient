@@ -143,7 +143,7 @@ var Ajax ={
 		 AllUserURL : "http://backendapi-vbr.rhcloud.com/api/users"
 };
 Ajax.GET = function(obj){
-	  obj.prejax();
+	if(typeof obj.prejax == 'function') obj.prejax();
 	  $.ajax({ 
 		 xhr: function(){
 			 var xhr = new XMLHttpRequest();
@@ -175,7 +175,13 @@ Ajax.GET = function(obj){
 	    error:function(data){
 	    		if(typeof obj.error == 'function') 
 	    			obj.error(data);
+	    },
+	    complete: function( jqxhr,  status){
+	    	if(typeof obj.complete == 'function') 
+    			obj.complete(jqxhr, status);
+	    	
 	    }
+    	  
    });
   
 }//end of GET
@@ -183,7 +189,7 @@ Ajax.GET = function(obj){
 
 Ajax.POST  = function(obj){
 	   
-       obj.prejax();
+	if(typeof obj.prejax == 'function') obj.prejax();
 	  $.ajax({ 
 		 xhr: function(){
 			   var xhr = new XMLHttpRequest();
@@ -215,7 +221,13 @@ Ajax.POST  = function(obj){
         error:function(data){
     			if(typeof obj.error == 'function') 
     			obj.error(data);
-        }
+        },
+	    complete: function( jqxhr,  status){
+	    	if(typeof obj.complete == 'function') 
+    			obj.complete(jqxhr, status);
+	    	
+	    }
+        	
     });
 }
 
@@ -254,7 +266,12 @@ Ajax.PUT  = function(obj){
      error:function(data){
  			if(typeof obj.error == 'function') 
  			obj.error(data);
-     }
+     },
+	 complete: function( jqxhr,  status){
+	    	if(typeof obj.complete == 'function') 
+    			obj.complete(jqxhr, status);
+	    	
+	    }
  });
 }
 
@@ -262,18 +279,20 @@ Ajax.PUT  = function(obj){
 
 
 var progressBar = {
-		width:5,
+		width:1,
 		height:2,
-		counter:.1,
+		counter:2,
 		headerclass: "",
 		top: 0,
 		append: false,
 		position: "fixed",
+		
 		build : function(headerclass,top){
 			log('pb build');
 			if(top != undefined) this.top = top;
-			log("TOP at BUILD "+top)
+	
 			this.headerclass = headerclass;
+			
 			if(this.append === true){
 				$(this.headerclass).append("<div class='loading small-12 large-12 medium-12 '></div>");
 			    log("PB appended to"+headerclass);
@@ -292,13 +311,11 @@ var progressBar = {
 		
 		
 		if(this.position === 'fixed'){
-			
 			$(window).scroll(function() {
 				var scrollTop = $(this).scrollTop();
 				if (scrollTop > 0) {
 		            $('.loading').css('top',0+'px');
 				}
-				
 			});
 		}
 			
@@ -470,5 +487,69 @@ function postUser(username,email,password){
 	this.username = username;
 	this.email = email;
 	this.password = password;
+}
+
+util.showProblemStatement = function(beforeparent,parent){
+	
+	var probstring =
+		"<div class=' show_no_article small-12 large-8 medium-10 large-centered medium-centered columns'>" +
+		" <h1>Uh-ho!<i class='fa fa-2x fa-frown-o '></i></h1>" +
+		"<h3>I think something was lost on the way</h3>" +
+		" <p> if( refreshing page solved it )<i id='refresh' class='fa fa-lg fa-refresh round-border '></i></p>" +
+		"  <p> { then great  }<i id='back' class='fa  fa-lg fa-thumbs-up '></i>  </p>" +
+		" <p> else { sign-in again } <i id='signin' class='fa fa-lg fa-sign-in round-border'></i></p> </div>";
+	 
+     $(beforeparent).hide();  
+	$('footer').hide();
+	$(parent).append(probstring);
+	 $(parent).on('click','#refresh',function(){
+	   
+     	location.href = location.href;
+     });
+     
+     $(parent).on('click','#signin',function(){
+     	location.replace('./signup');
+     });
+    
+	
+	
+}
+
+util.showNoArticles= function(parent){
+	
+	var probstring =
+		"<div class=' show_no_article small-12 large-8 medium-10 large-centered medium-centered columns'>" +
+		" <h1>Uh-ho!<i class='fa fa-2x fa-frown-o '></i></h1>" +
+		"<h3>You have not written any articles yet</h3>" +
+		" <p> do{ write some articles }<i id='editor' class='fa fa-lg fa-pencil-square-o  round-border '></i></p>" +
+
+		" <p> while ( you are here ) <i class='fa fa-lg fa-thumbs-up round-border'></i></p> </div>";
+
+	$(parent).append(probstring);
+	
+	 $(parent).on('click','#editor',function(){
+	     	location.replace('./editor');
+	     });
+	    
+	
+}
+
+util.showNoEditor= function(parent){
+	
+	var probstring =
+		"<div class=' show_no_article small-12 large-8 medium-10 large-centered medium-centered columns'>" +
+		" <h1>oops!<i class='fa fa-2x fa-frown-o '></i></h1>" +
+		"<h3>Our Editor does not like smaller screens</h3>" +
+		" <p> if( you have a PC or Laptop ) <i class='fa fa-lg fa-thumbs-up round-border'></i></p>" +
+		" <p> { open your favourite browser } </p> "+
+		" <p> { open editor and start writing } <i id='editor' class='fa fa-lg fa-pencil-square-o  round-border '></i> </p> </div>";
+
+	$(parent).append(probstring);
+	
+	 $(parent).on('click','#editor',function(){
+	     	location.replace('./editor');
+	     });
+	    
+	
 }
 

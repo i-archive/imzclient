@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html class="no-js" >
 <head>
+<title id='u_title' >u_articles |wemater.org</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title id='u_title' >u_articles |wemater.org</title>
+
 <meta name="description" content="wemater.org">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="stylesheet" href="../../css/normalize.css">
@@ -19,10 +20,7 @@
 		      
 				
 </head>
-     <noscript >
-  		<div class="small-12 large-12 medium-12 " > <i class="fa fa-exclamation-triangle"></i>Please enable javascript. This site won't work properly</div>
-  	</noscript>
-  	
+ 
 <body class="body">
 
   <div class=" user-wrapper">      

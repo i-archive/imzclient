@@ -19,11 +19,7 @@
     </head>
    
     <body class='article-body' >
-   
-        <noscript >
-  		<div class='small-12 large-12 medium-12 ' > <i class='fa fa-exclamation-triangle'></i>Please enable javascript. This site won't work properly</div>
-  		</noscript>
-        <!-- Pushy Menu -->
+
     <!-- Pushy Menu -->
 	<nav class='pushy pushy-left nav-side'>
 		<ul class='ul-side  no-list-style'>
@@ -63,9 +59,7 @@
 		</ul>
 
 	</nav>
-    
-        <!-- Site Overlay -->
-        <div class='site-overlay'></div>
+  
        
         <!-- Your Content -->
 <div id='container'>
@@ -108,10 +102,14 @@
     
 <div class='main-article-content-wrapper small-12 large-12 medium-12 columns '>
      <div class='main-top-bar small-12 large-12 medium-12  columns'>
+        <div class="fa-border small-12 large-6 medium-6 columns">
         <a class='article-date'></a>
         <a class='bookmark' title='bookmark'><i class='fa fa-lg fa-bookmark-o'></i></a>
 	   <a class='share' title='share'><i class='fa fa-lg fa-share-alt'></i></a>
+        </div>
+        <div class="fa-border small-12 large-6 medium-6 columns">
 	   <a class='a_like '> </a>
+	   </div>
      </div>	
      
      
@@ -145,7 +143,9 @@
    
 <div class=' main-comments-wrapper small-12 large-6 medium-6 columns '> 
 		      <div class='comment-but-wrapper small-12 large-12 medium-12 '>
-		          <a id='show-comment' class=' comment-button small-12 large-4 medium-4' ></a>
+		          <a id='show-comment' class=' comment-button small-12 large-4 medium-4' >
+		          <span class='fa fa-pencil-square-o'></span> past comment
+		          </a>
 		          <a id='write-comment' class=' comment-button small-12 large-4 medium-4' >
 		          <span class='fa fa-pencil-square-o'></span> post comment</a>
 		      </div> 
@@ -177,7 +177,7 @@
  </div><!-- main article content wrapper end -->
 
 </section><!-- explore-wrapper end -->
-
+ 
 
 
 

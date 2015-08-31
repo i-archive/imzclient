@@ -59,10 +59,10 @@ userarticle.getMoreArticles =function(){
 	
 }
 userarticle.removeMoreButton = function(next){
-	log("the next value inside remove= "+next*10);
+	log("the next value inside remove= "+next*4);
 	log("user article count= "+this.user.articlecount);
 	
-	if((next * 10) > this.articlecount){
+	if((next * 4) >= this.articlecount){
 		userArticlesAjax.next = 0;
 		$('.showmore-wrapper').remove();
 		log("all articles viewed. next set to 0");
@@ -112,7 +112,8 @@ var userArticlesAjax = {
 	next:0,
 	encodedAuth : "",
 	prejax : function() {
-		progressBar.append=false;
+		progressBar.append = false;
+		progressBar.counter = 2;
 		progressBar.height = 3;
 		progressBar.build(".body", 0);
 		this.url = userarticle.user.links[2].url+"?next="+this.next;
@@ -135,10 +136,12 @@ var userArticlesAjax = {
 	},
 	beforeSend : function(request) {
 		request.setRequestHeader('Authorization', this.encodedAuth);
+		
 	},
 	success : function(obj_array) {
 		progressBar.success();
 		userarticle.appendAllArticles(obj_array);
+		log(obj_array);
 
 	},
 	error : function(data) {
@@ -147,8 +150,16 @@ var userArticlesAjax = {
 		errorcode.append = true;
 		errorcode.margin='0 0 0 20%';
 		if(data.status === errorcode.NOT_FOUND)
-			errorcode.showNoData("no article found", ".user-wrapper","fa-file-o ");
-		else errorcode.showNoData(data.responseJSON.error_message,  ".comment-wrapper","fa-frown-o");
+			util.showNoArticles('.your-articles');
+		else util.showProblemStatement(".your-articles", ".user-wrapper");
+	},
+	complete : function(jqxhr, status){
+		log('COMPLETE AJAX articles');
+		log(jqxhr);
+		log(jqxhr.getAllResponseHeaders());
+		log(jqxhr.getResponseHeader('Etag'));
+		log(status);
+		
 	}
 
 }

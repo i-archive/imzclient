@@ -106,10 +106,7 @@
 
 
 
-		<div class="editor-not  small-12 large-12 medium-12  ">
-			<blockquote>Editor not availabe for small screens</blockquote>
-
-		</div>
+		<div class="editor-not  small-12 large-12 medium-12  ">	</div>
 
 
 

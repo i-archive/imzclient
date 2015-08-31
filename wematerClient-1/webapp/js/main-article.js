@@ -1,32 +1,21 @@
 var MainArticle = {
 	article : null,
 	user : null,
-	commentcount:0,
 	init : function() {
 		this.article = util.getObjectFromSession('_cA');
 		log(this.article);
 		this.user = util.getObjectFromSession('_user');
-		autosize($("#write-comment-content"));
-		this.manageCommentCount();
-		log(this.article);
+		log(this.user);
 
 	},
-	manageCommentCount : function(){
-
-		var count = sessionStorage.getItem('c_Ct');
-		var lc = sessionStorage.getItem('_lc');
-		if(count && lc && count > lc)
-			this.commentcount = count;
-		else this.commentcount = this.article.commentCount;
-		sessionStorage.setItem('_lc', this.article.articleCount);
-	},
+	
 	buildtags : function(tags, parentclass) {
 		var tagString = "";
 		for (i = 0; i < tags.length; i++) {
 			tagString += " <small><span class='fa fa-tag'></span>" + tags[i]
 					+ "</small>"
 		}
-		$('.' + parentclass).append(tagString);
+		$('.' + parentclass).html('').append(tagString);
 	},
 	processCommentAuthor : function() {
 		var message = "Login to post comment";
@@ -51,42 +40,41 @@ var MainArticle = {
 	}
 }
 
-MainArticle.buildCurrentArticle = function() {
-	if (this.article != null) {
-		log("inside build article " + this.article.title);
-		$('#a_t').html(Base64.decode(this.article.title) + " | wemater.org")
+MainArticle.buildCurrentArticle = function(article) {
+	if (article != null) {
+		log("inside build article " + article.title);
+		$('#a_t').html(Base64.decode(article.title) + " | wemater.org")
 		this.updateSignupButton();
-		$('.main-content').html(Base64.decode(this.article.content));
+		$('.main-content').html(Base64.decode(article.content));
 		$('.main-article-cover')
 				.html(
 						"<h1 class='uploaded-image-title'>"
-								+ Base64.decode(this.article.title) + "</h1>")
+								+ Base64.decode(article.title) + "</h1>")
 				.css(
 						'background',
 						"linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), " +
-						"rgba(25, 5, 255, .1)), url('"+ this.article.image + "') no-repeat 100% 50%")
-				.css('background-size', "cover");
+						"rgba(25, 5, 255, .1)), url('"+ article.image + "') no-repeat 100% 50%")
+				.css('background-size', "cover").hide().slideDown(1000);
 
 		$('a.article-author').html(
-				"<i class='fa fa-user'></i>" + this.article.userModel.name);
+				"<i class='fa fa-user'></i>" + article.userModel.name);
 		$('a.article-date').html(
-				"<i class='fa fa-lg fa-calendar'></i>" + this.article.date);
+				"<i class='fa fa-lg fa-calendar'></i>" + article.date);
 		$('.author-bio').html("<p><i class='fa fa fa-quote-left  fa-pull-left fa-border'></i>" +
-				"" + this.article.userModel['bio'] +  "</p>");
-		MainArticle.buildtags(this.article.tags, "article-tags");
+				"" + article.userModel['bio'] +  "</p>");
+		MainArticle.buildtags(article.tags, "article-tags");
 		MainArticle.updateLikes();
 		MainArticle.processCommentAuthor();
+	}
+	else{
+		log('no article present');
+        util.showProblemStatement('.article-wrapper','#container');
+	
 	}
 	
 
 }
 
-MainArticle.bookmark = function() {
-
-	$("a.bookmark").click(function(e) {
-
-	});
-}
 MainArticle.getMoreButton = function(){
 	return "<li> <a class=' showmore_c button-a blue-button push-5 small-push-4'>" +
 			"<i class='fa fa-chevron-circle-down'></i>show more</a></li>";
@@ -137,20 +125,9 @@ MainArticle.syncComments = function(comments) {
      $('.comment-wrapper').append(this.attachComments(comments));
 
 }
-MainArticle.showCommentCount = function(increment) {
-	
-	if(increment){ this.commentcount++; log("comments after increment"+ this.commentcount);}
-	sessionStorage.setItem('c_Ct', this.commentcount);
-	
-	var count = sessionStorage.getItem('c_Ct');
-  
-	$('#show-comment').html(
-			"<span class='fa fa-comments-o'></span>past comments" + " ("
-					+ count + ")");
-}
+
 MainArticle.showHideComments = function() {
 	$('.comment-wrapper').hide();
-	this.showCommentCount();
 	$('#write-comment-content').hide();
 	$('#post-comment').hide();
 	if(MainArticle.user){
@@ -171,6 +148,15 @@ MainArticle.showHideComments = function() {
 	});
 
 }
+MainArticle.activeCommentLength = function(){
+	var isActivated = false;
+	$('#write-comment-content').on('click',function(){
+		if(!isActivated) {autosize($(this)); isActivated= true;}
+		log('min activated');
+	});
+	
+}
+
 
 MainArticle.validateCommentOnSubmit = function() {
 
@@ -315,9 +301,9 @@ var eachTrendingAjax = {
 		encodedAuth : "",
 		prejax : function() {
 			log("here in each ajax");
-			$("html, body").animate({ scrollTop: 0 }, 200);
 			progressBar.append = false;
-			progressBar.height = 2;
+			progressBar.height = 3;
+			progressBar.position= 'fixed';
 			progressBar.build('body', 0);
 			this.encodedAuth = sessionStorage.getItem('_auth');
 			log("url is:" + this.url);
@@ -342,8 +328,8 @@ var eachTrendingAjax = {
 			log("trending success each");
 			log(obj);
 			util.storeObjectInSession('_cA', obj);
-			location.href="./article";
-			MainArticle.showCommentCount(obj.commentCount);
+			$("html, body").animate({ scrollTop: 0 }, 1000);
+	        MainArticle.buildCurrentArticle(obj);
 			},
 		error : function(data) {
 			progressBar.error(data);
@@ -443,7 +429,6 @@ var postcommentAjax = {
 		log('success post user');
 		$('#post-comment').html(' <i class="fa fa-chevron-right "></i>post');
 		errorcode.removeNoData();
-		MainArticle.showCommentCount(1);
 		getcommentAjax.next = 0;
 		Ajax.GET(getcommentAjax);
 		$('.comment-wrapper').show();
@@ -509,8 +494,8 @@ MainArticle.processAllArticle = function() {
 	//call function when u have data
 
 	MainArticle.init();
-	MainArticle.buildCurrentArticle();
-	MainArticle.bookmark();
+	MainArticle.buildCurrentArticle(this.article);
+	MainArticle.activeCommentLength();
 	MainArticle.showHideComments();
 	MainArticle.getMoreComments()
 	MainArticle.validateCommentOnSubmit();

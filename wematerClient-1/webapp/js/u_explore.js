@@ -21,40 +21,59 @@ Explore.buildTimeLine = function(){
 
 Explore.buildArticle = function( article){
 	      var articleStructure="";
-	      articleStructure = "<article id='"+article.id+"'class=' explore-article small-12 medium-12 large-8  large-centered column'>" +
+	      var articleContent = Base64.decode(article.content);
+	      var  ex_id = 'ex_'+article.id;
+	      var et_id = 'et_'+article.id;
+	      var  dt_ref = Base64.encode(article.links[0].url);
+	      articleStructure = "<article class=' explore-article small-12 medium-12 large-8  large-centered column'>" +
     		"<div class='explore-article-top '>" +
     		" <div class='article-date large-4 small-6 medium-4 columns '>" +
-    		"<span><i class='fa fa-calendar-o'></i>" +
+    		"<span><i class='fa fa-lg fa-calendar'></i>" +
     		 article.date +
     		" </span>" +
     		"</div>" +
-    		"<div class=' article-like large-4 small-6 medium-4 columns '>" +
+    		"<div class=' article-like large-4 small-4 medium-4 columns  '>" +
     		"<ul class='no-list-style'>" +
-    		"<li><a><span class='fa fa-lg fa-thumbs-o-up'></span></a></li>" +
+    		"<li><a><span class='fa fa-lg fa-heart'></span>"+article.likes+"</a></li>" +
     		" </ul>" +
     		"</div>" +
     		"</div>" +
     		"<div class='explore-article-title '>" +
-    		"<a dt-ref='"+Base64.encode(article.links[0].url)+"'>  "+Base64.decode(article.title)+"</a>" +
+    		"<a class = '"+ex_id+"' dt-ref='"+dt_ref+"'>  "+Base64.decode(article.title)+"</a>" +
     		"</div>" +
-    		" <div class='explore-article-cover ' style = 'background-image	:url("+article.image+");'>" +
+    		" <div  class='"+ex_id+" explore-article-cover' style = 'background: "
+			+ "linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), rgba(25, 5, 255, .1)),"
+			+ "url(" + article.image + ") no-repeat 100% 50% ; background-size:cover; cursor:pointer;'>" +
     		" </div>" +
     		"<div class='explore-article-content '>" +
     		"<ul class='no-list-style'>" +
     		"<li>" +
-    		"<div class='exp-content'> "+Base64.decode(article.content)+" </div>" +
+    		"<div class='exp-content'> "+articleContent+" </div>" +
     		"</li>" +
     		"<li>" +
     		" <ul>" +
     		"<li><a><span class = 'fa fa-user'></span>"+article.userModel.name+"</a></li>" +
-    		" <li class='continue-read'><a>continue reading	</a> </li>" +
+    		" <li class='continue-read'><a class='"+ex_id+"'>continue reading	</a> </li>" +
     		"</ul>" +
     		"</li>" +
     		"</ul>" +
     		"</div>" +
     		"</article>";
-	         if(this.isbfrePresent){ $('#bfre-exp').remove(); this.isbfrePresent = false;} 
+	         if(this.isbfrePresent){ $('.bfre-exp').remove(); this.isbfrePresent = false;}
+	         
+	    
 	         $('.explore-timeline').append(articleStructure);   
+	         
+	         $('.explore-timeline').on('click','.'+ex_id,function(){
+	        	 log('article is clicked');
+	        	 var url = Base64.decode($('.'+ex_id).attr('dt-ref'));
+	        	 log('url  '+url);
+	        	 eachTopAjax.url = url;
+	        	 Ajax.GET(eachTopAjax);
+	         });
+	         
+	    
+	         
 	   
 }
 
@@ -64,8 +83,18 @@ Explore.buildTag = function(index,tag){
 	
 }
 Explore.getTopArticleString = function(article){
-	 return  "<dt><a>"+Base64.decode(article.title)+"</a></dt>"+
+	var dt_ref =Base64.encode(article.links[0].url);
+	var a_id = 'ar_'+article.id;
+	 var string =  "<dt><a id='"+a_id+"' dt-ref='"+dt_ref+"'>"+Base64.decode(article.title)+"</a></dt>"+
 			"<dd><a><span class='fa fa-user'></span>"+article.userModel.name+"</a></dd>"; 
+	 
+	 $(".ul-explore-top").on('click','#'+a_id,function(){
+		 var url = Base64.decode($('#'+a_id).attr('dt-ref'));
+		 eachTopAjax.url = url;
+		 Ajax.GET(eachTopAjax);
+	 });
+	 
+	 return string;
 	 
 }
 Explore.attachTopArticles =  function(articleString){
@@ -170,7 +199,6 @@ var exploreArticlsAjax = {
 	prejax : function() {
 		progressBar.append = false;
 		progressBar.counter = 2;
-		
 		progressBar.height = 3;
 		progressBar.build('body', 0);
 		this.url = "http://backendapi-vbr.rhcloud.com/api/public/explore?next="+this.next;
@@ -212,6 +240,14 @@ var exploreArticlsAjax = {
 		 Explore.isUpdating = true;
 		}
 
+	},
+	complete : function(jqxhr, status){
+		log('COMPLETE AJAX EXPLORE');
+		log(jqxhr);
+		log(jqxhr.getAllResponseHeaders());
+		log(jqxhr.getResponseHeader('Etag'));
+		log(status);
+		
 	}
 
 }
@@ -242,7 +278,48 @@ var topArticlsAjax = {
 
 }
 
+//end of like put
+var eachTopAjax = {
+		url : "",
+		encodedAuth : "",
+		prejax : function() {
+			log("here in each ajax");
+			progressBar.append = false;
+			progressBar.height = 3;
+			progressBar.position= 'fixed';
+			progressBar.build('body', 0);
+			this.encodedAuth = sessionStorage.getItem('_auth');
+			log("url is:" + this.url);
+		},	
+		progress : function(event) {
+			if (event.lengthComputable) {
+				progressBar.set_MIN_MAX_with();
+			}
+			progressBar.progress(event);
+		},
+		loadStart : function(event) {
+			progressBar.initialize(event);
+		},
+		loadEnd : function(event) {
+			progressBar.end(event);
+		},
+		beforeSend : function(request) {
+			request.setRequestHeader('Authorization', this.encodedAuth);
+		},
+		success : function(obj) {
+			progressBar.success(obj);
+			log("trending success in explorere");
+			log(obj);
+			util.storeObjectInSession('_cA', obj);
+	         location.href = './article';
+			},
+		error : function(data) {
+			progressBar.error(data);
+			log('fail in trending Each in explorer' );
+			 log(data);
+		}
 
+	}
 
 /*
  * end of ajax objects

@@ -56,40 +56,13 @@ userheader.processHeader = function(user){
 
 
 
-DisplayToggles ={};
-DisplayToggles.showListView = function(){
-	
-		 log("show list view");
-		 $(".user-article").addClass("user-article-list small-12 large-12 medium-12").removeClass("user-article small-12 large-3 medium-4");
-		 $(".user-article-inside").addClass("user-article-inside-list").removeClass("user-article-inside");
-		 $(".user-article-pic").addClass("user-article-pic-list small-2 large-3 medium-4 columns   ").removeClass("user-article-pic");
-		 $(".user-article-text").addClass(" user-article-text-list small-10 large-7 medium-5 columns  ").removeClass("user-article-text");
-		 $(".user-article-info").addClass("user-article-info-list hide-for-small large-2 medium-3 columns ")
-		 .removeClass("user-article-info");
-	
-}
-
-
-
-DisplayToggles.showGridView = function(){
-		 log("show grid view");
-		 
-		 $(".user-article-list").removeClass("user-article-list small-12 large-12 medium-12").addClass("user-article small-12 large-3 medium-4 left");
-		 $(".user-article-inside-list").removeClass("user-article-inside-list").addClass("user-article-inside");
-		 $(".user-article-pic-list").removeClass("user-article-pic-list small-2 large-3 medium-4 columns   ").addClass("user-article-pic");
-		 $(".user-article-text-list").removeClass(" user-article-text-list small-10 large-7 medium-5 columns  ").addClass("user-article-text");
-		 $(".user-article-info-list").removeClass("user-article-info-list hide-for-small large-2 medium-3 columns ")
-		 .addClass("user-article-info");
-	
-}
-
 update ={
 	onScroll : function(callback)
 		{
 		  $(window).scroll(function(){
 			 var scrolltop = $(window).scrollTop();
 			 var bottom = $(document).height() - $(window).height();
-			 if(scrolltop === bottom) callback(); 		
+			 if(scrolltop == bottom) callback(); 		
 			});	 
 		 
 		}

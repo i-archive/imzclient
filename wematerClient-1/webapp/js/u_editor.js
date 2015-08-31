@@ -49,7 +49,9 @@ userPage={
 		},
 		minViewPortWidth : 768,	
 		maxtags : 5,
-		hideEditor_not : function(){ $('.editor-not').hide();}
+		hideEditor_not : function(){
+            util.showNoEditor('.editor-not');
+			$('.editor-not').hide();}
 };
 
 userPage.showControls = function(){
@@ -103,7 +105,7 @@ userPage.hideEditorOnResize = function(){
 		 }
 		 if(currentWidth >= userPage.minViewPortWidth){
 			 
-			 $('.editor-not').html(currentWidth);
+			 $('.editor-not').html();
 			 
 			 $('.editor').show();
 			 userPage.hideEditor_not();
