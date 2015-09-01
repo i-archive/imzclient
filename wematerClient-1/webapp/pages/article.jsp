@@ -95,7 +95,6 @@
 			 </a>
 			
 		</header>
-
 <section class='article-wrapper  '>
 
   <div class='main-article-cover small-12 large-12 medium-12 columns'> </div>

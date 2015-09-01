@@ -1051,14 +1051,16 @@ div.preview-container ol, div.preview-container ul, .main-content ol, .main-cont
 .trending-wrapper:after, .preview-wrapper:after, .form-wrapper:after{clear: both;height: 100px;}
 
 .form-class,.form-login-class,.form-verify-class{
-	padding-top: 1em;
+
 	position: relative;
 	min-height: auto;
 	
 }
 .form-class,.form-login-class{
+	padding-top: 2em;
 	margin-top: 6px;
 	background: rgba(0,0,0,0.12);
+	border-radius: 0 4px 4px 4px;
 
 
 }
@@ -1431,6 +1433,22 @@ ul.home-header-ul li{
   border: 2px solid #333;
   border-radius: 3px;
   transition: border-color 300ms ease-out;
+}
+
+.fa-border-sleek,.fa-border-sleeks{
+
+  background: #333;
+  color: white;
+  border-radius: 4px;
+  transition: border-color 300ms ease-out;
+}
+.fa-border-sleeks
+{
+  padding-top: .1em;
+  padding-bottom: .1em;
+}
+.fa-border-sleek:hover , .fa-border-sleeks:hover{
+  background: #2f9fce;
 }
 
 .border-shadow{

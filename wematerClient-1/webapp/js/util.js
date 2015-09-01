@@ -552,4 +552,22 @@ util.showNoEditor= function(parent){
 	    
 	
 }
+util.showNoComment= function(parent){
+	
+	var probstring =
+		"<div class=' show_no_article small-12 large-12 medium-12 large-centered medium-centered columns'>" +
+		" <h1>oops!<i class='fa fa-2x fa-frown-o '></i></h1>" +
+		"<h3>I think people forgot to put comments here</h3>" +
+		" <p> if( you want to post comment ) <i class='fa fa-lg fa-thumbs-up round-border'></i></p>" +
+		" <p> { Click the 'post comment' button } </p> "+
+		" <p> else { wait for others } <i class='fa fa-lg fa-pause round-border '></i> </p> </div>";
+
+	$(parent).append(probstring);
+	
+	 $(parent).on('click','#editor',function(){
+	     	location.replace('./editor');
+	     });
+	    
+	
+}
 

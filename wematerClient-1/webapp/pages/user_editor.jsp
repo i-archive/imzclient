@@ -40,17 +40,13 @@
 		<div class="editor hide-for-small-only  ">
 
 
-
-
-
 			<div id="uploaded-image" class="editor-controls">
 				<!-- upload image -->
 				<div class="control-wrapper float-right ">
 					<a id="ed-sl" class="editor-done" title="save the article"><span
-						class="fa  fa-floppy-o"></span></a> <a class="editor-pre"
-						title="preview article"><span class="fa  fa-binoculars  "></span></a>
+						class="fa  fa-hdd-o fa-border-sleek"></span></a>
 					<a class="editor-upload" title="upload the cover image"><span
-						class="fa fa-camera"></span></a> <input id="upload" type="file" />
+						class="fa fa-camera "></span></a> <input id="upload" type="file" />
 
 				</div>
 				<!-- upload image end -->

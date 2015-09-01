@@ -7,7 +7,7 @@ var MainArticle = {
 		log(this.article);
 		this.user = util.getObjectFromSession('_user');
 		log(this.user);
-		this.commentcount = this.article.commentCount;
+		if(this.article) this.commentcount = this.article.commentCount;
 		
  
 	},
@@ -50,7 +50,8 @@ var MainArticle = {
 }
 
 MainArticle.buildCurrentArticle = function(article) {
-	if (article != null) {
+	
+	if (article) {
 		log("inside build article " + article.title);
 		$('#a_t').html(Base64.decode(article.title) + " | wemater.org")
 		this.updateSignupButton();
@@ -392,7 +393,7 @@ var getcommentAjax = {
 		log(data);
 		errorcode.append=true;
 		if(data.status === errorcode.NOT_FOUND)
-			errorcode.showNoData("no comments yet", ".comment-wrapper","fa-frown-o");
+		util.showNoComment(".comment-wrapper");
 		else errorcode.showNoData(data.responseJSON.error_message,  ".comment-wrapper","fa-frown-o");
 	}
 
@@ -506,8 +507,9 @@ var trendingArticlsAjax = {
 MainArticle.processAllArticle = function() {
 
 	//call function when u have data
-
+    log("hree article "+this.article);
 	MainArticle.init();
+	log("sometime back "+ this.article);
 	MainArticle.buildCurrentArticle(this.article);
 	MainArticle.activeCommentLength();
 	MainArticle.showHideComments();

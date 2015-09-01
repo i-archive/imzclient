@@ -57,9 +57,7 @@ userPage={
 userPage.showControls = function(){
 
 	var controlString = "<a id='ed-hd' class='editor-head-done right hide-for-small'"+
-		"title='save the article'><span class='fa  fa-floppy-o'></span></a> " +
-		"<a class='editor-head-pre right hide-for-small' title='preview article'>" +
-		"<span class='fa  fa-binoculars  '></span></a>";
+		"title='save the article'><span class='fa  fa-hdd-o fa-border-sleeks'></span></a> ";
    $('.ul-tools').append(controlString);
 	
 	
@@ -286,7 +284,9 @@ userPage.setProgressOnButton = function(obj){
 }
 userPage.resetProgressOnButton = function(){
 
-	$('.editor-done ,.editor-head-done').html("<span class='fa fa-floppy-o'></span>")
+	$('.editor-done ').html("<span class='fa fa-hdd-o fa-border-sleek'></span>")
+	 .css('color','#333');	
+	$('.editor-head-done').html("<span class='fa fa-hdd-o fa-border-sleeks'></span>")
 	 .css('color','#333');	
 	
 	if($(window).scrollTop() <= 35)
@@ -404,7 +404,6 @@ userPage.processUserPage = function(){
 		userPage.hideEditorOnResize();
 	    userPage.showEditorPreview();
 	    userPage.clickUpload();
-	    userPage.openPreview();
 		userPage.processUploadImage();
 		userPage.getCoverAfterRefresh();
 		userPage.manageCoverTitle();
