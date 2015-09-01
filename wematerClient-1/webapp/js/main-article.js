@@ -1,12 +1,15 @@
 var MainArticle = {
 	article : null,
 	user : null,
+	commentcount :0,
 	init : function() {
 		this.article = util.getObjectFromSession('_cA');
 		log(this.article);
 		this.user = util.getObjectFromSession('_user');
 		log(this.user);
-
+		this.commentcount = this.article.commentCount;
+		
+ 
 	},
 	
 	buildtags : function(tags, parentclass) {
@@ -18,16 +21,22 @@ var MainArticle = {
 		$('.' + parentclass).html('').append(tagString);
 	},
 	processCommentAuthor : function() {
+		
 		var message = "Login to post comment";
 		if (this.user) {
 			 message = " <i class='fa fa-user'></i> " + this.user.username;
+			 $('.comment-wrapper').html('');
+			 $('.comment-write-wrapper').show();
 		} else {
+			$('.comment-wrapper').html('');
+			$('.comment-write-wrapper').show();
 			var lv = location.href;
 			sessionStorage.setItem('_lv', Base64.encode(lv));
 			$('.comment-author').attr('href', "./signup");
 			log("user is null " + lv);
 		}
 		$('.comment-author').html(message);
+		
 	},
 	updateSignupButton : function(){
 		if (this.user) {
@@ -107,7 +116,10 @@ MainArticle.attachComments = function(comments) {
 
 		commentString += this.createComment(comment.username, comment.content)
 	}
+	log('CommentCOunt= '+this.commentcount);
+	
 	if((getcommentAjax.next+1) * 10 < this.commentcount){
+		log('more comments exeecuting.'+ (getcommentAjax.next+1)*10);
 		commentString += this.getMoreButton();
 	}
 	else{
@@ -328,6 +340,8 @@ var eachTrendingAjax = {
 			log("trending success each");
 			log(obj);
 			util.storeObjectInSession('_cA', obj);
+			MainArticle.article = obj;
+			MainArticle.commentcount = obj.commentCount;
 			$("html, body").animate({ scrollTop: 0 }, 1000);
 	        MainArticle.buildCurrentArticle(obj);
 			},
@@ -348,7 +362,6 @@ var getcommentAjax = {
 		progressBar.height =1;
 		progressBar.build('.comment-but-wrapper', 0);
 		this.url = MainArticle.article.links[2].url+'?next='+this.next;
-	
 		log("url is:" + this.url);
 	},
 	progress : function(event) {
@@ -369,7 +382,7 @@ var getcommentAjax = {
 		progressBar.success(obj);
 		log("success in all comments");
 		log(obj);
-		log(obj.length);
+
 		errorcode.removeNoData();
 		MainArticle.syncComments(obj);
 	},
@@ -429,6 +442,7 @@ var postcommentAjax = {
 		log('success post user');
 		$('#post-comment').html(' <i class="fa fa-chevron-right "></i>post');
 		errorcode.removeNoData();
+		//MainArticle.commentcount++; //changed to updated the total comments here
 		getcommentAjax.next = 0;
 		Ajax.GET(getcommentAjax);
 		$('.comment-wrapper').show();
