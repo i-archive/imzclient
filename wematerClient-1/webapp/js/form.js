@@ -556,13 +556,29 @@ Form.validateSignupFormOnSubmit = function(){
   });
 	
 }
-
+Form.toggleLoginSingup = function(){
+	$('.form-class').hide();
+	$('#tab_login').css('background','rgba(0,0,0,0.12)');
+	$('#tab_login').on('click',function(){
+		$(this).css('background','rgba(0,0,0,0.12)');
+		$('#tab_signup').css('background','white');
+		$('.form-login-class').show();
+		$('.form-class').hide();
+	});
+	$('#tab_signup').on('click',function(){
+		$(this).css('background','rgba(0,0,0,0.12)');
+		$('#tab_login').css('background','white');
+		$('.form-login-class').hide();
+		$('.form-class').show();
+	});
+}
 
 
 
 
 Form.processLoginForm = function(){
 	Auth.ifLoggedIn();
+	Form.toggleLoginSingup();
 	Form.initateLogin();
     Form.validateLoginFormOnSubmit();
     Form.validateLoginInputOnkeyUp();

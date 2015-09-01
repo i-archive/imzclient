@@ -143,7 +143,7 @@ border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 .form-wrapper{
 	padding: 0 0 0 0;
-	 background: #f1f1f1;
+    
 	 min-height: 400px;
 	 height: auto;
 	}
@@ -1051,20 +1051,42 @@ div.preview-container ol, div.preview-container ul, .main-content ol, .main-cont
 .trending-wrapper:after, .preview-wrapper:after, .form-wrapper:after{clear: both;height: 100px;}
 
 .form-class,.form-login-class,.form-verify-class{
+	padding-top: 1em;
 	position: relative;
 	min-height: auto;
-    margin-top:1em;
 	
 }
-.form-divider{ height: 50px;}
-.form-login-class{
-	top: 10px;
-}
-.form-class{
-	margin-top:1em;
-	border-left: 1px dotted rgba(0,0,0,0.5);
+.form-class,.form-login-class{
+	margin-top: 6px;
+	background: rgba(0,0,0,0.12);
+
 
 }
+
+ul.tabs{
+	position: relative;
+	list-style: none;
+	top:20px;
+    min-height: 50px;	
+    height: auto;
+    padding: .2em;
+    padding-left: 0;
+   
+}
+ul.tabs li{
+	position: relative;
+	display: inline;
+	padding: .6em;
+	font-family: 'Oswald';
+	font-size: .95em;
+	text-transform: uppercase;
+	cursor: pointer;
+	z-index: 1;
+	border-radius: 4px 4px 0 0 ;
+	color: rgba(0,0,0,0.5);
+}
+
+
 .form-verify-class{
 
 	min-height: 400px;

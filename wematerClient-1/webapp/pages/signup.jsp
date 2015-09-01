@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>sign up | wemater.org</title>
+        <title>Authentication | wemater.org</title>
         <meta name="description" content="Pushy is an off-canvas navigation menu for your website.">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
      
@@ -104,15 +104,17 @@
 		</header>
 
 
-<section class="form-wrapper ">
+<section class="form-wrapper  ">
 
-			<section class=" form-login-class  small-12 large-5 medium-12 columns" >
- 
-  <div class="row ">
-             <div class=" form-heading small-12 large-7 medium-7 large-centered medium-centered  columns ">
-             <h5>login to your account</h5>
-             </div>
- </div>
+
+           <ul class='tabs small-12 large-5 medium-8  medium-centered large-centered columns' >
+           <li id='tab_login'><i class='fa fa-lg fa-sign-in'></i>sign in</li>
+           <li id = 'tab_signup'><i class='fa fa-lg fa-user-plus '></i>sign up</li>
+           
+           </ul>
+
+<section class=" form-login-class  small-12 large-5 medium-8 large-centered medium-centered columns " >
+
  <div class=" row ">
            <div class=" form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
            <input id="username" type="text" placeholder="username">
@@ -145,16 +147,10 @@
            
  
  </section>		  <!-- login end -->  
-<div  class=" form-divider  small-12 large-1 medium-12  columns" > </div>
 		 
-		 <section  class=" form-class  small-12 large-6 medium-12 columns" >
+		 <section  class=" form-class  small-12 large-5 medium-8 large-centered medium-centered 
+		  columns" >
 		  
-		  <div class="row ">
-		             <div class=" form-heading small-12 large-7 medium-7 large-centered medium-centered  columns ">
-		             
-		             <h5>Register with your email address</h5>
-		             </div>
-		 </div>
 		  <div class=" row ">
 		           <div class=" form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
 		           <input id="usermamep" type="text" placeholder="Pick a username">
