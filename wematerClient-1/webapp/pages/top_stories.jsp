@@ -73,26 +73,32 @@
        
         <!-- Your Content -->
 <div id="container" >
-	<header class="app-header  ">
-			<i class="fa fa-2x  black-color	 fa-bars menu-btn " id="menu"></i>
-			<a href="${pageContext.request.contextPath}/home" 
-				class="  button-a signUp fade-border hide-for-small 
-				float-right font-runda-heading-link blue-button">home</a>
-			<span id="list" class=" tile-list fa fa-lg fa-list float-right"></span>
-	   		<span id="tile" class=" tile-list fa fa-lg fa-th float-right"></span>
-			    
+	<nav class="sub-menu">
+    	<i class="fa fa-2x black-color fa-bars menu-btn menu " id="menu"></i>
+    	<a  href="${pageContext.request.contextPath}/home/user/signup"
+    	 class=" button-a signUp blue-button fade-border hide-for-small 
+    	 float-right font-runda-heading-link " >sign in/sign up</a>
+		<a href="${pageContext.request.contextPath}/home/topstories" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
+		  <span class="fa fa-lg fa-star-o"></span>top stories
+		</a>
+			<a href="${pageContext.request.contextPath}/home/explore" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
+			      <span class="fa fa-lg fa-newspaper-o" ></span>explore
+			 </a>
+    </nav>
+	
+		<header class="app-header ">
+		<i class="fa fa-2x black-color fa-bars menu-btn menu " id="menu"></i>
+        <a  href="${pageContext.request.contextPath}/home/user/signup"
+        class=" button-a signUp blue-button fade-border hide-for-small
+         float-right font-runda-heading-link ">sign in/sign up</a>
+			<a href="${pageContext.request.contextPath}/home/topstories" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
+			    <span class="fa fa-lg fa-star-o"></span>top stories
+			</a>
+			<a href="${pageContext.request.contextPath}/home/explore" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
+			      <span class="fa fa-lg fa-newspaper-o" ></span>explore
+			 </a>
 			
-			
-</header>
- <nav class="sub-menu">
-    	<i class="fa fa-2x  fa-bars menu-btn menu " id="menu"></i>
-        <a
-          href="${pageContext.request.contextPath}/home" 
-          class=" button-a signUp blue-button fade-border hide-for-small float-right font-runda-heading-link ">home</a>
-    	<span id="sub-list" class=" tile-list fa fa-lg fa-list float-right"></span>
-	   <span id="sub-tile" class=" tile-list fa fa-lg fa-th float-right"></span>
-			
-</nav>
+		</header>
 <section class="trending-wrapper ">
                <!-- article start -->
 

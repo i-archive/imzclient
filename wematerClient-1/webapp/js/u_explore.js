@@ -328,33 +328,33 @@ var eachTopAjax = {
 
 
 Explore.processExplorer = function(){
-	this.init();
-	userheader.processHeader(this.user);
-	  var tags = ['arminau', 'fifa', 'secular', 'politics', 'insurance', 'media', 'geography',
-	              'secularism', 'media crooks', 'advertisement','insterst','java', 'servlets'];
-	  Explore.manageTags(tags);
-	  
-	Ajax.GET(exploreArticlsAjax);
-	 Ajax.GET(topArticlsAjax);
-	
-    
-	
-	update.onScroll( function(){
-		if(!Explore.isUpdating && exploreArticlsAjax.next > 0){
-	        $('.explore-timeline').append("<div class= 'circle-load small-3 large-3 medium-3 " +
-	        		"medium-centered large-centered small-centered  columns'>" +
-	        		"<i class='fa fa-3x fa-spinner fa-pulse'></i></div>"); 
-			Explore.isUpdating = true;
-		  Ajax.GET(exploreArticlsAjax);
-		}
-		else log('request cant be called from here-Already UPDAATING');
-		 
+	if(Auth.isLoggedIn()){
+		this.init();
+		userheader.processHeader(this.user); 
+		  var tags = ['arminau', 'fifa', 'secular', 'politics', 'insurance', 'media', 'geography',
+		              'secularism', 'media crooks', 'advertisement','insterst','java', 'servlets'];
+		  Explore.manageTags(tags);
+		  
+		Ajax.GET(exploreArticlsAjax);
+		 Ajax.GET(topArticlsAjax);
+		
+	    
+		
+		update.onScroll( function(){
+			if(!Explore.isUpdating && exploreArticlsAjax.next > 0){
+		        $('.explore-timeline').append("<div class= 'circle-load small-3 large-3 medium-3 " +
+		        		"medium-centered large-centered small-centered  columns'>" +
+		        		"<i class='fa fa-3x fa-spinner fa-pulse'></i></div>"); 
+				Explore.isUpdating = true;
+			  Ajax.GET(exploreArticlsAjax);
+			}
+			else log('request cant be called from here-Already UPDAATING');
+			 
 
-	}); //add at the end
-	
-  
-    //Explore.createTopArticles(this.exploreArticles);
-    Explore.fixExploreSide(".explore-side");
+		}); //add at the end
+	    Explore.fixExploreSide(".explore-side");
+		
+	}
     
    
 }

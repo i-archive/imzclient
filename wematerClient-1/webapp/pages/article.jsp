@@ -68,9 +68,6 @@
     	<a  href='${pageContext.request.contextPath}/home/user/signup'
     	 class='  button-a signUp blue-button fade-border hide-for-small 
     	 float-right font-runda-heading-link ' >sign in/sign up</a>
-    	<a  href='${pageContext.request.contextPath}/about' class=' header-link-black fade-border font-runda-heading-link float-right hide-for-small '>
-			    <span class='fa fa-lg fa-info-circle'></span>about
-		</a>
 		<a href='${pageContext.request.contextPath}/home/topstories' class=' header-link-black fade-border font-runda-heading-link float-right hide-for-small '>
 		  <span class='fa fa-lg fa-star-o'></span>top stories
 		</a>
@@ -84,9 +81,6 @@
         <a  href='${pageContext.request.contextPath}/home/user/signup'
         class='  button-a signUp blue-button fade-border hide-for-small
          float-right font-runda-heading-link '>sign in/sign up</a>
-    	<a href='${pageContext.request.contextPath}/about' class=' header-link-black fade-border font-runda-heading-link float-right hide-for-small '>
-			    <span class='fa fa-lg fa-info-circle'></span>about
-		</a>
 			<a href='${pageContext.request.contextPath}/home/topstories' class=' header-link-black fade-border font-runda-heading-link float-right hide-for-small '>
 			    <span class='fa fa-lg fa-star-o'></span>top stories
 			</a>

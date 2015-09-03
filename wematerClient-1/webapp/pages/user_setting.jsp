@@ -38,50 +38,25 @@
 
 	<header class="home-header">
 
-		<section class=" ul-header large-4 medium-12 small-12 columns">
-			<a class="float-left" href="${pageContext.request.contextPath}/home"> <span
-				class="fa fa-lg fa-home"></span></a> <a class="float-left push-1">
-				<span class="fa fa-lg fa-user"></span><b> irshad sheikh</b>
-			</a>
-
-		</section>
-
-
-		<section class="ul-tools large-7  medium-12 small-12 columns">
-
-			<a href="${pageContext.request.contextPath}/home/user/editor" class="float-left" id="write"> <span
-				class="fa fa-lg fa-pencil-square-o"></span><b
-				class="hide-for-small-only"> write</b>
-			</a> 
-			<a   href="${pageContext.request.contextPath}/home/user/articles" class="float-left" id="your-article">
-				<span class="fa fa-lg fa-list-alt"></span><b
-				class="hide-for-small-only"> past articles </b>
-			</a> 
-			<a href="${pageContext.request.contextPath}/home/user/explore" class="float-left" id="explore"> <span
-				class="fa fa-lg fa-folder "></span> <b class="hide-for-small-only">
-					explore</b>
-			</a> 
-			<a   href="${pageContext.request.contextPath}/home/user/setting" class="float-left" id="account"> <span
-				class="fa fa-lg  fa-gear "></span> <b class="hide-for-small-only">account
-			</b>
-			</a>
-
-		</section>
-
-
-	</header>
-
+		</header>
 
 	<div class=" user-wrapper ">
 
 
 
 		<div class="account small-12 large-12 medium-12   border">
-			<div class="user-info panel small-12 large-6 medium-6 columns border">
-
+			<div class="user-info  small-12 large-3 medium-4 columns border">
+			  <ul class='no-list-style'>
+			  <li>
+			  
+			  </li>
+			  <li ></li>
+			  <li></li>
+			  </ul>
+			
 			</div>
 			<div
-				class="user-get-info panel small-12 large-6 medium-6 columns border">
+				class="user-get-info  small-12 large-9 medium-8 columns border">
 
 			</div>
 		</div>
@@ -98,6 +73,8 @@
 
 
 	<script src="../../js/util.js"></script>
+	<script src="../../js/commons.js"></script>
+	<script src="../../js/setting.js"></script>
 
 
 

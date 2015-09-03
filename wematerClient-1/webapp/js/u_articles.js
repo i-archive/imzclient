@@ -117,7 +117,6 @@ var userArticlesAjax = {
 		progressBar.height = 3;
 		progressBar.build(".body", 0);
 		this.url = userarticle.user.links[2].url+"?next="+this.next;
-		this.next++;
 		this.encodedAuth = sessionStorage.getItem('_auth');
 		log(this.url);
 	},
@@ -135,12 +134,15 @@ var userArticlesAjax = {
 		progressBar.end(event);
 	},
 	beforeSend : function(request) {
+		log('inside the before send');
 		request.setRequestHeader('Authorization', this.encodedAuth);
-		
+		log('BEFORE SEND DONE');
 	},
 	success : function(obj_array) {
+		this.next++;
 		progressBar.success();
 		userarticle.appendAllArticles(obj_array);
+		log('Your article bjects');
 		log(obj_array);
 
 	},
@@ -155,10 +157,12 @@ var userArticlesAjax = {
 	},
 	complete : function(jqxhr, status){
 		log('COMPLETE AJAX articles');
-		log(jqxhr);
-		log(jqxhr.getAllResponseHeaders());
-		log(jqxhr.getResponseHeader('Etag'));
 		log(status);
+		log("Response text= "+jqxhr.reponseText);
+		log(jqxhr.getAllResponseHeaders());
+		log("ETAG"+jqxhr.getResponseHeader('Etag'));
+      	log(this.ifNoneMatch);
+		
 		
 	}
 

@@ -140,7 +140,7 @@ _utf8_decode : function (utftext) {
 /*end of Base64*/
 
 var Ajax ={
-		 AllUserURL : "http://backendapi-vbr.rhcloud.com/api/users"
+		 AllUserURL : "http://backendapi-vbr.rhcloud.com/api/users",
 };
 Ajax.GET = function(obj){
 	if(typeof obj.prejax == 'function') obj.prejax();
@@ -208,17 +208,18 @@ Ajax.POST  = function(obj){
         type: "POST",
         dataType: "json",
         contentType:"application/json",
+       // ifModified : true,
         url: obj.url,
         data: obj.data,
 	   	beforeSend : function(request){
 	   				if(typeof obj.beforeSend == 'function') 
 	   						obj.beforeSend(request);
 	   				}, 
-        success: function(data){ 
+        success: function(data,status,jqXHR){ 
 	   				if(typeof obj.success == 'function')
 	   				obj.success(data); 
         	},  
-        error:function(data){
+        error:function(jqXHR,status,data){
     			if(typeof obj.error == 'function') 
     			obj.error(data);
         },
@@ -369,8 +370,6 @@ var Auth = {
 		 isLoggedIn :function(){
 		       var encodedAuth =  sessionStorage.getItem('_auth');
 		       var user = sessionStorage.getItem('_user');
-		       log(encodedAuth);
-		       log(user);
 		        if(encodedAuth ===  null || user === null){
 		        	log('nulls present. login not present');
 		        	sessionStorage.setItem("_lv", Base64.encode(location.href));

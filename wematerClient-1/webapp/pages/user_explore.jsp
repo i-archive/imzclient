@@ -35,85 +35,18 @@
                 <div  class='explore-timeline small-12 medium-12  large-8 columns  '>
             
                 
-            <article  class='bfre-exp explore-article-l small-12 medium-12 large-8  large-centered column '> 
-    		<div class='explore-article-top '> 
-    		 <div class='article-date-l large-4 small-6 medium-4 columns '> 
-    		<span><i class='fa fa-calendar-o'>00/00/0000</i> 
-    		 
-    		 </span> 
-    		</div> 
-    		<div class=' article-like-l large-4 small-6 medium-4 columns '> 
-    		<ul class='no-list-style'> 
-    		<li><a><span class='fa fa-lg fa-thumbs-o-up blur'></span></a>000</li> 
-    		 </ul> 
-    		</div> 
-    		</div> 
-    		<div class='explore-article-title-l  '> 
-    		<a class='blur'>omsomsomsodmos somomomom somosmomso somomomomom somomomom </a> 
-    		</div> 
-    		 <div class='explore-article-cover-l'> 
-    		 </div> 
-    		<div class='explore-article-content-l'> 
-    		<ul class='no-list-style'> 
-    		<li> 
-    		<div class='exp-content-l blur'> 
-    		<p> cotnet etalkdlaskdksa;lkdl 	 adlkaskdlsa kldk lakd laskdlksa lk;lka;dlkldak;ls
-    		 adlkldaksk;kdslkalklaskd;lkas;lkd;lalkdsa cotnet etalkdlaskdksa;lkdl
-    		 adlkaskdlsa;kld;k;lakd;laskdlksa;lk;lka;dlkldak;ls
-    		 adlkldaksk;kdslkalklaskd;lkas;lkd;lalkdsa</p>
-    		
-    		 </div> 
-    		</li> 
-    		<li> 
-    		 <ul> 
-    		<li><a><span class = 'fa fa-user blur '></span></a>mr author</li> 
-    		 <li class='continue-read '><a class='blur'>continue read</a> </li> 
-    		</ul> 
-    		</li> 
-    		</ul> 
-    		</div> 
-    		</article>
-             <article  class='bfre-exp explore-article-l small-12 medium-12 large-8  large-centered column '> 
-    		<div class='explore-article-top '> 
-    		 <div class='article-date-l large-4 small-6 medium-4 columns '> 
-    		<span><i class='fa fa-calendar-o'>00/00/0000</i> 
-    		 
-    		 </span> 
-    		</div> 
-    		<div class=' article-like-l large-4 small-6 medium-4 columns '> 
-    		<ul class='no-list-style'> 
-    		<li><a><span class='fa fa-lg fa-thumbs-o-up blur'></span></a>000</li> 
-    		 </ul> 
-    		</div> 
-    		</div> 
-    		<div class='explore-article-title-l  '> 
-    		<a class='blur'>omsomsomsodmos somomomom somosmomso somomomomom somomomom </a> 
-    		</div> 
-    		 <div class='explore-article-cover-l'> 
-    		 </div> 
-    		<div class='explore-article-content-l'> 
-    		<ul class='no-list-style'> 
-    		<li> 
-    		<div class='exp-content-l blur'> 
-    		<p> cotnet etalkdlaskdksa;lkdl 	 adlkaskdlsa kldk lakd laskdlksa lk;lka;dlkldak;ls
-    		 adlkldaksk;kdslkalklaskd;lkas;lkd;lalkdsa cotnet etalkdlaskdksa;lkdl
-    		 adlkaskdlsa;kld;k;lakd;laskdlksa;lk;lka;dlkldak;ls
-    		 adlkldaksk;kdslkalklaskd;lkas;lkd;lalkdsa</p>
-    		
-    		 </div> 
-    		</li> 
-    		<li> 
-    		 <ul> 
-    		<li><a><span class = 'fa fa-user blur '></span></a>mr author</li> 
-    		 <li class='continue-read '><a class='blur'>continue read</a> </li> 
-    		</ul> 
-    		</li> 
-    		</ul> 
-    		</div> 
-    		</article>
+             <div class = ' bfre-exp explore-load small-12 large-9 medium-9 columns medium-centered large-centered '>
+     <ul class='no-list-style'>
+          <li class='title'></li><li class='image'>
+          </li><li></li><li></li><li></li><li></li><li></li><li></li> </ul> </div>
+                  
+                   <div class = ' bfre-exp explore-load small-12 large-9 medium-9 columns medium-centered large-centered '>
+     <ul class='no-list-style'>
+          <li class='title'></li><li class='image'>
+          </li><li></li><li></li><li></li><li></li><li></li><li></li> </ul> </div>
                    
                 
-                 </div>
+               </div>
                
  <!-- end explore timeline -->
      

@@ -71,10 +71,7 @@
 
 	<nav class="sub-menu">
     	<i class="fa fa-2x  fa-bars menu-btn menu " id="menu"></i>
-        <a href="${pageContext.request.contextPath}/about"
-    	    class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
-			    <span class="fa fa-lg fa-info-circle"></span>about
-		</a>
+     
 			<a href="${pageContext.request.contextPath}/home/topstories"
 			 class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
 			    <span class="fa fa-lg fa-star-o"></span>top stories
@@ -88,10 +85,7 @@
 		<header class="app-header ">
 		
 		<i class="fa fa-2x black-color fa-bars menu-btn menu " id="menu"></i>
-       <a  href="${pageContext.request.contextPath}/about"
-    	    class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
-			    <span class="fa fa-lg fa-info-circle"></span>about
-		</a>
+    
 			<a href="${pageContext.request.contextPath}/home/topstories"
 			 class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
 			    <span class="fa fa-lg fa-star-o"></span>top stories
@@ -107,13 +101,13 @@
 <section class="form-wrapper  ">
 
 
-           <ul class='tabs small-12 large-5 medium-8  medium-centered large-centered columns' >
+           <ul class='tabs small-11 large-5 medium-8 small-centered medium-centered large-centered columns' >
            <li id='tab_login'><i class='fa fa-lg fa-sign-in'></i>sign in</li>
            <li id = 'tab_signup'><i class='fa fa-lg fa-user-plus '></i>sign up</li>
            
            </ul>
 
-<section class=" form-login-class  small-12 large-5 medium-8 large-centered medium-centered columns " >
+<section class=" form-login-class  small-11 large-5 medium-8 small-centered large-centered medium-centered columns " >
 
  <div class=" row ">
            <div class=" form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
@@ -128,7 +122,7 @@
            </div>
 </div>
 <div class=" row ">
-           <div class="form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
+           <div class="form-input small-12 large-7 medium-8  large-centered medium-centered columns ">
            		
                <input  type="checkbox"  id="remember_me" name="check"  />
      			<label id="remember_me_label" for="remember_me" >Remmember my password</label>
@@ -148,12 +142,12 @@
  
  </section>		  <!-- login end -->  
 		 
-		 <section  class=" form-class  small-12 large-5 medium-8 large-centered medium-centered 
+		 <section  class=" form-class  small-11 large-5 medium-8 small-centered large-centered medium-centered 
 		  columns" >
 		  
 		  <div class=" row ">
 		           <div class=" form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
-		           <input id="usermamep" type="text" placeholder="Pick a username">
+		           <input id="usermamep" type="text" placeholder="pick a username">
 		           <span id="usernamep-error" class=" error-box"></span>
 		           </div>
 		 </div>
