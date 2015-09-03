@@ -2,13 +2,6 @@
 menu={};
 
 
-
-
-
-
-
-
-
 $(document).on("ready",function(){
 	$("body").addClass("no-scroll");
 	

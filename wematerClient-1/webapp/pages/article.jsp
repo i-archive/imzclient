@@ -19,7 +19,11 @@
     </head>
    
     <body class='article-body' >
-
+   
+        <noscript >
+  		<div class='small-12 large-12 medium-12 ' > <i class='fa fa-exclamation-triangle'></i>Please enable javascript. This site won't work properly</div>
+  		</noscript>
+        <!-- Pushy Menu -->
     <!-- Pushy Menu -->
 	<nav class='pushy pushy-left nav-side'>
 		<ul class='ul-side  no-list-style'>
@@ -59,7 +63,9 @@
 		</ul>
 
 	</nav>
-  
+    
+        <!-- Site Overlay -->
+        <div class='site-overlay'></div>
        
         <!-- Your Content -->
 <div id='container'>
@@ -89,20 +95,17 @@
 			 </a>
 			
 		</header>
+
 <section class='article-wrapper  '>
 
   <div class='main-article-cover small-12 large-12 medium-12 columns'> </div>
     
 <div class='main-article-content-wrapper small-12 large-12 medium-12 columns '>
      <div class='main-top-bar small-12 large-12 medium-12  columns'>
-        <div class="fa-border small-12 large-6 medium-6 columns">
         <a class='article-date'></a>
         <a class='bookmark' title='bookmark'><i class='fa fa-lg fa-bookmark-o'></i></a>
 	   <a class='share' title='share'><i class='fa fa-lg fa-share-alt'></i></a>
-        </div>
-        <div class="fa-border small-12 large-6 medium-6 columns">
 	   <a class='a_like '> </a>
-	   </div>
      </div>	
      
      
@@ -170,7 +173,7 @@
  </div><!-- main article content wrapper end -->
 
 </section><!-- explore-wrapper end -->
- 
+
 
 
 
