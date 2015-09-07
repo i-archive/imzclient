@@ -161,9 +161,7 @@ var userArticlesAjax = {
 		log("Response text= "+jqxhr.reponseText);
 		log(jqxhr.getAllResponseHeaders());
 		log("ETAG"+jqxhr.getResponseHeader('Etag'));
-      	log(this.ifNoneMatch);
-		
-		
+   	
 	}
 
 }

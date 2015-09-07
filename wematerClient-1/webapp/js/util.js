@@ -160,7 +160,7 @@ Ajax.GET = function(obj){
 				}
 			return xhr; 
 		 }, 
-		   
+	   ifModified : true,	   
        type: "GET",
        dataType: "json",
        contentType:"application/json",
@@ -208,18 +208,17 @@ Ajax.POST  = function(obj){
         type: "POST",
         dataType: "json",
         contentType:"application/json",
-       // ifModified : true,
         url: obj.url,
         data: obj.data,
 	   	beforeSend : function(request){
 	   				if(typeof obj.beforeSend == 'function') 
 	   						obj.beforeSend(request);
 	   				}, 
-        success: function(data,status,jqXHR){ 
+        success: function(data){ 
 	   				if(typeof obj.success == 'function')
 	   				obj.success(data); 
         	},  
-        error:function(jqXHR,status,data){
+        error:function(data){
     			if(typeof obj.error == 'function') 
     			obj.error(data);
         },
@@ -490,45 +489,50 @@ function postUser(username,email,password){
 
 util.showProblemStatement = function(beforeparent,parent){
 	
-	var probstring =
-		"<div class=' show_no_article small-12 large-8 medium-10 large-centered medium-centered columns'>" +
-		" <h1>Uh-ho!<i class='fa fa-2x fa-frown-o '></i></h1>" +
-		"<h3>I think something was lost on the way</h3>" +
-		" <p> if( refreshing page solved it )<i id='refresh' class='fa fa-lg fa-refresh round-border '></i></p>" +
-		"  <p> { then great  }<i id='back' class='fa  fa-lg fa-thumbs-up '></i>  </p>" +
-		" <p> else { sign-in again } <i id='signin' class='fa fa-lg fa-sign-in round-border'></i></p> </div>";
-	 
-     $(beforeparent).hide();  
-	$('footer').hide();
-	$(parent).append(probstring);
-	 $(parent).on('click','#refresh',function(){
-	   
-     	location.href = location.href;
-     });
-     
-     $(parent).on('click','#signin',function(){
-     	location.replace('./signup');
-     });
-    
+	setTimeout(function(){
+		var probstring =
+			"<div class=' show_no_article small-12 large-8 medium-10 large-centered medium-centered columns'>" +
+			" <h1>Uh-ho!<i class='fa fa-2x fa-frown-o '></i></h1>" +
+			"<h3>I think something was lost on the way</h3>" +
+			" <p> if( refreshing page solved it )<i id='refresh' class='fa fa-lg fa-refresh round-border '></i></p>" +
+			"  <p> { then great  }<i id='back' class='fa  fa-lg fa-thumbs-up '></i>  </p>" +
+			" <p> else { sign-in again } <i id='signin' class='fa fa-lg fa-sign-in round-border'></i></p> </div>";
+		 
+	     $(beforeparent).hide();  
+		$('footer').hide();
+		$(parent).append(probstring).hide().slideDown(1000);
+		 $(parent).on('click','#refresh',function(){
+		   
+	     	location.href = location.href;
+	     });
+	     
+	     $(parent).on('click','#signin',function(){
+	     	location.replace('./signup');
+	     });
+	    
+	}, 1000);
 	
 	
 }
 
 util.showNoArticles= function(parent){
 	
-	var probstring =
-		"<div class=' show_no_article small-12 large-8 medium-10 large-centered medium-centered columns'>" +
-		" <h1>Uh-ho!<i class='fa fa-2x fa-frown-o '></i></h1>" +
-		"<h3>You have not written any articles yet</h3>" +
-		" <p> do{ write some articles }<i id='editor' class='fa fa-lg fa-pencil-square-o  round-border '></i></p>" +
+	setTimeout(function(){
+		var probstring =
+			"<div class=' show_no_article small-12 large-8 medium-10 large-centered medium-centered columns'>" +
+			" <h1>Uh-ho!<i class='fa fa-2x fa-frown-o '></i></h1>" +
+			"<h3>You have not written any articles yet</h3>" +
+			" <p> do{ write some articles }<i id='editor' class='fa fa-lg fa-pencil-square-o  round-border '></i></p>" +
 
-		" <p> while ( you are here ) <i class='fa fa-lg fa-thumbs-up round-border'></i></p> </div>";
+			" <p> while ( you are here ) <i class='fa fa-lg fa-thumbs-up round-border'></i></p> </div>";
 
-	$(parent).append(probstring);
-	
-	 $(parent).on('click','#editor',function(){
-	     	location.replace('./editor');
-	     });
+		$(parent).append(probstring).hide().slideDown(1000);
+		
+		 $(parent).on('click','#editor',function(){
+		     	location.replace('./editor');
+		     });
+		
+	}, 1000);
 	    
 	
 }

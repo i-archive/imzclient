@@ -3249,19 +3249,13 @@ ul.pagination {
     display: inline-block;
     float: none; }
 
-.side-nav {
-  display: block;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  list-style-position: outside;
-  list-style-type: none;
-  margin: 0;
-  padding: 0.875rem 0; }
+
   .side-nav li {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: normal;
     margin: 0 0 0.4375rem 0; }
     .side-nav li a:not(.button) {
-      color: #2ba6cb;
+      color: rgba(0,0,0,0.5);
       display: block;
       margin: 0;
       padding: 0.4375rem 0.875rem; }

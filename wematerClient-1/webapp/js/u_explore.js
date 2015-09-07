@@ -67,7 +67,7 @@ Explore.buildArticle = function( article){
 	         $('.explore-timeline').on('click','.'+ex_id,function(){
 	        	 log('article is clicked');
 	        	 var url = Base64.decode($('.'+ex_id).attr('dt-ref'));
-	        	 log('url  '+url);
+	        	 log('url in each top article  '+url);
 	        	 eachTopAjax.url = url;
 	        	 Ajax.GET(eachTopAjax);
 	         });
@@ -116,9 +116,7 @@ Explore.createTopArticles = function (articleArray){
 
 
 Explore.createArticles = function(articleArray,buildTimeLine){
-	         
-	          log('inside createExploreArticles :'+articleArray);  
-	          var count=0;
+	          
 	          var articleString = "";
 	          var articleCount = articleArray.length;
 	         
@@ -204,14 +202,10 @@ var exploreArticlsAjax = {
 		this.url = "http://backendapi-vbr.rhcloud.com/api/public/explore?next="+this.next;
 		log("url is:" + this.url);
 	},
-	beforeSend : function(request) {
-		request.setRequestHeader("Connection", "Keep-Alive");
-	},
 	progress : function(event) {
 		if (event.lengthComputable) {
 			progressBar.set_MIN_MAX_with();
 		}
-		log('progress ARTICLES');
 		progressBar.progress(event);
 	},
 	loadStart : function(event) {
@@ -242,11 +236,13 @@ var exploreArticlsAjax = {
 
 	},
 	complete : function(jqxhr, status){
-		log('COMPLETE AJAX EXPLORE');
-		log(jqxhr);
-		log(jqxhr.getAllResponseHeaders());
-		log(jqxhr.getResponseHeader('Etag'));
+		log('COMPLETE AJAX articles');
 		log(status);
+		log("Response text= "+jqxhr.reponseText);
+		log(jqxhr.getAllResponseHeaders());
+		log("ETAG"+jqxhr.getResponseHeader('Etag'));
+   
+		
 		
 	}
 
@@ -260,9 +256,6 @@ var topArticlsAjax = {
 	prejax : function() {
 		this.url = "http://backendapi-vbr.rhcloud.com/api/public/top";
 		log("url is:" + this.url);
-	},
-	beforeSend : function(request) {
-		request.setRequestHeader("Connection", "Keep-Alive");
 	},
 	success : function(obj) {
 		log("success in latest");

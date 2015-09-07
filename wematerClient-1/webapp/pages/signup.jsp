@@ -98,52 +98,72 @@
 		</header>
 
 
-<section class="form-wrapper  ">
+<div class="form-wrapper  ">
 
 
-           <ul class='tabs small-11 large-5 medium-8 small-centered medium-centered large-centered columns' >
-           <li id='tab_login'><i class='fa fa-lg fa-sign-in'></i>sign in</li>
-           <li id = 'tab_signup'><i class='fa fa-lg fa-user-plus '></i>sign up</li>
-           
-           </ul>
+           <ul class='tabs no-list-style small-11 large-5 medium-8 small-centered medium-centered large-centered  columns' >
+            
+            <li id='sign-in-head' class='auth-head'>
+            <h5 ><i class='fa fa-lg fa-sign-in'></i>sign in to your account</h5>
+            </li>
+            <li id='sign-in-cont'>
+            <section class=" form-login-class  small-12 large-12 medium-12 " >
 
-<section class=" form-login-class  small-11 large-5 medium-8 small-centered large-centered medium-centered columns " >
-
- <div class=" row ">
-           <div class=" form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
-           <input id="username" type="text" placeholder="username">
-           <span id="username_error" class=" error-box"></span>
-           </div>
- </div>
-  <div class="  row ">
-           <div class="form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
-           <input id="password" type="password" placeholder="password">
-           <span id="password-error" class="error-box"></span>
-           </div>
-</div>
-<div class=" row ">
-           <div class="form-input small-12 large-7 medium-8  large-centered medium-centered columns ">
-           		
-               <input  type="checkbox"  id="remember_me" name="check"  />
-     			<label id="remember_me_label" for="remember_me" >Remmember my password</label>
-           
-           </div>
-</div>
-
- <div class="row">
-	           
-	           <div class=" form-button small-12 medium-8 large-7 large-push-2 medium-push-2 columns ">
-	            <a id="login-submit" class="button-a blue-button right">
-	             <i class="fa fa-sign-in"></i> sign in</a>
-	           </div>
-</div>
-           
-           
- 
- </section>		  <!-- login end -->  
+				 <div class=" row ">
+				           <div class=" form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
+				           <input id="username" type="text" placeholder="username">
+				           <span id="username_error" class=" error-box"></span>
+				           </div>
+				 </div>
+				  <div class="  row ">
+				           <div class="form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
+				           <input id="password" type="password" placeholder="password">
+				           <span id="password-error" class="error-box"></span>
+				           </div>
+				</div>
+				<div class=" row ">
+				           <div class="form-input small-12 large-7 medium-8  large-centered medium-centered columns ">
+				           		
+				               <input  type="checkbox"  id="remember_me" name="check"  />
+				     			<label id="remember_me_label" for="remember_me" >Remmember my password</label>
+				           
+				           </div>
+				</div>
+				
+				 <div class="row">
+					           
+					           <div class=" form-button small-12 medium-8 large-7 large-push-2 medium-push-2 columns ">
+					            <a id="login-submit" class="button-a blue-button right">
+					             <i class="fa fa-sign-in"></i> sign in</a>
+					           </div>
+				</div>
+				 <div class="row ">
+					           <ul class='no-list-style login-option'>
+					              <li>
+					              <span>forgot password?</span>
+					              <a >click here</a>
+					              </li>
+					              <li class='right'>
+					              <span>Dont have an account yet?</span>
+					                 <a id='show-signup' >Sign up</a>
+					              </li>
+					           
+					           </ul>
+					         
+				</div>
+				           
+				           
+				 
+				 </section>	
+            
+            </li>
+            <li id='sign-up-head' class='auth-head'>
+            <h5><i class='fa fa-lg fa-sign-out'></i>register a new account</h5>
+            </li>
+            <li id='sign-up-cont'>
+              
 		 
-		 <section  class=" form-class  small-11 large-5 medium-8 small-centered large-centered medium-centered 
-		  columns" >
+		 <section  class=" form-class  small-12 large-12 medium-12" >
 		  
 		  <div class=" row ">
 		           <div class=" form-input small-12 large-7 medium-8 large-centered medium-centered columns ">
@@ -176,15 +196,32 @@
 			            <i class="fa fa-sign-in"></i> sign up </a>
 			           </div>
 		</div>
+		 <div class="row ">
+					           <ul class='no-list-style login-option'>
+					           
+					              <li class='right'>
+					              <span>Already have an account?</span>
+					                 <a id='show-signin' >Sign in</a>
+					              </li>
+					           
+					           </ul>
+					         
+				</div>
 		           
 		           
 		 
 		 </section> <!-- end of registertion mannual -->
 
-		
+            
+            
+            </li>
+           
+           </ul>
+
+	  		
 
 
-</section>
+</div>
 
 
 

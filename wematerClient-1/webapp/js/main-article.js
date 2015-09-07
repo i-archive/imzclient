@@ -62,8 +62,8 @@ MainArticle.buildCurrentArticle = function(article) {
 								+ Base64.decode(article.title) + "</h1>")
 				.css(
 						'background',
-						"linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), " +
-						"rgba(25, 5, 255, .1)), url('"+ article.image + "') no-repeat 100% 50%")
+						"linear-gradient(rgba(0, 100, 60, 0.6), rgba(0, 100, 50, .6), " +
+						"rgba(0, 105, 40, .6)), url('"+ article.image + "') no-repeat 100% 50%")
 				.css('background-size', "cover").hide().slideDown(1000);
 
 		$('a.article-author').html(
@@ -102,10 +102,14 @@ MainArticle.getMoreComments = function(){
 	});
 }
 
-MainArticle.createComment = function(username, commentContent) {
-	return "<li class='comment-user'>"
-			+ "<a class='commented-author'><i class='fa fa-user'></i>"
-			+ username + "</a></li>" + "<li class='comment-content'>"
+MainArticle.createComment = function(username, commentContent,date) {
+	return "<li class='comment-user '>"
+			+"<ul class=' comment-auth-list no-list-style '>"
+			+"<li><a class='commented-author'><i class='fa fa-user'></i>"+ username + "</a></li>" 
+			+"<li class='right pull-1'><a class='commented-author'><i class='fa fa-calendar'></i> "+ date + "</a></li>"
+			+"</ul>"
+		
+			+"</li>" + "<li class='comment-content'>"
 			+ Base64.decode(commentContent) + "</li>";
 }
 
@@ -115,7 +119,7 @@ MainArticle.attachComments = function(comments) {
 	for (i = 0 ; i < comments.length; i++) {
 		var comment = comments[i];
 
-		commentString += this.createComment(comment.username, comment.content)
+		commentString += this.createComment(comment.username, comment.content,comment.date)
 	}
 	log('CommentCOunt= '+this.commentcount);
 	

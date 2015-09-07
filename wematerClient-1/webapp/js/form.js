@@ -35,8 +35,8 @@ formjax.processPassword = function(username_id,password_id){
 
 formjax.addPostMessage = function(clazz,msg){
 	var message= "<div class='row '>"+
-       " <div id ='register' class= '"+clazz+"' small-10 large-8" +
-       		" medium-9 large-centered medium-centered  columns '>"+
+       " <div id ='register' class= '"+clazz+"' small-10 large-7" +
+       		" medium-8 large-centered medium-centered  columns '>"+
        "<span id ='post_msg'class='fa fa-close right'></span>"+
         "<h5>"+msg+"</h5>"+
     " </div></div>";
@@ -139,7 +139,6 @@ var loginValidation = {
 		encodedAuth : "",
 		prejax : function(){
 			  this.encodedAuth = Base64.encode(this.username+':'+this.password);
-			  log(Base64.decode(this.encodedAuth));
 			  this.url = Ajax.AllUserURL+"/"+this.username;
 			  log("url in login: "+this.url);
 			},
@@ -162,6 +161,7 @@ var loginValidation = {
 				},
 		error : function(data){
 				log(" error login User");
+	 	    	log('error thrown is:');
 	 	    	log(data);
 	 	    	formjax.addVerifyMessage("verify-fail", data.responseJSON.error_message,"fa-exclamation-circle");
 				}
@@ -558,18 +558,15 @@ Form.validateSignupFormOnSubmit = function(){
 }
 Form.toggleLoginSingup = function(){
 
-	$('#tab_login').css({'background':'rgba(0,0,0,0.12)', 'color':"#222"});
-	$('#tab_login').on('click',function(){
-		$(this).css({'background':'rgba(0,0,0,0.12)', 'color':"#222"});
-		$('#tab_signup').css({'color':'rgba(0,0,0,0.5)','background':"white"});
-		$('.form-login-class').css({'display':"block"});
-		$('.form-class').css({'display':"none"});
+	
+	$('#show-signup').on('click',function(){
+
+		$('#sign-up-head, #sign-up-cont').css({'display':"block"});
+		$('#sign-in-head, #sign-in-cont').css({'display':"none"});
 	});
-	$('#tab_signup').on('click',function(){
-		$(this).css({'background':'rgba(0,0,0,0.12)', 'color':"#222"});
-		$('#tab_login').css({'color':'rgba(0,0,0,0.5)','background':"white"});
-		$('.form-login-class').css({'display':"none"});
-		$('.form-class').css({'display':"block"});
+	$('#show-signin').on('click',function(){
+		$('#sign-up-head, #sign-up-cont').css({'display':"none"});
+		$('#sign-in-head, #sign-in-cont').css({'display':"block"});
 	});
 }
 
