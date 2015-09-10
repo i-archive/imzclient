@@ -111,7 +111,7 @@ _utf8_encode : function (string) {
 _utf8_decode : function (utftext) {
     var string = "";
     var i = 0;
-    var c = c1 = c2 = 0;
+    var c= 0, c1 = 0, c2 = 0;
 
     while ( i < utftext.length ) {
 
@@ -136,7 +136,7 @@ _utf8_decode : function (utftext) {
     }
     return string;
 }
-}
+};
 /*end of Base64*/
 
 var Ajax ={
@@ -154,10 +154,10 @@ Ajax.GET = function(obj){
 			 
 			 xhr.onloadstart = function (e) {
 				 if(typeof obj.loadStart == 'function') obj.loadStart(e);
-				}
+				};
 			xhr.onloadend = function (e) {
 					if(typeof obj.loadEnd == 'function') obj.loadEnd(e);
-				}
+				};
 			return xhr; 
 		 }, 
 	   ifModified : true,	   
@@ -184,7 +184,7 @@ Ajax.GET = function(obj){
     	  
    });
   
-}//end of GET
+};//end of GET
 
 
 Ajax.POST  = function(obj){
@@ -199,10 +199,10 @@ Ajax.POST  = function(obj){
 			   
 			  xhr.onloadstart = function (e) {
 					 if(typeof obj.loadStart == 'function') obj.loadStart(e);
-					}
+					};
 			xhr.onloadend = function (e) {
 						if(typeof obj.loadEnd == 'function') obj.loadEnd(e);
-					}
+					};
 			   return xhr; 
 		 }, 
         type: "POST",
@@ -229,12 +229,12 @@ Ajax.POST  = function(obj){
 	    }
         	
     });
-}
+};
 
 
 Ajax.PUT  = function(obj){
 	   
-    obj.prejax();
+	if(typeof obj.prejax == 'function') obj.prejax();
 	  $.ajax({ 
 		 xhr: function(){
 			   var xhr = new XMLHttpRequest();
@@ -244,10 +244,10 @@ Ajax.PUT  = function(obj){
 			   
 			  xhr.onloadstart = function (e) {
 					 if(typeof obj.loadStart == 'function') obj.loadStart(e);
-					}
+					};
 			xhr.onloadend = function (e) {
 						if(typeof obj.loadEnd == 'function') obj.loadEnd(e);
-					}
+					};
 			   return xhr; 
 		 }, 
      type: "PUT",
@@ -273,7 +273,7 @@ Ajax.PUT  = function(obj){
 	    	
 	    }
  });
-}
+};
 
 
 
@@ -289,7 +289,7 @@ var progressBar = {
 		
 		build : function(headerclass,top){
 			log('pb build');
-			if(top != undefined) this.top = top;
+			if(top !== undefined) this.top = top;
 	
 			this.headerclass = headerclass;
 			
@@ -330,7 +330,7 @@ var progressBar = {
 			 $('.loading').css({'min-width' : this.counter+'%' }); 
 		},
 		progress: function(event){
-			log("prorgress")
+			log("prorgress");
 			if(this.width < 100)
 			 this.width += this.counter; 
 			
@@ -360,7 +360,7 @@ var progressBar = {
 			
 		}
 		
-}
+};
 
 
 
@@ -379,12 +379,16 @@ var Auth = {
 	  ifLoggedIn : function(){
 		    var encodedAuth =  sessionStorage.getItem('_auth');
 	        var user = sessionStorage.getItem('_user');
-	        if(encodedAuth !=  null && user !== null){
+	        if(encodedAuth !==  null && user !== null){
 	     	 location.replace("./articles");
 	        }
 	        
+	  },
+	  logout :function(){
+		  sessionStorage.clear();
+		  location.replace('../../home');
 	  }
-}
+};
 
 
 var errorcode ={
@@ -405,67 +409,68 @@ var errorcode ={
 		removeNoData : function(){
 			$('.no-data').remove();
 		}
-}	
+};
 
 
 util={};	
 	
-util.log=function(msg){ console.log(msg); }
+util.log=function(msg){ console.log(msg); };
 //refererce for util.log for easy use
 var log=util.log;
 
 util.storeArrayInSession = function(key,array){
 	if(array !== null && key !== null)
 	sessionStorage.setItem(key, Base64.encode(JSON.stringify(array)));
-}	
+};	
 
 util.getArrayFromSession = function(key){
 	var val = sessionStorage.getItem(key);
 	if(val !== null)
 	return JSON.parse(Base64.decode(sessionStorage.getItem(key)));
-},
+};
 util.storeArrayInLocal = function(key,array){
-	if(array !== null && key !== null)
+	if(array !== null && key !== null){
 	localStorage.setItem(key, Base64.encode(JSON.stringify(array)));
-}	
+	}
+};
 
 util.getArrayFromLocal = function(key){
 	var val = localStorage.getItem(key);
 	if(val !== null)
 	return JSON.parse(Base64.decode(localStorage.getItem(key)));
-},
+};
 
 util.storeObjectInSession = function(key,obj){
 	if(obj !== null && key !== null)
 	sessionStorage.setItem(key, Base64.encode(JSON.stringify(obj)));
-}	
+};	
 
 util.getObjectFromSession = function(key){
 	var val = sessionStorage.getItem(key);
 	if(val !== null)
 	return JSON.parse(Base64.decode(sessionStorage.getItem(key)));
-}
+};
 
 util.setItemInSession = function(key,value)
 {
 	 if(value !== null && key !== null)sessionStorage.setItem(key,Base64.encode(value) );
-}
+};
 util.getItemFromSession = function(key){
 	var val = sessionStorage.getItem(key);
 	if(val !== null)
 		return Base64.decode(sessionStorage.getItem(key));
-}
+};
 
 
 
 util.getVerifyQueryString = function(){
 
 	return window.location.href.split('?')[1];
-}
+};
 
 util.chunkString = function(str, length) {
   return str.match(new RegExp('.{1,' + length + '}', 'g'));
-}
+};
 
 
 
@@ -513,7 +518,7 @@ util.showProblemStatement = function(beforeparent,parent){
 	}, 1000);
 	
 	
-}
+};
 
 util.showNoArticles= function(parent){
 	
@@ -535,7 +540,7 @@ util.showNoArticles= function(parent){
 	}, 1000);
 	    
 	
-}
+};
 
 util.showNoEditor= function(parent){
 	
@@ -554,7 +559,7 @@ util.showNoEditor= function(parent){
 	     });
 	    
 	
-}
+};
 util.showNoComment= function(parent){
 	
 	var probstring =
@@ -572,5 +577,5 @@ util.showNoComment= function(parent){
 	     });
 	    
 	
-}
+};
 

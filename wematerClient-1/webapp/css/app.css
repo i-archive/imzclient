@@ -1232,7 +1232,9 @@ li.auth-head h5{
 	color: rgb(120,10,10);
 }
 
+
 .user-info{
+	margin-top: 1em;
 	border-radius: 4px;
 	min-height: 100px;
 
@@ -1254,14 +1256,21 @@ li.auth-head h5{
   }
 
  .user-get-info{
-	
+	margin-top: 1em;
 	min-height: 200px;
 	}
 ul.user-prof-timeline{margin-left: 0px;}
 ul.user-prof-timeline li.li-del h5{
 	border: 1px solid rgba(198,44,44,0.6);
-	background: rgba(198,44,44,0.6);
-	color: white;
+	border-bottom-width:0px;
+	color: rgba(198,44,44,0.9);
+	background: rgba(198,44,44,0.1);
+}
+ul.user-prof-timeline li h5 span.right
+{
+	font-size: .8em;
+   font-family: "Oswald";
+	  color: rgba(0,0,0,0.6);
 }
 li#prof-del{
 	border: 1px solid rgba(198,44,44,0.6);
@@ -1283,6 +1292,7 @@ ul.user-prof-timeline li h5 {
 }
 ul.user-prof-timeline li.prof-content{
 	margin-bottom: 2em;
+	padding-bottom: 1em;
 	padding-top: 1em;
 	border: 1px solid rgba(0,0,0,.3);
 	min-height: 200px;
@@ -1297,6 +1307,8 @@ ul.user-prof-cont{
 	display: block;
 	margin-left: 0px;
 }
+
+
 ul.user-prof-cont li {
 
   font-family: "Oswald"; 
@@ -1335,14 +1347,42 @@ ul.user-prof-cont li ul li span.span-bio{
 
 }
 
-ul.user-prof-cont li ul li span.error-sett-box {
+ul.user-prof-cont li ul li span.set-art-title{
+	  font-family: "proxima-nova";
+	  color: rgba(0,0,0,0.7);
+}
+ul.user-prof-cont li ul li span.set-date, ul.user-prof-cont li ul li span.set-comment,
+ul.user-prof-cont li span.set-date
+{
+	font-family: "Oswald";
+	  color: rgba(0,0,0,0.6);
+	  font-size: .8em;
+}
+ul.user-prof-cont li p.coment-body{
+	 font-family: "proxima-nova";
+	  color: rgba(0,0,0,0.8);
+	  text-align: justify;
+	  font-weight: lighter;
+	
+}
+ul.user-prof-cont li ul li span.error-sett-box, span.error-sett-box {
 	border: 1px solid #880000;
-	color: white;
+	color: #f1f1f1;
 	background : rgba(120,0,40,.7);
 	font-family: "jaf-bernino-sans"; 
-	font-size: small;	
+	font-size: 1em;	
 	padding: .4em;
 	border-radius: 4px;
+}
+
+ span.success-sett-box {
+	border: 1px solid #0c9ada;
+	color: white;
+	background : #0c9ada;
+	font-family: "jaf-bernino-sans"; 
+	font-size: 1em;	
+	padding: .4em;
+	border-radius: 2px;
 			
 	
 
@@ -1357,15 +1397,21 @@ ul.user-prof-cont li ul li i:hover{
 	color: rgba(0,120,90,0.9);
 	border-color: rgba(0,120,90,0.9);
 }
-ul.user-prof-cont li ul li input, ul.user-prof-cont li ul li textarea{
+ul.user-prof-cont li ul li input, ul.user-prof-cont li ul li textarea
+{
    margin: 0px;
    padding: 0px;
 	display: inline;
-	height: 20px;
+	height: 25px;
 	width: 80%;
 	padding-left: 1em;
 	border-radius:0px;
 	border-width: 0 0 1px 0;
+}
+ul.user-prof-cont li ul li input[type='password']{
+	height: 50px;
+	font: small-caption;
+	font-size: 1em;	
 }
 
 	
@@ -1518,11 +1564,7 @@ ul.home-header-ul li{
 	width: 100%;
 	min-height: 100%;
 	height: auto;
-	
-	
-	
-   
-	
+	padding-top: 1em;	
 }
 .user-wrapper:before, .user-wrapper:after{
 	content:"";
@@ -2300,6 +2342,9 @@ h1.preview-title{
     
     }
 
+.your-articles{
+	margin-left: 5%;
+}
  .your-articles, .explore, .editor-not,.editor,.account{
    position: relative;
    padding: 1em;
@@ -2331,7 +2376,7 @@ h1.preview-title{
  
  }
  ul.object-info{
- height: 90%;
+ height: 80%;
  }
  
  ul.comment-like li{ 
@@ -2397,7 +2442,7 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
  }
 
  .user-article-pic{
-  height: 200px;
+  height: 320px;
   border-top-left-radius:2px;
   border-top-right-radius:2px;
   
@@ -2625,7 +2670,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 	
 	.card-row{padding:.5em;}
 	.footer em{ font-size: .6em;}
-    
+    .your-articles{	margin-left: 0%; }
    .user-article-text-list{ overflow: auto; }
      div.preview-container{
      padding-left:2em;
@@ -2695,7 +2740,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     margin-left: 0em;   
    
   }
-	
+	.your-articles{	margin-left: 0%; }
 }
 
 /* #### Tablets Portrait or Landscape ####   min 768 -- 1024*/

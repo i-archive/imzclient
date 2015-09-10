@@ -1,44 +1,176 @@
-    <ul class='user-prof-cont no-list-style medium-12 large-12 small-12  '>
-					        <li class='small-12 medium-12 large-12 columns '>
-						        <ul class='no-list-style row'>
-						        	<li class='small-12 large-3 medium-3  columns'><i class='fa fa-square-o'></i>username</li>
-						            <li class='small-12 large-5 left medium-6  columns'>
-								         <span>irshsheikh</span>
-								         <i role='username' class='prof-edit fa fa-pencil fa-border' ></i>
-						           </li>
+
+					       
+						       
+						        	
+						        	
+						        	
+						            
+								       
+								        
 						           
+					   
+					   
+					   
+				   
+				     
+				      
+				      
+				        
+				      
+				       
+				      
+				      
+	
+				       
+					       
+					       
+						      
+						            
 						        	
-						        </ul>
-					        </li>
-					        <li class='small-12 medium-12 large-12 columns '>
-					        <ul class='no-list-style row'>
-					        	<li class='small-12 large-3 medium-3  columns'><i class='fa fa-square-o'></i>name</li>
-					            <li class='small-12 large-5 left medium-6  columns'>
-							         <span>Irshad ahmad sheikh</span>
-							         <i role='name' class='prof-edit fa fa-pencil fa-border' ></i>
-					            </li>
-					        	
-					        </ul>
-					        </li>
-					        <li class='small-12 medium-12 large-12 columns '>
-						        <ul class='no-list-style row'>
-						        	<li class='small-12 large-3 medium-3  columns'><i class='fa fa-square-o'></i>email</li>
-						            <li class='small-12 large-5 left medium-6  columns'>
-								         <span>irshsheikh@gmail.com</span>
-								         <i role='email' class='prof-edit fa fa-pencil fa-border' ></i>
-						         </li>
+						        	 
 						        	
-						        </ul>
-					        </li>
-					        <li class='small-12 medium-12 large-12 columns '>
-						        <ul class='no-list-style row'>
-						        	<li class='small-12 large-3 medium-3  columns'><i class='fa fa-square-o'></i>about me</li>
-						            <li class='small-12 large-5 left medium-6  columns'>
-								         <span>something a lot sand container</span>
-								         <i role='bio' class='prof-edit fa fa-pencil fa-border' ></i>
-						         </li>
 						        	
-						        </ul>
-					        </li>
-					        
-					     </ul>
+						        	  
+						        	
+						        	
+						        	   
+					
+				     
+					                 <p class='coment-body'> <i class='fa fa-square-o'></i>
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aherbigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 
+					                 </p>
+					              </li>
+					              <li class='  small-12 large-4 medium-4  columns'>
+					              <span class='set-date'><i class='fa fa-calendar'></i>12/12/2014</span>
+					              </li>
+					           </ul>  
+					            <ul class='user-prof-cont no-list-style medium-12 large-12 small-12  '>
+				                <li class=' comment-hist small-12 large-8 medium-8  columns'>
+					                <ul class='no-list-style'>
+					                <li>
+					                 <p class='coment-body'> <i class='fa fa-square-o'></i>
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aherbigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 
+					                 </p>
+					                 </li>
+					                  <li class='  small-12 large-4 medium-4  columns'>
+					              <span class='set-date'><i class='fa fa-calendar'></i>12/12/2014</span>
+					              </li>
+					                 </ul>
+					              </li>
+					             
+					           </ul>  
+					            <ul class='user-prof-cont no-list-style medium-12 large-12 small-12  '>
+				                <li class='  small-12 large-8 medium-8  columns'>
+					                 <p class='coment-body'> <i class='fa fa-square-o'></i>
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aherbigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 
+					                 </p>
+					              </li>
+					              <li class='  small-12 large-4 medium-4  columns'>
+					              <span class='set-date'><i class='fa fa-calendar'></i>12/12/2014</span>
+					              </li>
+					           </ul>   <ul class='user-prof-cont no-list-style medium-12 large-12 small-12  '>
+				                <li class='  small-12 large-8 medium-8  columns'>
+					                 <p class='coment-body'> <i class='fa fa-square-o'></i>
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aherbigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 
+					                 </p>
+					              </li>
+					              <li class='  small-12 large-4 medium-4  columns'>
+					              <span class='set-date'><i class='fa fa-calendar'></i>12/12/2014</span>
+					              </li>
+					           </ul>   <ul class='user-prof-cont no-list-style medium-12 large-12 small-12  '>
+				                <li class='  small-12 large-8 medium-8  columns'>
+					                 <p class='coment-body'> <i class='fa fa-square-o'></i>
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aherbigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 
+					                 </p>
+					              </li>
+					              <li class='  small-12 large-4 medium-4  columns'>
+					              <span class='set-date'><i class='fa fa-calendar'></i>12/12/2014</span>
+					              </li>
+					           </ul>   <ul class='user-prof-cont no-list-style medium-12 large-12 small-12  '>
+				                <li class='  small-12 large-8 medium-8  columns'>
+					                 <p class='coment-body'> <i class='fa fa-square-o'></i>
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aherbigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 
+					                 </p>
+					              </li>
+					              <li class='  small-12 large-4 medium-4  columns'>
+					              <span class='set-date'><i class='fa fa-calendar'></i>12/12/2014</span>
+					              </li>
+					           </ul>   <ul class='user-prof-cont no-list-style medium-12 large-12 small-12  '>
+				                <li class='  small-12 large-8 medium-8  columns'>
+					                 <p class='coment-body'> <i class='fa fa-square-o'></i>
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aherbigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 bigComment text aher bigComment text aher
+					                 
+					                 </p>
+					              </li>
+					              <li class='  small-12 large-4 medium-4  columns'>
+					              <span class='set-date'><i class='fa fa-calendar'></i>12/12/2014</span>
+					              </li>
+					           </ul>  
+					    </li>        
+				   
+			   </ul>
+		
+	</div>
+	</div>
+	</section>
+	<!-- user-wrapper end -->
+
+	<footer class=" user-footer small-12 large-12 medium-12 columns">
+
+		<i class="fa fa-copyright"></i><small>Copyright 2001-2014
+			wemater.org - All Rights Reserved </small>
+
+
+	</footer>
+
+
+	<script src="../../js/util.js"></script>
+	<script src="../../js/commons.js"></script>
+	<script src="../../js/setting.js"></script>
+
+
+
+
+</body>
+</html>

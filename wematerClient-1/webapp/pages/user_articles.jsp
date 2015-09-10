@@ -24,7 +24,7 @@
 <body class="body">
 
   <div class=" user-wrapper">      
-   <div class="your-articles row small-12 large-8 medium-10  ">
+   <div class="your-articles small-12 large-11 medium-11 columns  ">
    </div>
   </div> <!-- user-wrapper end -->
     

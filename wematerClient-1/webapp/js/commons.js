@@ -23,10 +23,13 @@ headerhtml = {
 				"<a " +
 				"class='float-left' id='account'>" +
 				"<span  class='fa fa-lg  fa-gear '></span> <b class='hide-for-small-only'>account </b></a>" +
-				"</section> "
+				"</section> ",
+		logout : "<a " +
+		"class='float-left' id='logout'>" +
+		"<span  class='fa fa-lg fa-power-off '></span> <b class='hide-for-small-only'>sign out </b></a>"		
 
 	
-}
+};
 
 userheader.processHeader = function(user){
 	
@@ -34,16 +37,21 @@ userheader.processHeader = function(user){
 	
 	$('.body').prepend(headerhtml.header);
 	$('.home-header').append(headerhtml.ul_header).append(headerhtml.ul_tools);
+	//add the logout to the header except the setting page
+      if(location.href.split('/').pop() !== 'setting'){
+    	  $('.ul-tools').append(headerhtml.logout);
+      }
 	
 	$('.ul-tools a').on('click',function(){
 		var id = $(this).attr('id');
-		if(id === 'write') location.replace('./editor');
-		if(id === 'explore') location.replace('./explore');
-		if(id === 'your-article') location.replace('./articles');
-		if(id === 'account') location.replace('./setting');
-		
-		
+		if(id === 'write') {location.replace('./editor');}
+		if(id === 'explore') {location.replace('./explore');}
+		if(id === 'your-article') {location.replace('./articles');}
+		if(id === 'account') {location.replace('./setting');}
+		if(id === 'logout') {Auth.logout();}
+	
 	});
+	
 	$('.ul-header a').on('click',function(){
 		var id = $(this).attr('id');
 		if(id === 'home') location.replace('../../');
@@ -52,7 +60,7 @@ userheader.processHeader = function(user){
 	$('#u_title').html(user.username+"| wemater.org");
 	$('#self_user').html("<span class='fa fa-lg fa-user'></span>"+user.username);
 	
-}
+};
 
 
 
@@ -66,5 +74,5 @@ update ={
 			});	 
 		 
 		}
-}
+};
 

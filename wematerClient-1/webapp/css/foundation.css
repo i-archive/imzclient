@@ -3205,6 +3205,8 @@ meta.foundation-mq-topbar {
 
 ul.pagination {
   display: block;
+  border-top:1px solid rgba(0,0,0,0.3);
+  margin-top: 1em;
   margin-left: -0.3125rem;
   min-height: 1.5rem; }
   ul.pagination li {

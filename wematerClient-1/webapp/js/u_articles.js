@@ -6,50 +6,50 @@ userarticle = {
 		}
 };
 userarticle.buildSearch = function() {
-	var searchString = "<div class='search-your-articles row'>"
-			+ "<div class='small-12 large-10 medium-8 columns'>"
-			+ " <input type='search' placeholder='search your articles by title' /></div>"
-			+ "<div class='small-12 large-2 medium-4 columns'>"
-			+ " <a class='button-a blue-button fade-border float-left '>search</a>"
-			+ "   </div> </div>"
-	$('.your-articles').prepend(searchString).hide().show(1000);
+	var searchString = "<div class='search-your-articles row'>"+
+			"<div class='small-12 large-10 medium-8 columns'>"+
+			 " <input type='search' placeholder='search your articles by title' /></div>"+
+			 "<div class='small-12 large-2 medium-4 columns'>"+
+			 " <a class='button-a blue-button fade-border float-left '>search</a>"+
+			 "   </div> </div>";
+	$('.your-articles').prepend(searchString).hide().fadeIn(1000);
 
-}
+};
 userarticle.getArticleString = function(article, a_id, p_id, t_id){
-	 return  "<article id='"
-			+ a_id+"'"
-			+" dt-ref='"+Base64.encode(article.links[0].url)
-			+ "' class='user-article small-12 large-3 medium-4 columns left'>"
-			+ "<div class='user-article-inside '>"
-			+ "<div id='"
-			+ p_id
-			+ "' class='user-article-pic' style ='background: "
-			+ "linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), rgba(25, 5, 255, .1)),"
-			+ "url(" + article.image + ") no-repeat 100% 50% ; background-size:cover;'>"
-			+ " </div>" + " <div class='user-article-text '>" + " <p>"
-			+ util.chunkString(Base64.decode(article.content), 100) + "</p>"
-			+ "</div>  " + "<div class='user-article-info '>"
-			+ " <ul class='no-list-style object-info '>" + " <li><a id='" + t_id
-			+ "' class='art-info-title'><span class='fa fa-external-link-square'></span>"
-			+ Base64.decode(article.title) + "</a></li>" + "</ul>"
-			+ "<ul class='no-list-style comment-like '>"
-			+ "<li><li><a><span class='fa fa-lg fa-heart'></span><b>"
-			+ article.likes + "</b></a></li>"
-			+ "<li><li><a><span class='fa fa-lg fa-comment'></span><b>"
-			+ article.commentCount + "</b></a></li>"
-			+ "<li><li><a><span class='fa fa-lg fa-trash'></span></a></li>"
-			+ "</ul> </div>  </div> </article> ";
+	 return  "<article id='"+
+			  a_id+"'"+
+			" dt-ref='"+Base64.encode(article.links[0].url)+
+			 "' class='user-article small-12 large-3 medium-4 columns left'>"+
+			 "<div class='user-article-inside '>"+
+			 "<div id='"+
+			 p_id+
+			 "' class='user-article-pic' style ='background: "+
+			 "linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), rgba(25, 5, 255, .1)),"+
+			 "url(" + article.image + ") no-repeat 100% 50% ; background-size:cover;'>"+
+			 " </div>" + " <div class='user-article-text '>" + " <p>"+
+			 util.chunkString(Base64.decode(article.content), 100) + "</p>"+
+			 "</div>  " + "<div class='user-article-info '>"+
+			 " <ul class='no-list-style object-info '>" + " <li><a id='" + t_id+
+			 "' class='art-info-title'><span class='fa fa-external-link-square'></span>"+
+			 Base64.decode(article.title) + "</a></li>" + "</ul>"+
+			 "<ul class='no-list-style comment-like '>"+
+			 "<li><li><a><span class='fa fa-lg fa-heart'></span><b>"+
+			 article.likes + "</b></a></li>"+
+			 "<li><li><a><span class='fa fa-lg fa-comment'></span><b>"+
+			 article.commentCount + "</b></a></li>"+
+			 "<li><li><a><span class='fa fa-lg fa-trash'></span></a></li>"+
+			 "</ul> </div>  </div> </article> ";
 
 	
-}
+};
 userarticle.getMoreButton = function(){
-	return "<div class='showmore-wrapper large-12 small-12 medium-12 columns '>"
-            +"<a class=' showmore button-a blue-button push-5 small-push-4'>" +
-            		"<i class='fa fa-chevron-circle-down'></i>show more</a></div> "
-            +"</div>";
+	return "<div class='showmore-wrapper large-12 small-12 medium-12 columns '>"+
+            "<a class=' showmore button-a blue-button push-5 small-push-4'>" +
+            "<i class='fa fa-chevron-circle-down'></i>show more</a></div> "+
+            "</div>";
 	
 	
-}
+};
 
 userarticle.getMoreArticles =function(){
 	$('.your-articles').on('click','.showmore',function(){	
@@ -57,7 +57,7 @@ userarticle.getMoreArticles =function(){
 		Ajax.GET(userArticlesAjax);
 	});
 	
-}
+};
 userarticle.removeMoreButton = function(next){
 	log("the next value inside remove= "+next*4);
 	log("user article count= "+this.user.articlecount);
@@ -69,7 +69,7 @@ userarticle.removeMoreButton = function(next){
 		
 	}
 	
-}
+};
 
 userarticle.buildArticleWithEvents = function(article) {
 	var a_id = "a_" + article.id;
@@ -87,7 +87,7 @@ userarticle.buildArticleWithEvents = function(article) {
    //initialize articlecount 
 	this.articlecount = article.userModel.articlecount;
 	return articleString;
-}
+};
 
 userarticle.appendAllArticles = function(articleArray) {
 	var arr = articleArray;
@@ -104,7 +104,7 @@ userarticle.appendAllArticles = function(articleArray) {
 	this.removeMoreButton(userArticlesAjax.next);
 	
 	
-}
+};
 
 
 var userArticlesAjax = {
@@ -164,7 +164,7 @@ var userArticlesAjax = {
    	
 	}
 
-}
+};
 
 var fullArticleAjax = {
 	url : "",
@@ -201,17 +201,18 @@ var fullArticleAjax = {
 		log(data);
 	}
 
-}
+};
 
 userarticle.processUserArticles = function() {
 	if (Auth.isLoggedIn()) { log("user logged in");
 		this.init();
 		userheader.processHeader(this.user);
-		//userarticle.buildSearch();
+		
 		Ajax.GET(userArticlesAjax);
 		userarticle.getMoreArticles();
+		userarticle.buildSearch();
 
 	}
-}
+};
 
 $(userarticle.processUserArticles());
