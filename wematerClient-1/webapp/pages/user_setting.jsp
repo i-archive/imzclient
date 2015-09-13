@@ -15,13 +15,10 @@
 <link rel="stylesheet" href="../../css/app.css">
 <link rel="stylesheet" href="../../css/app-font.css">
 <link rel="stylesheet" href="../../css/foundation.css">
+<link rel="stylesheet" href="../../css/sweetalert.css">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<!-- jQuery -->
-<script src="../../js/jquery-1.11.3.js"></script>
-<script src="../../js/modernizr.js"></script>
-<script src="../../js/jquery-ui.js"></script>
-<link rel="stylesheet" href="../../css/jquery-ui.css">
+
 
 
 </head>
@@ -41,9 +38,10 @@
 
 	</footer>
 
-
+ <script src="../../js/jquery-1.11.3.js"></script>
 	<script src="../../js/util.js"></script>
 	<script src="../../js/commons.js"></script>
+	<script src="../../js/sweetalert.min.js"></script>
 	<script src="../../js/setting.js"></script>
 
 

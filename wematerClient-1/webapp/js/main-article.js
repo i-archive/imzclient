@@ -15,8 +15,8 @@ var MainArticle = {
 	buildtags : function(tags, parentclass) {
 		var tagString = "";
 		for (i = 0; i < tags.length; i++) {
-			tagString += " <small><span class='fa fa-tag'></span>" + tags[i]
-					+ "</small>"
+			tagString += " <small><span class='fa fa-tag'></span>" + tags[i]+ "</small>";
+					
 		}
 		$('.' + parentclass).html('').append(tagString);
 	},
@@ -47,23 +47,23 @@ var MainArticle = {
 					.css('border-color', "rgba(0,120,60,0.8)");
 		}
 	}
-}
+};
 
 MainArticle.buildCurrentArticle = function(article) {
 	
 	if (article) {
 		log("inside build article " + article.title);
-		$('#a_t').html(Base64.decode(article.title) + " | wemater.org")
+		$('#a_t').html(Base64.decode(article.title) + " | wemater.org");
 		this.updateSignupButton();
 		$('.main-content').html(Base64.decode(article.content));
 		$('.main-article-cover')
 				.html(
-						"<h1 class='uploaded-image-title'>"
-								+ Base64.decode(article.title) + "</h1>")
+						"<h1 class='uploaded-image-title'>"+
+								 Base64.decode(article.title) + "</h1>")
 				.css(
 						'background',
-						"linear-gradient(rgba(0, 100, 60, 0.6), rgba(0, 100, 50, .6), " +
-						"rgba(0, 105, 40, .6)), url('"+ article.image + "') no-repeat 100% 50%")
+						"linear-gradient(rgba(0, 10, 60, 0.1), rgba(0, 10, 50, .6), " +
+						"rgba(0, 10, 40, .1)), url('"+ article.image + "') no-repeat 100% 50%")
 				.css('background-size', "cover").hide().slideDown(1000);
 
 		$('a.article-author').html(
@@ -71,7 +71,7 @@ MainArticle.buildCurrentArticle = function(article) {
 		$('a.article-date').html(
 				"<i class='fa fa-lg fa-calendar'></i>" + article.date);
 		$('.author-bio').html("<p><i class='fa fa fa-quote-left  fa-pull-left fa-border'></i>" +
-				"" + article.userModel['bio'] +  "</p>");
+				  article.userModel.bio +  "</p>");
 		MainArticle.buildtags(article.tags, "article-tags");
 		MainArticle.updateLikes();
 		MainArticle.processCommentAuthor();
@@ -83,16 +83,16 @@ MainArticle.buildCurrentArticle = function(article) {
 	}
 	
 
-}
+};
 
 MainArticle.getMoreButton = function(){
 	return "<li> <a class=' showmore_c button-a blue-button push-5 small-push-4'>" +
 			"<i class='fa fa-chevron-circle-down'></i>show more</a></li>";
-}
+};
 MainArticle.removeMoreButton = function(){
 	
 	$('.showmore_c').remove();
-}
+};
 MainArticle.getMoreComments = function(){
 	
 	$('.comment-wrapper').on('click','.showmore_c', function(){
@@ -100,18 +100,19 @@ MainArticle.getMoreComments = function(){
 		++getcommentAjax.next;
 		Ajax.GET(getcommentAjax);
 	});
-}
+};
 
 MainArticle.createComment = function(username, commentContent,date) {
-	return "<li class='comment-user '>"
-			+"<ul class=' comment-auth-list no-list-style '>"
-			+"<li><a class='commented-author'><i class='fa fa-user'></i>"+ username + "</a></li>" 
-			+"<li class='right pull-1'><a class='commented-author'><i class='fa fa-calendar'></i> "+ date + "</a></li>"
-			+"</ul>"
+	return "<li class='comment-user '>"+
+			"<ul class=' comment-auth-list no-list-style '>"+
+			"<li><a class='commented-author'><i class='fa fa-user'></i>"+ username + "</a></li>"+ 
+			"<li class='right pull-1'><a class='commented-author'><i class='fa fa-calendar'></i> "+
+			date + "</a></li>"+
+			"</ul>"+
 		
-			+"</li>" + "<li class='comment-content'>"
-			+ Base64.decode(commentContent) + "</li>";
-}
+			"</li>" + "<li class='comment-content'>"+
+			 Base64.decode(commentContent) + "</li>";
+};
 
 MainArticle.attachComments = function(comments) {
 
@@ -119,7 +120,7 @@ MainArticle.attachComments = function(comments) {
 	for (i = 0 ; i < comments.length; i++) {
 		var comment = comments[i];
 
-		commentString += this.createComment(comment.username, comment.content,comment.date)
+		commentString += this.createComment(comment.username, comment.content,comment.date);
 	}
 	log('CommentCOunt= '+this.commentcount);
 	
@@ -135,13 +136,13 @@ MainArticle.attachComments = function(comments) {
 	
 	return " <ul class='no-bullet comments'>" + commentString + "</ul>";
 
-}
+};
 
 MainArticle.syncComments = function(comments) {
      this.removeMoreButton();
      $('.comment-wrapper').append(this.attachComments(comments));
 
-}
+};
 
 MainArticle.showHideComments = function() {
 	$('.comment-wrapper').hide();
@@ -164,7 +165,7 @@ MainArticle.showHideComments = function() {
 
 	});
 
-}
+};
 MainArticle.activeCommentLength = function(){
 	var isActivated = false;
 	$('#write-comment-content').on('click',function(){
@@ -172,12 +173,12 @@ MainArticle.activeCommentLength = function(){
 		log('min activated');
 	});
 	
-}
+};
 
 
 MainArticle.validateCommentOnSubmit = function() {
 
-	var emptyContent = "<i class='fa fa-diamond'></i> You didnt write a comment"
+	var emptyContent = "<i class='fa fa-diamond'></i> You didnt write a comment";
 	$('#comment-content-error').hide();
 	$('#write-comment-content').val('');
 	$('#post-comment').html(' <i class="fa fa-chevron-right "></i>post');
@@ -196,7 +197,7 @@ MainArticle.validateCommentOnSubmit = function() {
 
 	});
 
-}
+};
 
 //below are topic methods
 
@@ -204,9 +205,9 @@ MainArticle.getTopArticleString = function(article) {
             var tr_id = 'tr_'+article.id;
             
 	var string= "<dt><a  id="+tr_id+" dt-ref='"+Base64.encode(article.links[0].url)+"'>" +
-			""+ Base64.decode(article.title) + "</a></dt>"
-			+ "<dd><a><span class='fa fa-user'></span>"
-			+ article.userModel.name + "</a></dd>";
+			Base64.decode(article.title) + "</a></dt>"+
+			 "<dd><a><span class='fa fa-user'></span>"+
+			 article.userModel.name + "</a></dd>";
 	
 	$('.suggest-wrapper').on('click','#'+tr_id,function(){
 		eachTrendingAjax.url =Base64.decode($('#'+tr_id).attr('dt-ref'));
@@ -217,12 +218,12 @@ MainArticle.getTopArticleString = function(article) {
 	});
 	
 return string;
-}
+};
 MainArticle.attachTopArticles = function(articleString) {
 	
-	return "<dl class='dl-top-articles'>" + articleString + "</dl>"
+	return "<dl class='dl-top-articles'>" + articleString + "</dl>";
 
-}
+};
 MainArticle.createTopArticles = function(articleArray) {
 	if(articleArray.length === 0){
 		errorcode.showNoData("We got no trending  articles", ".suggest-wrapper","fa-frown-o");
@@ -237,7 +238,7 @@ MainArticle.createTopArticles = function(articleArray) {
 	finalString = MainArticle.attachTopArticles(str);
 
 	$(".suggest-wrapper").html(finalString);
-}
+};
 
 MainArticle.buildtopArticles = function() {
 	var isAlreadyFetched = false;
@@ -249,7 +250,7 @@ MainArticle.buildtopArticles = function() {
 		}
 	});
 
-}
+};
 
 
 MainArticle.updateLikes = function(){
@@ -257,8 +258,7 @@ MainArticle.updateLikes = function(){
 	
 	 if(Auth.isLoggedIn() && !this.article.isliked)
 		{
-		   $('.a_like').html("<span>Like this article to show your support<span>"+
-	        "<i class='fa fa-lg fa-heart-o'></i>"+this.article.likes);
+		   $('.a_like').html("<i class='fa fa-lg fa-heart-o'></i>"+this.article.likes);
 			MainArticle.processLikes();
 		}
 	else  if(Auth.isLoggedIn() && this.article.isliked){
@@ -267,7 +267,7 @@ MainArticle.updateLikes = function(){
 	 }
 	else $('.a_like').html("<i class='fa fa-lg fa-heart'></i>"+this.article.likes);
 	
-}
+};
 MainArticle.processLikes = function(){
 	log('updated likes');
 	$('.a_like i').on('click',function(){	
@@ -275,7 +275,7 @@ MainArticle.processLikes = function(){
 		Ajax.PUT(putLikes);
 		$(this).parent().html("<i class='fa fa-lg fa-heart'></i>"+MainArticle.article.likes);
 	});
-}
+};
 
 
 var putLikes = {
@@ -311,7 +311,7 @@ var putLikes = {
 			
 	        
 		}
-	}
+	};
 //end of like put
 var eachTrendingAjax = {
 		url : "",
@@ -356,7 +356,7 @@ var eachTrendingAjax = {
 			 log(data);
 		}
 
-	}
+	};
 
 var getcommentAjax = {
 	url : "",
@@ -401,7 +401,7 @@ var getcommentAjax = {
 		else errorcode.showNoData(data.responseJSON.error_message,  ".comment-wrapper","fa-frown-o");
 	}
 
-}
+};
 
 var postcommentAjax = {
 	url : "",
@@ -431,7 +431,7 @@ var postcommentAjax = {
 			progressBar.set_MIN_MAX_with();
 
 		}
-		log("post progess")
+		log("post progess");
 		progressBar.progress(event);
 	},
 	loadStart : function(event) {
@@ -464,7 +464,7 @@ var postcommentAjax = {
 		$('.comment-write-wrapper').hide();
         
 	}
-}
+};
 //end of post comment
 
 var trendingArticlsAjax = {
@@ -504,7 +504,7 @@ var trendingArticlsAjax = {
 		errorcode.showNoData("Not able to fetch anything",".suggest-wrapper","fa-frown-o");
 	}
 
-}
+};
 
 
 
@@ -517,11 +517,11 @@ MainArticle.processAllArticle = function() {
 	MainArticle.buildCurrentArticle(this.article);
 	MainArticle.activeCommentLength();
 	MainArticle.showHideComments();
-	MainArticle.getMoreComments()
+	MainArticle.getMoreComments();
 	MainArticle.validateCommentOnSubmit();
 	MainArticle.buildtopArticles();
 	
 
-}
+};
 
 $(MainArticle.processAllArticle());

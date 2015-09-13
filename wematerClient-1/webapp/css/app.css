@@ -32,18 +32,20 @@ body{
    min-height: 200px;}
 
 .show_no_article{
-
 	top: 50px;
 	min-height: 200px;
 	border-radius: 10px;
 	padding: 1.5em;
+	font-size: .8em;
 	text-align: center;
 	color: rgba(0,0,0,0.6);
 	border: 1px solid rgba(0,0,0,0.1);
 	background: rgba(0,0,0,0.03);
 	
 }
-
+a.pass-upd {
+	text-transform: none;
+}
 .round-border{
 	border: 2px solid rgba(0,0,0,0.1);
 	border-radius: 30px;
@@ -56,10 +58,14 @@ body{
 .show_no_article h1,.show_no_article h3, .show_no_article p{
 	color: rgba(0,0,0,0.6);
 	text-transform: capitalize;
-	letter-spacing: .05em;
+	letter-spacing: .025em;
+}
+.show_no_article h1,.show_no_article h3{
+	 font-family: 'Open Sans Condensed', sans-serif;
+	 font-weight: normal;
 }
 .show_no_article p{
-	font-family: "Oswald";
+	 font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: 400;
 	line-height: 1.5em;
 	font-size: 1.3em;
@@ -355,12 +361,10 @@ li.comment-content a:hover{
 }
 
 .main-top-bar a.bookmark, .main-top-bar a.share{
-	color: rgba(28,128,68,0.5);
+	color: rgba(23, 42, 58, 0.9);
 }
 .main-top-bar a.a_like{
-	color: rgba(28,128,68,0.5);
-	text-transform: lowercase;
-	letter-spacing: 0.08em;
+	color: rgba(23, 42, 58, 0.9);
 }
 
 .main-article-info a{letter-spacing: 0.08em;}
@@ -482,16 +486,11 @@ li.comment-content a:hover{
 }
 .article-like > ul li a {
 	 color: rgba(23,42,58,.9);
-	
+	cursor: default;
 	
 }
-.article-like > ul li a:hover{
-	
-	color: #1481BA;
-}
 
-
-.explore-article-cover, .explore-article-cover-l{
+.explore-article-cover{
 	height: 200px;
 	margin-bottom:1em;
 	border-radius: 4px;
@@ -500,16 +499,15 @@ li.comment-content a:hover{
 	border-radius: 4px;
 	height: 250px;
 	background-size: 100% 100%;
-	-webkit-box-shadow: 0px 1px 7px 1px rgba(186,214,206,1);
-    -moz-box-shadow: 0px 1px 7px 1px rgba(186,214,206,1);
-    box-shadow: 0px 1px 7px 1px rgba(186,214,206,1);
-	transition: all 300ms ease;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-
+    -webkit-box-shadow: 0px 1px 1px 1px rgba(0,120,100,0.5);
+	-moz-box-shadow: 0px 1px 1px 1px rgba(0,120,100,0.5);
+	box-shadow: 0px 1px 1px 1px rgba(0,120,100,0.5); 
+	transition: all 300ms ease-out;
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
 }
 
-.explore-article-content, .explore-article-content-l{
+.explore-article-content{
 	padding-top: 1em;
 	padding-bottom:1em;
 	
@@ -556,7 +554,7 @@ li.comment-content a:hover{
 
 }
 div.exp-content p{
-	font-family: "proxima-nova";
+    font-family: 'Open Sans', sans-serif;
 	font-size: 1.1em;
 	text-align: justify;
 	line-height: 1.4em;
@@ -841,7 +839,7 @@ ul.explore-side-heading > li.see-more a{
 	margin-left:1em;
 	margin-left:.3em;
 	border-radius: 4px;
-	color: rgba(0,120,60,0.5);
+	color: rgba(23, 42, 58, 0.9);
 	
 }
 .article-author:hover , .comment-author:HOVER{
@@ -1295,19 +1293,23 @@ ul.user-prof-timeline li.prof-content{
 	padding-bottom: 1em;
 	padding-top: 1em;
 	border: 1px solid rgba(0,0,0,.3);
-	min-height: 200px;
+	min-height: 100px;
 	display: table;
 	border-radius: 0 0 4px 4px;
    
 }
-
+li#passwd{
+	padding-bottom: 0px;
+}
 ul.user-prof-cont{
 	width: 100%;
 	min-height: 100px;
 	display: block;
 	margin-left: 0px;
 }
-
+li.cpass-msg,li.npass-msg{
+	margin-bottom: .4em;
+}
 
 ul.user-prof-cont li {
 
@@ -2376,7 +2378,12 @@ h1.preview-title{
  
  }
  ul.object-info{
- height: 80%;
+ min-height: 10%;
+ position: relative;
+ top: 60%;
+ font-family: 'Coda', cursive;
+ line-height: 1.1em;
+ font-size: 1.2em;
  }
  
  ul.comment-like li{ 
@@ -2384,13 +2391,14 @@ h1.preview-title{
     padding-left: .4em;
     
  }
+
 ul.object-info  li > a:hover, ul.comment-like > li a:hover{
-	font-weight: 500;
-	color: #1481BA;
-		transition: color 300ms ease-out;
+	font-weight: 800;
+	transition: all 300ms ease;
 	cursor: pointer;
 	
 	}
+	 ul.comment-like > li a:hover{color: #333;}
  
  ul.object-info  li  a span, ul.comment-like  li a span{
  padding: .3em;
@@ -2429,9 +2437,9 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
   color: #f1f1f1
 }
   .user-article:HOVER{
-  -webkit-box-shadow: 0px 1px 5px 2px rgba(0,120,100,0.5);
-	-moz-box-shadow: 0px 1px 5px 2px rgba(0,120,100,0.5);
-	box-shadow: 0px 1px 5px 2px rgba(0,120,100,0.5); 
+  -webkit-box-shadow: 0px 1px 1px 1px rgba(0,120,100,0.5);
+	-moz-box-shadow: 0px 1px 1px 1px rgba(0,120,100,0.5);
+	box-shadow: 0px 1px 1px 1px rgba(0,120,100,0.5); 
 	 -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -2442,7 +2450,7 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
  }
 
  .user-article-pic{
-  height: 320px;
+  height: 330px;
   border-top-left-radius:2px;
   border-top-right-radius:2px;
   
@@ -2461,8 +2469,8 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
 }
  .user-article-info{
 
-   height: 180px;
-   background: rgba(0,60,60,0.07);
+   min-height: 30px;
+   background: white;
    padding-bottom: 1em;
    padding-top: 1em;
    border-bottom-left-radius: 4px;
@@ -2472,12 +2480,31 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
   
  }
  .art-info-title{
-   font-family: "jaf-bernino-sans";
-  font-style: normal;
-  font-weight: 400;
+ font-family: 'Oswald', sans-serif;
+ font-style: normal;
+ font-weight: 800;
+ color: rgba(255,255,255,0.7);
+ text-transform: capitalize;
+ text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
  }
  
- 
+ .opacity-light{
+    -webkit-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+        -ms-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+             opacity: 0.7;
+             
+ }
+  .opacity-dark{
+    -webkit-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+        -ms-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+             opacity: 1;
+ }
 
  
  .user-article-info > ul.object-info a, .user-article-info > ul.comment-like {
@@ -2643,6 +2670,10 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   -ms-transition: border-color 0.15s linear, background 0.15s linear;
   -o-transition: border-color 0.15s linear, background 0.15s linear;
   transition: border-color 0.15s linear, background 0.15s linear; }
+  input[type="password"]{
+  font: small-caption;
+	font-size: 1em;	
+  }
   input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="color"]:focus, textarea:focus {
     
     border-color: rgba(0,0,0,0.4);
@@ -2706,7 +2737,8 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   
   .main-article-cover h1{
     font-size: 2.5rem;
-    margin-left: 0em;   
+    margin-left: 0em; 
+      
    
   }
  

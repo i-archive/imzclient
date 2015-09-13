@@ -8,15 +8,17 @@ var setting ={
 	    usernameNotValid: "<i class='fa fa-remove'></i>  8-14 characters are allowed",
 	    bioNotValid: "<i class='fa fa-remove'></i>  10-200 characters are allowed",
 	    bioNotPresent : "<i class='fa fa-bell-o'></i> Tell us about yourself!",
-	    NameNotPresent : "<i class='fa fa-bell-o'></i> Provide your name ",
+	    NameNotPresent : "<i class='fa fa-bell-o'></i> Provide your full name ",
 	    emailNotValid: "<i class='fa fa-remove'></i> Email is not valid",
-	    genericUpdationError : "<i class='fa fa-frown'></i>Update failed. Please try again",
+	    genericUpdationError : "<i class='fa fa-clock-o '></i>Update failed. Please try again",
 	    minPasswordlength : 8,
 	    maxPasswordlength : 25,
 	    passwordInvalidlength : "<i class='fa fa-unlock'></i> password should be 8 - 25 characters",
 	    passwordDoesNotMatch : "<i class='fa fa-thumbs-down'></i> Passwords does not match",
+	    passwordSuccess : "<i class='fa fa-thumbs-up'></i> Passwords updated successfully",
 	    emailNotAvailable: "<i class='fa fa-thumbs-down'></i> Email already registered",
 	    emailAvailable: "<i class='fa fa-thumbs-up  '></i> Email is available",
+	    emailAlreadyPresent: "<i class='fa fa-thumbs-down  '></i> Email already present",
 	    errorBox : "<li  role='sett-err' class='small-12 large-5 medium-4  columns'></li>",
 		erroSpan : function(message){
 			     return  "<span  class='error-sett-box'>"+message+"</span>" ;
@@ -24,7 +26,11 @@ var setting ={
 		successSpan : function(message){
 		     return  "<span  class='success-sett-box'>"+message+"</span>" ;
 	    },
-		
+		IfValuEmpty : function(value){
+			if(value === '' || value === null) 
+				return false;
+			else return true;
+			},
 		validateEmail : function(email){ return this.emailExpression.test(email); },
 		validatePassword : function(password){ 
 			if(password.length < this.minPasswordlength || password.length > this.maxPasswordlength) return false;
@@ -91,13 +97,15 @@ setting.displayErrorOnEmptyValue = function(role,value){
 };
 
 setting.builduserAttributes = function(role,title,value){
+	var dv = ''; 
+	if(role === 'username'){dv ="style='display:none;'";}
 	
 	var x2 = " <li class='small-12 medium-12 large-12 columns '>" +
 			" <ul class='no-list-style row'>" +
 			"<li class='small-12 large-2 medium-3  columns'><i class='fa fa-square-o'></i>"+title+"</li>" +
 			" <li class='small-12 large-5 left medium-5  columns'>" +
 			" <span id='"+role+"'>"+value+"</span>" +
-			" <i role='"+role+"' class=' prof-edit fa fa-pencil fa-border' ></i>" +
+			" <i role='"+role+"' "+dv+" class=' prof-edit fa fa-pencil fa-border' ></i>" +
 			"</li> </ul> </li>";	
 	
 	 $('.user-prof-cont').append(x2);
@@ -115,10 +123,13 @@ setting.buildPassword = function(){
 			"<input id='n-p' type='password' placeholder='new password'>" +
 			"</li>" +
 			"<li class= 'small-12 large-4 medium-4 columns  '>" +
-			" <i role='password' class='pass-upd fa fa-4x fa-arrow-circle-right pull-1' ></i>" +
+			"<a class='pass-upd button-a blue-button'> update " +
+			"<i class='fa fa-lock'></i>" +
+			"</a></i>" +
 			"</li>" +
 			" </ul> </li>" +
-			"<li class=' pass-msg small-12 medium-12 large-12 columns border '>" +
+			"<li class=' cpass-msg small-12 medium-6 large-5 columns  '>" +
+			"<li class=' npass-msg small-12 medium-6 large-5 large-pull-3 medium-pull-3 columns  '>" +
 			 "</li>";
 	$('#pass').append(x3);
 };
@@ -149,14 +160,6 @@ setting.buildUpdatePassword = function(){
     
 };
 
-setting.updatePassword = function(){
-	$('.pass-upd').on('click',function(){
-	  var val = $('#n-p').val();
-	  setting.updateUser.setData('password', val);
-	    Ajax.PUT(setting.updateUser);
-	  
-	});
-};
 
 setting.buildDeleteAccount = function(){
 	 var x4 = "  <li class='li-del'> <h5 class='prof-del'> <i class=' fa fa-trash-o '></i>danger zone</h5> </li>" +
@@ -166,10 +169,56 @@ setting.buildDeleteAccount = function(){
 	 		"<p class='del'> Note: After deleting your account," +
 	 		" all your articles would stay with us and would be made anonymous" +
 	 		" </p>" +
-	 		" <a class='button-a red-button small-push-1 large-push-5 medium-push-4 center'>delete your account</a>" +
+	 		" <a id='del-ac' class='button-a red-button small-push-3 large-push-5 medium-push-4 center'>delete your account</a>" +
 	 		"</li></ul></li>";
 	 		
 	 $('.user-prof-timeline').append(x4);		
+};
+setting.processDeleteAccount = function(){
+	$('a#del-ac').on('click',function(){
+		 log('your account will be deleted');
+		 swal({
+			  title: "Are you sure?",
+			  text: "You will not be able to recover your account details or gain ownership of your articles again!",
+			  type: "warning",
+			  animation: "slide-from-top",
+			  showCancelButton: true,
+			  confirmButtonColor: "#DD6B55",
+			  confirmButtonText: "Yes, delete it!",
+			  closeOnConfirm: false
+			},
+			function(){
+				log('processing delete account');
+				swal({
+					  title: "Password",
+					  text: "Enter your current password",
+					  type: "input",
+					  inputType: "password",
+					  showCancelButton: true,
+					  closeOnConfirm: false,
+					  animation: "slide-from-top",
+					  inputPlaceholder: "Password"
+					},
+					function(inputValue){
+					  if (inputValue === false) return false;
+					  
+					  if (inputValue === "") {
+					    swal.showInputError("please type your password");
+					    return false;
+					  }
+					  var da = Base64.decode(sessionStorage.getItem('_auth'));
+						var pass = da.split(':')[1];
+						if(inputValue !== pass)
+							{
+							swal.showInputError("Password does not match");
+							return false;
+							}
+					  
+							Ajax.DELETE(setting.deleteUser);
+					});
+				  
+			});
+	});
 };
 
 
@@ -305,7 +354,8 @@ setting.toggleNav = function(){
 		Auth.logout();
 	});
 	
-	
+	// Register method to delete account
+		this.processDeleteAccount();
 };
 
 
@@ -313,6 +363,8 @@ setting.validateElement = function(role,value){
 	switch (role) {
 	case 'username':
 		   return this.validateUsername(value);
+	case 'name':
+		   return this.IfValuEmpty(value);	   
 		
 	case 'email':
 		    return this.validateEmail(value);
@@ -333,6 +385,9 @@ setting.showErrorBox = function(role,element){
 	 
 	   if(role === 'username'){
 		   $(element).parent().next().html(this.erroSpan(this.usernameNotValid)).hide().fadeIn(500);
+	   }
+	   if(role === 'name'){
+		   $(element).parent().next().html(this.erroSpan(this.NameNotPresent)).hide().fadeIn(500);
 	   }
 	   else if(role === 'email'){
 		   $(element).parent().next().html(this.erroSpan(this.emailNotValid)).hide().fadeIn(500);
@@ -378,6 +433,7 @@ setting.editUpdate = function(role, element){
         	    var rid = $(element).parent().next().attr('role');
         	    if(rid === 'sett-err') $(element).parent().next().remove();
         	    // update the user object
+        	    setting.updateUser.element = element;
         	    setting.updateUser.setData(role, updatedVal);
         	    Ajax.PUT(setting.updateUser);
            }
@@ -407,19 +463,19 @@ setting.processEdit= function(){
 		switch (role) {
 		case 'username':
 			    setting.editUpdate(role,this);
-			    log($(this).prev().html());
+			 
 			break;
 		case 'name':
 		    setting.editUpdate(role,this);
-		    log($(this).prev().html());
+		  
 		break;	
 		case 'email':
 		    setting.editUpdate(role,this);
-		    log($(this).prev().html());
+		   
 		break;
 		case 'bio':
 		    setting.editUpdate(role,this);
-		    log($(this).prev().html());
+		   
 		break;
 
 		}
@@ -428,26 +484,97 @@ setting.processEdit= function(){
 	
 };
 
+
+setting.updatePassword = function(){
+	$('.pass-upd').on('click',function(){
+	  var val = $('#n-p').val();
+	  setting.updateUser.setData('password', val);
+	    Ajax.PUT(setting.updateUser);
+	  
+	});
+};
+
+setting.processSuccess = function(role){
+	switch (role) {
+	case 'password':
+		$('.cpass-msg , .npass-msg').html('');
+		$('.cpass-msg ').html(setting.successSpan(this.passwordSuccess));
+		setTimeout(function(){Auth.logout();}, 1000);
+		
+		break;
+
+	default:
+		break;
+	}
+	
+};
+setting.removeErrorBox = function(element){
+	 setTimeout(function(){
+		 $(element).parent().next().fadeOut(2000).remove(); 
+	 }, 4000);
+};
+
+setting.processError = function(role,element,status){
+	
+	log('inside process error');
+	log('role = '+role);
+	log(element);
+	log('status = '+status);
+	
+	switch (role) {
+	case 'email':
+		 $(element).parent().after(this.errorBox);
+				if(status === errorcode.CONFLICT){
+					 $(element).parent().next()
+					    .html(this.erroSpan(this.emailAlreadyPresent))
+				        .hide().fadeIn(200);
+					this.removeErrorBox(element);
+				}
+				else {
+					$(element).parent().next()
+						.html(this.erroSpan(this.genericUpdationError))
+					    .hide().fadeIn(300);
+					  this.removeErrorBox(element);
+				}
+		break;
+	case 'password':
+		$('.cpass-msg , .npass-msg').html('');
+		$('.cpass-msg ').html(setting.erroSpan(this.genericUpdationError));
+		break;
+
+	default:
+		 $(element).parent().after(this.errorBox);
+		    $(element).parent().next()
+			    .html(this.erroSpan(this.genericUpdationError))
+			    .hide().fadeIn(300);
+			this.removeErrorBox(element);
+		break;
+	}
+};
+
 setting.validatePasswordOnUpdate = function(data){
 	var da = Base64.decode(sessionStorage.getItem('_auth'));
 	var pass = da.split(':')[1];
 	log('old password from auth = '+pass);
 	var cp = $('#c-p').val();
 	if(!setting.validatePassword(cp)){
-		$('.pass-msg').html(setting.erroSpan(setting.passwordInvalidlength)).hide().fadeIn(500);
+		$('.cpass-msg').html(setting.erroSpan(setting.passwordInvalidlength)).hide().fadeIn(500);
+		$('.npass-msg').html('');
 		throw new Error('NP');
 	}
 	else if(cp !== pass){
-		$('.pass-msg').html(setting.erroSpan(setting.passwordDoesNotMatch)).hide().fadeIn(500);
+		$('.cpass-msg').html(setting.erroSpan(setting.passwordDoesNotMatch)).hide().fadeIn(500);
+		$('.npass-msg').html('');
 		throw new Error('NP');
 	}
 	else if(!setting.validatePassword(data))
 		{
-		$('.pass-msg').html(setting.erroSpan(setting.passwordInvalidlength)).hide().fadeIn(500);
+		$('.cpass-msg').html('');
+		$('.npass-msg').html(setting.erroSpan(setting.passwordInvalidlength)).hide().fadeIn(500);
 		throw new Error('NP');
 		}
 	else{
-		$('.pass-msg').html('');
+		$('.cpass-msg , .npass-msg').html('');
 		return data;
 		
 	} 
@@ -456,6 +583,8 @@ setting.validatePasswordOnUpdate = function(data){
 setting.updateUser = {
 		url : "",
 		data: "",
+		role: '',
+		element: '',
 		user:null,
 		encodedAuth : "",
 		updateUser : function(data,role){
@@ -481,25 +610,60 @@ setting.updateUser = {
 			this.encodedAuth = sessionStorage.getItem('_auth');
 			var dataObj = this.updateUser(data, role);
 			this.data = JSON.stringify(dataObj);
-			log(dataObj);
-			log('url in update user: '+this.url);
-
-			log('auth: '+this.encodedAuth);
+			this.role = role;
 		},
 		beforeSend : function(request) {
 			request.setRequestHeader('Authorization', this.encodedAuth);
 		},
 		success : function(obj) {
 			log("success in update user");
-			log(obj);
+		
 			util.storeObjectInSession('_user', obj);
+			setting.processSuccess(this.role);
 		},
 		error : function(data) {
 			log('fail in update user');
-			log(data);
+		    log(data);
+			setting.processError(this.role, this.element, data.status);
 		
 		}
 	};
+
+
+setting.deleteUser = {
+		url : "",
+		user: null,
+		encodedAuth : "",
+		prejax : function() {
+			this.user = util.getObjectFromSession('_user');
+			this.url = Ajax.AllUserURL+"/"+this.user.username;
+			this.encodedAuth = sessionStorage.getItem('_auth');
+		},
+		beforeSend : function(request) {
+			request.setRequestHeader('Authorization', this.encodedAuth);
+		},
+		success : function(obj) {
+			log("success in delete user");
+			swal({
+				  title: "Deleted !",
+				  text: "Account has been deleted successfully..",
+				  type: "success",
+				  confirmButtonText: "done",
+				  closeOnConfirm: false
+				},
+				function(){
+					Auth.logout();		
+					  
+				});
+			
+		},
+		error : function(data) {
+			log('fail in delete user');
+			swal("Error!", "Unable to delete account. Please try again", "error");
+		
+		}
+	};
+
 
 
 

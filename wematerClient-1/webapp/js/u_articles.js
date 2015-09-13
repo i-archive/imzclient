@@ -16,31 +16,33 @@ userarticle.buildSearch = function() {
 
 };
 userarticle.getArticleString = function(article, a_id, p_id, t_id){
-	 return  "<article id='"+
+	 var x =  "<article id='"+
 			  a_id+"'"+
 			" dt-ref='"+Base64.encode(article.links[0].url)+
 			 "' class='user-article small-12 large-3 medium-4 columns left'>"+
 			 "<div class='user-article-inside '>"+
 			 "<div id='"+
 			 p_id+
-			 "' class='user-article-pic' style ='background: "+
-			 "linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), rgba(25, 5, 255, .1)),"+
+			 "' class='user-article-pic opacity-light' style ='background: "+
+			 "linear-gradient(rgba(0,60, 150, .5), rgba(0, 60, 150, .5), rgba(0, 60, 150, .5)),"+
 			 "url(" + article.image + ") no-repeat 100% 50% ; background-size:cover;'>"+
-			 " </div>" + " <div class='user-article-text '>" + " <p>"+
-			 util.chunkString(Base64.decode(article.content), 100) + "</p>"+
-			 "</div>  " + "<div class='user-article-info '>"+
-			 " <ul class='no-list-style object-info '>" + " <li><a id='" + t_id+
-			 "' class='art-info-title'><span class='fa fa-external-link-square'></span>"+
+			 " <ul class='no-list-style object-info '>" + " <li>" +
+			 "<a id='" + t_id+
+			 "' class='art-info-title'>"+
 			 Base64.decode(article.title) + "</a></li>" + "</ul>"+
+			 "</div>" + 
+			 "<div class='user-article-info '>"+
 			 "<ul class='no-list-style comment-like '>"+
-			 "<li><li><a><span class='fa fa-lg fa-heart'></span><b>"+
+			 "<li><li><a><span class='fa fa-heart-o'></span><b>"+
 			 article.likes + "</b></a></li>"+
-			 "<li><li><a><span class='fa fa-lg fa-comment'></span><b>"+
+			 "<li><li><a><span class='fa fa-comment-o'></span><b>"+
 			 article.commentCount + "</b></a></li>"+
-			 "<li><li><a><span class='fa fa-lg fa-trash'></span></a></li>"+
+			 "<li><li><a><span class='fa fa-trash'></span></a></li>"+
 			 "</ul> </div>  </div> </article> ";
-
+	 
 	
+	 
+	return x;
 };
 userarticle.getMoreButton = function(){
 	return "<div class='showmore-wrapper large-12 small-12 medium-12 columns '>"+
@@ -84,6 +86,12 @@ userarticle.buildArticleWithEvents = function(article) {
 		Ajax.GET(fullArticleAjax);
 
 	});
+	$('.your-articles').on('mouseenter','.user-article-pic',
+	function(){ $(this).addClass('opacity-dark').removeClass('opacity-light'); });
+	$('.your-articles').on('mouseleave','.user-article-pic',
+	function(){ $(this).removeClass('opacity-dark').addClass('opacity-light'); });
+
+
    //initialize articlecount 
 	this.articlecount = article.userModel.articlecount;
 	return articleString;
@@ -100,7 +108,6 @@ userarticle.appendAllArticles = function(articleArray) {
 	log('ADD');
 	articlesString +=this.getMoreButton();
 	$('.your-articles').append(articlesString);
-
 	this.removeMoreButton(userArticlesAjax.next);
 	
 	

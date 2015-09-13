@@ -369,7 +369,7 @@ var NewArticlePost = {
 				  confirmButtonText: "OK",
 				  closeOnConfirm: true	
 				  
-			  })
+			  });
 		 userPage.resetArticle();
 		},
 		error : function(data) {

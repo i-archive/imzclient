@@ -276,6 +276,48 @@ Ajax.PUT  = function(obj){
 };
 
 
+Ajax.DELETE  = function(obj){
+	   log(obj);
+	if(typeof obj.prejax == 'function') obj.prejax();
+	  $.ajax({ 
+		 xhr: function(){
+			   var xhr = new XMLHttpRequest();
+			   xhr.upload.addEventListener("progress",function(event){
+			   if(typeof obj.progress == 'function') obj.progress(event);	 
+			   },false);
+			   
+			  xhr.onloadstart = function (e) {
+					 if(typeof obj.loadStart == 'function') obj.loadStart(e);
+					};
+			xhr.onloadend = function (e) {
+						if(typeof obj.loadEnd == 'function') obj.loadEnd(e);
+					};
+			   return xhr; 
+		 }, 
+     type: "DELETE",
+     dataType: "json",
+     contentType:"application/json",
+     url: obj.url,
+     data: {},
+	   	beforeSend : function(request){
+	   				if(typeof obj.beforeSend == 'function') 
+	   						obj.beforeSend(request);
+	   				}, 
+     success: function(data){ 
+	   				if(typeof obj.success == 'function')
+	   				obj.success(data); 
+     	},  
+     error:function(data){
+ 			if(typeof obj.error == 'function') 
+ 			obj.error(data);
+     },
+	 complete: function( jqxhr,  status){
+	    	if(typeof obj.complete == 'function') 
+    			obj.complete(jqxhr, status);
+	    	
+	    }
+ });
+};
 
 
 var progressBar = {
@@ -386,7 +428,7 @@ var Auth = {
 	  },
 	  logout :function(){
 		  sessionStorage.clear();
-		  location.replace('../../home');
+		  location.replace('./signup');
 	  }
 };
 
