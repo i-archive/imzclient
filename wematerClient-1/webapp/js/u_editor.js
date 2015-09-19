@@ -12,9 +12,7 @@ EditorSync = {
 saveContentBeforeUnload : function(textAreaId,previewDivId){
 		
 	$(textAreaId).on('keyup',function(){
-	//	sessionStorage.setItem("contentValue", Base64.encode($(textAreaId).val()));
 		util.setItemInSession("contentValue", $(textAreaId).val());
-	//	sessionStorage.setItem("htmlContent", Base64.encode($(previewDivId).html()));
 		util.setItemInSession("htmlContent", $(previewDivId).html());
 		
 	});
@@ -72,7 +70,7 @@ userPage.showControls = function(){
 			else $('.editor-head-done span, .editor-head-pre span').hide();
 			
 		});
-}
+};
 
 userPage.showEditorPreview = function(){
 	$('#wmd-input, #wmd-button-bar').on("click",function(){
@@ -81,7 +79,7 @@ userPage.showEditorPreview = function(){
 		}
 	});
 	 
-}
+};
 
 userPage.hideEditorOnResize = function(){
 	userPage.hideEditor_not();
@@ -112,7 +110,7 @@ userPage.hideEditorOnResize = function(){
 		 console.log("resize called  " +currentWidth);  
 	});
 	
-}
+};
 
 
 
@@ -120,12 +118,12 @@ userPage.hideEditorOnResize = function(){
 userPage.clickUpload = function(){
 	$(".editor-upload").on("click",function(){ $("#upload").click(); });
 	
-}
+};
 userPage.setCover = function(id,result){
 	 $(id).css("background-image", "url(" + result + ")");
      $(id).slideDown(600);
 	
-}
+};
 userPage.loadImage = function(file){
 	
 	// Create a new instance of the FileReader
@@ -139,10 +137,10 @@ userPage.loadImage = function(file){
        userPage.setCover("#uploaded-image",this.result);
    
      log(this.result);
-    }
+    };
 
 	
-}
+};
 
 userPage.processUploadImage = function(){
 	
@@ -162,7 +160,7 @@ userPage.processUploadImage = function(){
 		
 	});
 	
-}
+};
 
 userPage.getCoverAfterRefresh = function(){
 	if(sessionStorage.getItem("cover")){
@@ -170,7 +168,7 @@ userPage.getCoverAfterRefresh = function(){
 	 $('h1.cover-title-heading').html(sessionStorage.getItem("cover-title"));
 	}
 	//else $('#uploaded-image').hide();
-}
+};
 
 userPage.manageCoverTitle =  function(){
     autosize($(".cover-title-input"));
@@ -197,7 +195,7 @@ userPage.manageCoverTitle =  function(){
 		
 	});
 	
-}
+};
 userPage.processTags = function(){
     
     
@@ -246,7 +244,7 @@ userPage.processTags = function(){
      });
 
 	
-}
+};
 userPage.openPreview = function(){
 	
 	$(".editor-pre, .editor-head-pre").on("click",function(){
@@ -256,7 +254,7 @@ userPage.openPreview = function(){
 		
 	});
 	
-}
+};
 
 userPage.resetArticle = function(){
 	 var fixedtitle = "Type a title here";
@@ -271,7 +269,7 @@ userPage.resetArticle = function(){
 	 $(".tag-list").html("");
 	
 	
-}
+};
 userPage.setProgressOnButton = function(obj){
 	
 	
@@ -281,7 +279,7 @@ userPage.setProgressOnButton = function(obj){
 		if($(obj).attr('id') !== 'ed-hd'){
 			$('.editor-head-done span').hide();
 		}
-}
+};
 userPage.resetProgressOnButton = function(){
 
 	$('.editor-done ').html("<span class='fa fa-hdd-o fa-border-sleek'></span>")
@@ -292,7 +290,7 @@ userPage.resetProgressOnButton = function(){
 	if($(window).scrollTop() <= 35)
 		$('.editor-head-done span').hide();
 	
-}
+};
 
 userPage.saveArticle = function(){
 	 var fixedtitle = "Base VHlwZSBhIHRpdGxlIGhlcmU=";
@@ -308,22 +306,21 @@ userPage.saveArticle = function(){
 			var htmlcontent = sessionStorage.getItem('htmlContent');
 			var image = sessionStorage.getItem('cover');
 			var tags = util.getArrayFromSession('tag-array');
-			
-			if(Base64.decode(sessionStorage.getItem('cover-title'))
-			   && sessionStorage.getItem('cover-title') !== fixedtitle)
-			var covertitle = sessionStorage.getItem('cover-title');
-			
-			articleobj = new clientArticle(covertitle, image, htmlcontent, tags);
+			var ct = sessionStorage.getItem('cover-title');
+			if(Base64.decode(ct) && ct !== fixedtitle)
+			{
+			var covertitle = ct;
+	      	var articleobj = new clientArticle(covertitle, image, htmlcontent, tags);
 			log(articleobj);
 			NewArticlePost.setData(articleobj);
 			Ajax.POST(NewArticlePost);
 			  
-			
+			}
 			 
 			 
 		});
 	
-}
+};
 
 
 var NewArticlePost = {
@@ -384,21 +381,40 @@ var NewArticlePost = {
 				  text : data.responseJSON.error_message,
 				  type :"error", 
 				  confirmButtonColor: "rgba(120,0,0,0.8)",
-				  confirmButtonText: "let me change it",
+				  confirmButtonText: "let me update it",
 				  closeOnConfirm: true	
 				  
 			  });
 		}
 
-	}
+	};
 //post article end
-
+userPage.checkUserInfo = function(obj){
+	if(obj.name === "" || obj.bio === ""){
+	   swal({
+		  title:  "Incomplete Details",
+		  text: "Please provide your name and bio. you require that to represent your article",
+		  type: "warning",
+		  animation: "slide-from-top",
+		  showCancelButton: false,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "take me to settings",
+		  closeOnConfirm: false,
+		  
+	   },
+	   function(){
+		   location.replace("./setting");
+	   }
+	   );	
+	}
+};
 
 userPage.processUserPage = function(){
 	if (Auth.isLoggedIn()) {
 		log("user logged in");
 		this.init();
 		userheader.processHeader(this.user);
+		this.checkUserInfo(this.user);
 		EditorSync.syncEditorContents();
 		userPage.showControls();
 		userPage.hideEditorOnResize();
@@ -412,7 +428,7 @@ userPage.processUserPage = function(){
 }
 
 	
-}
+};
 
 $(function(){
 	$('.error-box').hide();

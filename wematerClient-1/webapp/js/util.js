@@ -1,4 +1,40 @@
 
+
+function Article(date , name , cover, content , title , url){
+	   this.date = date;
+		this.author = name;
+	   this.cover = cover;
+	   this.content = content;
+	  this.title  = title;
+	  this.url   = url;
+}
+
+function Comment(content){
+	this.content = content;
+}
+function postUser(username,email,password){
+	this.username =(username);
+	this.email =(email);
+	this.password = (password);
+}
+
+
+
+update ={
+	onScroll : function(callback)
+		{
+		  $(window).scroll(function(){
+			 var scrolltop = $(window).scrollTop();
+			 var bottom = $(document).height() - $(window).height();
+			 if(scrolltop == bottom) callback(); 		
+			});	 
+		 
+		}
+};
+
+
+
+
 var Base64 = {
 // private property
 _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
@@ -411,12 +447,21 @@ var Auth = {
 		 isLoggedIn :function(){
 		       var encodedAuth =  sessionStorage.getItem('_auth');
 		       var user = sessionStorage.getItem('_user');
-		        if(encodedAuth ===  null || user === null){
+		        if(encodedAuth ===  null && user === null){
 		        	log('nulls present. login not present');
 		        	sessionStorage.setItem("_lv", Base64.encode(location.href));
 		        	location.replace('./signup');
 		        }
 		        else return true;
+	  },
+	  loggedIn :function(){
+	       var encodedAuth =  sessionStorage.getItem('_auth');
+	       var user = sessionStorage.getItem('_user');
+	        if(encodedAuth  && user ){
+	        	log('Logged in true');
+	        	return true;
+	         }
+	        else return false;
 	  },
 	  ifLoggedIn : function(){
 		    var encodedAuth =  sessionStorage.getItem('_auth');
@@ -516,23 +561,6 @@ util.chunkString = function(str, length) {
 
 
 
-function Article(date , name , cover, content , title , url){
-	   this.date = date;
-		this.author = name;
-	   this.cover = cover;
-	   this.content = content;
-	  this.title  = title;
-	  this.url   = url;
-}
-
-function Comment(content){
-	this.content = content;
-}
-function postUser(username,email,password){
-	this.username = username;
-	this.email = email;
-	this.password = password;
-}
 
 util.showProblemStatement = function(beforeparent,parent){
 	

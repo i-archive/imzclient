@@ -31,11 +31,7 @@
 			<li class=" font-runda-heading li-side"><a
 				href="${pageContext.request.contextPath}/home"><span
 					class="fa fa-lg fa-home"></span> home</a></li>
-			<li class=" font-runda-heading li-side"><a
-				href="${pageContext.request.contextPath}/home/topstories"><span
-					class="fa fa-lg fa-star-o "></span> top stories</a></li>
-
-			<li class="nav-break"></li>
+		
 			<li class=" font-runda-heading li-side"><a
 				href="${pageContext.request.contextPath}/home/explore"><span
 					class="fa fa-lg fa-newspaper-o"></span> explore</a></li>
@@ -69,37 +65,10 @@
         <!-- Your Content -->
 <div id="container">
 
-	<nav class="sub-menu">
-    	<i class="fa fa-2x  fa-bars menu-btn menu " id="menu"></i>
-     
-			<a href="${pageContext.request.contextPath}/home/topstories"
-			 class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
-			    <span class="fa fa-lg fa-star-o"></span>top stories
-			</a>
-			<a href="${pageContext.request.contextPath}/home/explore"
-			    class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
-			      <span class="fa fa-lg fa-newspaper-o" ></span>explore
-			 </a>
-    </nav>
-	
-		<header class="app-header ">
-		
-		<i class="fa fa-2x black-color fa-bars menu-btn menu " id="menu"></i>
-    
-			<a href="${pageContext.request.contextPath}/home/topstories"
-			 class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
-			    <span class="fa fa-lg fa-star-o"></span>top stories
-			</a>
-			<a href="${pageContext.request.contextPath}/home/explore" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
-			      <span class="fa fa-lg fa-newspaper-o" ></span>explore
-			 </a>
-			 
-			
-		</header>
-
 
 <div class="form-wrapper  ">
 
+<span style="margin-top:.6em; margin-left: .6em;"  class="fa fa-2x  fa-bars menu-btn menu " id="menu"></span>
 
            <ul class='tabs no-list-style small-11 large-5 medium-8 small-centered medium-centered large-centered  columns' >
             
@@ -230,23 +199,13 @@
 
 </div><!-- Container END -->
 
- 
-   
-<footer class=" small-12 large-12 medium-12 columns">
-  
-  <i class="fa fa-copyright"></i><em>Copyright 2001-2014 wemater.org - All Rights Reserved </em>
-  
-
-</footer>
 
     
         
        <script src='../../js/modernizr.js'></script>
    	<script src='../../js/jquery-1.11.3.js'></script>
-   	<script src='../../js/jquery-ui.js'></script>
    	<script src='../../js/pushy.min.js'></script>
    	<script src='../../js/util.js'></script>
-   	<script src='../../js/menu.js'></script>
    	<script src='../../js/form.js'></script>
 		
         

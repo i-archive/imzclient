@@ -42,11 +42,6 @@
 				href="${pageContext.request.contextPath}/home"><span
 					class="fa fa-lg fa-home"></span> home</a></li>
 			<li class=" font-runda-heading li-side"><a
-				href="${pageContext.request.contextPath}/home/topstories"><span
-					class="fa fa-lg fa-star-o "></span> top stories</a></li>
-
-			<li class="nav-break"></li>
-			<li class=" font-runda-heading li-side"><a
 				href="${pageContext.request.contextPath}/home/explore"><span
 					class="fa fa-lg fa-newspaper-o"></span> explore</a></li>
 			<li class=" font-runda-heading li-side"><a
@@ -82,10 +77,7 @@
 				href="${pageContext.request.contextPath}/home/user/signup"
 				class=" button-a signUp blue-button fade-border 
 				hide-for-small float-right font-runda-heading-link ">sign in/sign up</a> 
-				 <a href="${pageContext.request.contextPath}/home/topstories"
-				class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
-				<span class="fa fa-lg fa-star-o"></span>top stories
-			</a> <a href="${pageContext.request.contextPath}/home/explore"
+				 <a href="${pageContext.request.contextPath}/home/explore"
 				class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
 				<span class="fa fa-lg fa-newspaper-o"></span>explore
 			</a>
@@ -96,10 +88,7 @@
 					href="${pageContext.request.contextPath}/home/user/signup"
 					class=" button-a signUp fade-border hide-for-small
 					 float-right font-runda-heading-link white-button">sign in/sign up</a> 
-					  <a href="${pageContext.request.contextPath}/home/topstories"
-					class=" header-link fade-border font-runda-heading-link float-right hide-for-small ">
-					<span class="fa fa-lg fa-star-o"></span>top stories
-				</a> <a href="${pageContext.request.contextPath}/home/explore"
+					 <a href="${pageContext.request.contextPath}/home/explore"
 					class=" header-link fade-border font-runda-heading-link float-right hide-for-small ">
 					<span class="fa fa-lg fa-newspaper-o"></span> explore
 				</a>

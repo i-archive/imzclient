@@ -37,11 +37,7 @@
 			<li class=" font-runda-heading li-side"><a
 				href="${pageContext.request.contextPath}/home"><span
 					class="fa fa-lg fa-home"></span> home</a></li>
-			<li class=" font-runda-heading li-side"><a
-				href="${pageContext.request.contextPath}/home/topstories"><span
-					class="fa fa-lg fa-star-o "></span> top stories</a></li>
 
-			<li class="nav-break"></li>
 			<li class=" font-runda-heading li-side"><a
 				href="${pageContext.request.contextPath}/home/explore"><span
 					class="fa fa-lg fa-newspaper-o"></span> explore</a></li>
@@ -79,9 +75,7 @@
     	<a  href="${pageContext.request.contextPath}/home/user/signup"
     	 class=" button-a signUp blue-button fade-border hide-for-small 
     	 float-right font-runda-heading-link " >sign in/sign up</a>
-		<a href="${pageContext.request.contextPath}/home/topstories" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
-		  <span class="fa fa-lg fa-star-o"></span>top stories
-		</a>
+	
 			<a href="${pageContext.request.contextPath}/home/explore" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
 			      <span class="fa fa-lg fa-newspaper-o" ></span>explore
 			 </a>
@@ -92,9 +86,6 @@
         <a  href="${pageContext.request.contextPath}/home/user/signup"
         class=" button-a signUp blue-button fade-border hide-for-small
          float-right font-runda-heading-link ">sign in/sign up</a>
-			<a href="${pageContext.request.contextPath}/home/topstories" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
-			    <span class="fa fa-lg fa-star-o"></span>top stories
-			</a>
 			<a href="${pageContext.request.contextPath}/home/explore" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
 			      <span class="fa fa-lg fa-newspaper-o" ></span>explore
 			 </a>
@@ -104,7 +95,16 @@
 <section class="explore-wrapper  ">
                <!-- article start -->
     <div class="explore-timeline small-12 medium-12  large-8 columns ">  
-          
+             
+             <div class = ' bfre-exp explore-load small-12 large-9 medium-9 columns medium-centered large-centered '>
+     <ul class='no-list-style'>
+          <li class='title'></li><li class='image'>
+          </li><li></li><li></li><li></li><li></li><li></li><li></li> </ul> </div>
+                  
+                   <div class = ' bfre-exp explore-load small-12 large-9 medium-9 columns medium-centered large-centered '>
+     <ul class='no-list-style'>
+          <li class='title'></li><li class='image'>
+          </li><li></li><li></li><li></li><li></li><li></li><li></li> </ul> </div>    
     </div> <!-- end explore timeline -->
      
 <div class="explore-side small-12 medium-12 large-4 columns  ">
@@ -146,7 +146,7 @@
 
  
    
-<footer class=" small-12 large-8 medium-12 columns">
+<footer class=" small-12 large-12 medium-12 columns">
   
   <a><span class="fa fa-copyright"></span>Copyright 2001-2014 wemater.org - All Rights Reserved</a>
   

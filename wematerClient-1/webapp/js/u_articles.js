@@ -16,6 +16,9 @@ userarticle.buildSearch = function() {
 
 };
 userarticle.getArticleString = function(article, a_id, p_id, t_id){
+	var img;
+	if(article.src) img = article.src;
+	else img = article.image;
 	 var x =  "<article id='"+
 			  a_id+"'"+
 			" dt-ref='"+Base64.encode(article.links[0].url)+
@@ -24,8 +27,9 @@ userarticle.getArticleString = function(article, a_id, p_id, t_id){
 			 "<div id='"+
 			 p_id+
 			 "' class='user-article-pic opacity-light' style ='background: "+
-			 "linear-gradient(rgba(0,60, 150, .5), rgba(0, 60, 150, .5), rgba(0, 60, 150, .5)),"+
-			 "url(" + article.image + ") no-repeat 100% 50% ; background-size:cover;'>"+
+			 "linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2)," +
+				" rgba(25, 5, 255, .1)), " +
+			 "url(" + img + ") no-repeat 100% 50% ; background-size:cover;'>"+
 			 " <ul class='no-list-style object-info '>" + " <li>" +
 			 "<a id='" + t_id+
 			 "' class='art-info-title'>"+
@@ -79,6 +83,7 @@ userarticle.buildArticleWithEvents = function(article) {
 	var p_id = "t_" + article.id;
 	
    var articleString = this.getArticleString(article, a_id, p_id, t_id);
+   $('.your-articles').append(articleString);
    
 	$('#' + a_id).hide().slideDown(300);
 	$('.your-articles').on('click', '#' + t_id, function() {  
@@ -86,28 +91,22 @@ userarticle.buildArticleWithEvents = function(article) {
 		Ajax.GET(fullArticleAjax);
 
 	});
-	$('.your-articles').on('mouseenter','.user-article-pic',
-	function(){ $(this).addClass('opacity-dark').removeClass('opacity-light'); });
-	$('.your-articles').on('mouseleave','.user-article-pic',
-	function(){ $(this).removeClass('opacity-dark').addClass('opacity-light'); });
-
-
    //initialize articlecount 
-	this.articlecount = article.userModel.articlecount;
-	return articleString;
+	this.articlecount = article.user.articlecount;
+	
 };
 
 userarticle.appendAllArticles = function(articleArray) {
 	var arr = articleArray;
 	var articlesString = "";
-	for(i=0; i< arr.length; i++){
-		 articlesString += this.buildArticleWithEvents(arr[i]);
-	}
 	log('REM');
 	$('.showmore-wrapper').remove();
 	log('ADD');
-	articlesString +=this.getMoreButton();
-	$('.your-articles').append(articlesString);
+	for(i=0; i< arr.length; i++){
+		this.buildArticleWithEvents(arr[i]);
+	}
+	
+	$('.your-articles').append(this.getMoreButton());
 	this.removeMoreButton(userArticlesAjax.next);
 	
 	

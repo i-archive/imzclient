@@ -123,8 +123,7 @@ setting.buildPassword = function(){
 			"<input id='n-p' type='password' placeholder='new password'>" +
 			"</li>" +
 			"<li class= 'small-12 large-4 medium-4 columns  '>" +
-			"<a class='pass-upd button-a blue-button'> update " +
-			"<i class='fa fa-lock'></i>" +
+			"<a class='pass-upd button-a blue-button'> <i class='fa fa-lock'></i> update password " +
 			"</a></i>" +
 			"</li>" +
 			" </ul> </li>" +
@@ -165,11 +164,14 @@ setting.buildDeleteAccount = function(){
 	 var x4 = "  <li class='li-del'> <h5 class='prof-del'> <i class=' fa fa-trash-o '></i>danger zone</h5> </li>" +
 	 		" <li id='prof-del' class='prof-content medium-12 large-12 small-12'>" +
 	 			"<ul class='user-prof-cont no-list-style medium-12 large-12 small-12  '>" +
-	 		"<li>" +
-	 		"<p class='del'> Note: After deleting your account," +
-	 		" all your articles would stay with us and would be made anonymous" +
+	 		"<li class='small-12 large-8 medium-7  columns'>" +
+	 		"<p class='del'> Note: After deleting your account, all your " +
+	 		"articles would stay with us and would be made anonymous!" +
 	 		" </p>" +
-	 		" <a id='del-ac' class='button-a red-button small-push-3 large-push-5 medium-push-4 center'>delete your account</a>" +
+	 		"</li>" +
+	 		"<li class='small-12 large-4 pull-1  medium-5 columns'>"+
+	 		" <a id='del-ac' class='button-a red-button small-push-3" +
+	 		" large-push-5 medium-push-4 center'><i class='fa fa-trash'></i> delete your account</a>" +
 	 		"</li></ul></li>";
 	 		
 	 $('.user-prof-timeline').append(x4);		

@@ -5,11 +5,9 @@ var MainArticle = {
 	init : function() {
 		this.article = util.getObjectFromSession('_cA');
 		log(this.article);
-		this.user = util.getObjectFromSession('_user');
+		this.user = util.getObjectFromSession('_user');	
 		log(this.user);
 		if(this.article) this.commentcount = this.article.commentCount;
-		
- 
 	},
 	
 	buildtags : function(tags, parentclass) {
@@ -62,16 +60,17 @@ MainArticle.buildCurrentArticle = function(article) {
 								 Base64.decode(article.title) + "</h1>")
 				.css(
 						'background',
-						"linear-gradient(rgba(0, 10, 60, 0.1), rgba(0, 10, 50, .6), " +
-						"rgba(0, 10, 40, .1)), url('"+ article.image + "') no-repeat 100% 50%")
+						"linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2)," +
+						" rgba(25, 5, 255, .1)), " +
+						" url('"+ article.src + "') no-repeat 100% 50%")
 				.css('background-size', "cover").hide().slideDown(1000);
 
 		$('a.article-author').html(
-				"<i class='fa fa-user'></i>" + article.userModel.name);
+				"<i class='fa fa-user'></i>" + article.user.name);
 		$('a.article-date').html(
 				"<i class='fa fa-lg fa-calendar'></i>" + article.date);
 		$('.author-bio').html("<p><i class='fa fa fa-quote-left  fa-pull-left fa-border'></i>" +
-				  article.userModel.bio +  "</p>");
+				  article.user.bio +  "</p>");
 		MainArticle.buildtags(article.tags, "article-tags");
 		MainArticle.updateLikes();
 		MainArticle.processCommentAuthor();
@@ -207,7 +206,7 @@ MainArticle.getTopArticleString = function(article) {
 	var string= "<dt><a  id="+tr_id+" dt-ref='"+Base64.encode(article.links[0].url)+"'>" +
 			Base64.decode(article.title) + "</a></dt>"+
 			 "<dd><a><span class='fa fa-user'></span>"+
-			 article.userModel.name + "</a></dd>";
+			 article.user.name + "</a></dd>";
 	
 	$('.suggest-wrapper').on('click','#'+tr_id,function(){
 		eachTrendingAjax.url =Base64.decode($('#'+tr_id).attr('dt-ref'));
@@ -256,13 +255,13 @@ MainArticle.buildtopArticles = function() {
 MainArticle.updateLikes = function(){
 	log('updated likes');
 	
-	 if(Auth.isLoggedIn() && !this.article.isliked)
-		{
+	 if(Auth.loggedIn() && !this.article.isliked)
+		{ log("like--- logged in . article not liked");
 		   $('.a_like').html("<i class='fa fa-lg fa-heart-o'></i>"+this.article.likes);
 			MainArticle.processLikes();
 		}
-	else  if(Auth.isLoggedIn() && this.article.isliked){
-		
+	else  if(Auth.loggedIn() && this.article.isliked){
+		log("like--- logged in . article liked");
 		$('.a_like').html("<i class='fa fa-lg fa-heart'></i>"+this.article.likes);
 	 }
 	else $('.a_like').html("<i class='fa fa-lg fa-heart'></i>"+this.article.likes);
@@ -322,7 +321,6 @@ var eachTrendingAjax = {
 			progressBar.height = 3;
 			progressBar.position= 'fixed';
 			progressBar.build('body', 0);
-			this.encodedAuth = sessionStorage.getItem('_auth');
 			log("url is:" + this.url);
 		},	
 		progress : function(event) {
@@ -336,9 +334,6 @@ var eachTrendingAjax = {
 		},
 		loadEnd : function(event) {
 			progressBar.end(event);
-		},
-		beforeSend : function(request) {
-			request.setRequestHeader('Authorization', this.encodedAuth);
 		},
 		success : function(obj) {
 			progressBar.success(obj);
@@ -455,7 +450,7 @@ var postcommentAjax = {
 		$('#write-comment-content').val("");
 	},
 	error : function(data) {
-		progressBar.error(data)
+		progressBar.error(data);
 		log(" error post comment");
 		log(data);
 		errorcode.removeNoData();

@@ -17,12 +17,12 @@ formjax.rememberPassword = function(check_id,username_id,password_id){
         }             	   
      });   
      this.processPassword(username_id, password_id);              
-	}
+	};
 
 formjax.processPassword = function(username_id,password_id){
 	 
     $('#'+password_id).on('focus',function(){
-	   log("password focus")
+	   log("password focus");
 	   encodedUsername = Base64.encode($('#'+username_id).val());
 	   var storedpassword = localStorage.getItem(encodedUsername);
 	   if(storedpassword !== null){
@@ -31,7 +31,7 @@ formjax.processPassword = function(username_id,password_id){
 	   
    });
 		
-}
+};
 
 formjax.addPostMessage = function(clazz,msg){
 	var message= "<div class='row '>"+
@@ -44,10 +44,10 @@ formjax.addPostMessage = function(clazz,msg){
 	$(".form-class").prepend(message);
 	$("#register").hide().slideDown();
 	
-	setTimeout( "$('#register').slideUp();", 4000);
+	setTimeout(function(){ $('#register').slideUp();}, 4000);
 	$("#post_msg").on('click', function(){$(this).parent().slideUp(200);});
 	
-}
+};
 
 formjax.addVerifyMessage = function(clazz,msg,iclass){
 	var message= "<div class='row '>"+
@@ -60,19 +60,19 @@ formjax.addVerifyMessage = function(clazz,msg,iclass){
 		
 	$("#verify").remove();
 	$(".form-login-class").prepend(message);
-	setTimeout( "$('#verify').slideUp();", 4000);
+	setTimeout( function(){$('#verify').slideUp();}, 4000);
 	$("#verify-close").on('click', function(){$(this).parent().slideUp(200);});
 	
-}
+};
 
 formjax.processLoginSuccess = function(user,auth){
 	    sessionStorage.setItem('_user',Base64.encode(JSON.stringify(user)));
 	    sessionStorage.setItem('_auth', auth);
 	     var lastVisited = sessionStorage.getItem("_lv");//get the last visited
 	    if( lastVisited !== null) location.replace(Base64.decode(lastVisited));
-	    else location.replace("./articles")
+	    else location.replace("./articles");
 	
-}
+};
 
 var dataValidation = {
 	   inputValue : "",
@@ -98,7 +98,7 @@ var dataValidation = {
     
 	 
 	
-}
+};
 
 //this function assumes that if the page is loaded from a verification link
 //in case the verify param is there, the function would try to verify the user
@@ -130,7 +130,7 @@ var emailVerification = {
 	    	}
 	 }
 				
-}
+};
 
 var loginValidation = {
 		username :"",
@@ -166,7 +166,7 @@ var loginValidation = {
 	 	    	formjax.addVerifyMessage("verify-fail", data.responseJSON.error_message,"fa-exclamation-circle");
 				}
 		
-}
+};
 
 var registerUser = {
 		url : "",
@@ -190,7 +190,7 @@ var registerUser = {
 						 $("#sign_up_button").html("<i class='fa fa-sign-in'></i> sign up");
 					 }
 				 }
-				log("register progeess")
+				log("register progeess");
 				progressBar.progress(event);
 		},
 		loadStart : function(event){
@@ -220,7 +220,7 @@ var registerUser = {
 	    		formjax.addPostMessage("register-fail", error.error_message);
 	    	 }	
 		}
-}
+};
 
 
 /*
@@ -268,7 +268,7 @@ Form.setFailure =function(failureString,input,error){
 	 $(errorId).css("color", Form.failureColor);
 	  $(errorId).css("border-color", Form.failureColor);
 	  $(inputId).css("border", Form.borderFailure); 
-}
+};
 
 Form.setSuccess = function(successString,input,error){
 	var string = formjax.success+successString;
@@ -279,11 +279,11 @@ Form.setSuccess = function(successString,input,error){
 	 $(errorId).css("color", Form.failureColor);
 	  $(errorId).css("color", Form.successColor);
 	  $(errorId).css("border-color", Form.successColor);
-}
+};
 Form.showProgress = function(error){
 	var errorId ="#"+error;
 	$(errorId).html("<i class='fa-circle-o-notch fa-spin'></i> checking..");
-}
+};
 
 Form.validateLoginInputOnkeyUp = function(){
 	
@@ -368,7 +368,7 @@ Form.validateLoginFormOnSubmit = function(){
 			 
 		 }
   });
-}
+};
 
 Form.validateSignupInputOnkeyUp = function(){
 	  
@@ -440,9 +440,9 @@ Form.validateSignupInputOnkeyUp = function(){
 		if(inputId === "password-g"){
 			var password=$('#passwordp').val();
 			var passg=$(_this).val();
-			var IsValidPassword = Form.validatePassword(passg);
+			var ivp = Form.validatePassword(passg);
 			
-			if(IsValidPassword){
+			if(ivp){
 				$("#password-g-error").hide();
 				 $("#password-g-error").css("color", Form.failureColor);
 				  $("#password-g-error").css("border-color", Form.failureColor);
@@ -555,7 +555,7 @@ Form.validateSignupFormOnSubmit = function(){
 	
   });
 	
-}
+};
 Form.toggleLoginSingup = function(){
 
 	
@@ -568,7 +568,7 @@ Form.toggleLoginSingup = function(){
 		$('#sign-up-head, #sign-up-cont').css({'display':"none"});
 		$('#sign-in-head, #sign-in-cont').css({'display':"block"});
 	});
-}
+};
 
 
 
@@ -585,6 +585,6 @@ Form.processLoginForm = function(){
     Ajax.GET(emailVerification);
   
 
-}
+};
 
 $(Form.processLoginForm());

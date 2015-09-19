@@ -14,10 +14,10 @@ var Explore = {
 };
 
 Explore.buildTimeLine = function(){
-	var timeline = "    <div class='explore-timeline small-12 medium-12  large-8 columns '> </div>"
+	var timeline = "    <div class='explore-timeline small-12 medium-12  large-8 columns '> </div>";
 	$('.u-explore-wrapper').prepend(timeline);
     this.isTimeLinePresent = true;
-}
+};
 
 Explore.buildArticle = function( article){
 	      var articleStructure="";
@@ -43,7 +43,7 @@ Explore.buildArticle = function( article){
     		"</div>" +
     		" <div  class='"+ex_id+" explore-article-cover' style = 'background: "
 			+ "linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), rgba(25, 5, 255, .1)),"
-			+ "url(" + article.image + ") no-repeat 100% 50% ; background-size:cover; cursor:pointer;'>" +
+			+ "url(" + article.src + ") no-repeat 100% 50% ; background-size:cover; cursor:pointer;'>" +
     		" </div>" +
     		"<div class='explore-article-content '>" +
     		"<ul class='no-list-style'>" +
@@ -52,7 +52,7 @@ Explore.buildArticle = function( article){
     		"</li>" +
     		"<li>" +
     		" <ul>" +
-    		"<li><a><span class = 'fa fa-user'></span>"+article.userModel.name+"</a></li>" +
+    		"<li><a><span class = 'fa fa-user'></span>"+article.user.name+"</a></li>" +
     		" <li class='continue-read'><a class='"+ex_id+"'>continue reading	</a> </li>" +
     		"</ul>" +
     		"</li>" +
@@ -86,7 +86,7 @@ Explore.getTopArticleString = function(article){
 	var dt_ref =Base64.encode(article.links[0].url);
 	var a_id = 'ar_'+article.id;
 	 var string =  "<dt><a id='"+a_id+"' dt-ref='"+dt_ref+"'>"+Base64.decode(article.title)+"</a></dt>"+
-			"<dd><a><span class='fa fa-user'></span>"+article.userModel.name+"</a></dd>"; 
+			"<dd><a><span class='fa fa-user'></span>"+article.user.name+"</a></dd>"; 
 	 
 	 $(".ul-explore-top").on('click','#'+a_id,function(){
 		 var url = Base64.decode($('#'+a_id).attr('dt-ref'));
