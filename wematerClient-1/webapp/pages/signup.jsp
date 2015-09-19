@@ -31,7 +31,7 @@
 			<li class=" font-runda-heading li-side"><a
 				href="${pageContext.request.contextPath}/home"><span
 					class="fa fa-lg fa-home"></span> home</a></li>
-		
+			
 			<li class=" font-runda-heading li-side"><a
 				href="${pageContext.request.contextPath}/home/explore"><span
 					class="fa fa-lg fa-newspaper-o"></span> explore</a></li>
@@ -65,10 +65,35 @@
         <!-- Your Content -->
 <div id="container">
 
+	<nav class="sub-menu">
+    	<i class="fa fa-2x  fa-bars menu-btn menu " id="menu"></i>
+     <a  href="${pageContext.request.contextPath}/home/user/signup"
+    	 class=" button-a signUp blue-button fade-border hide-for-small 
+    	 float-right font-runda-heading-link " >sign in/sign up</a>
+ 
+			<a href="${pageContext.request.contextPath}/home/explore"
+			    class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
+			      <span class="fa fa-lg fa-newspaper-o" ></span>explore
+			 </a>
+    </nav>
+	
+		<header class="app-header ">
+		
+		<i class="fa fa-2x black-color fa-bars menu-btn menu " id="menu"></i>
+    
+			<a  href="${pageContext.request.contextPath}/home/user/signup"
+    	 class=" button-a signUp blue-button fade-border hide-for-small 
+    	 float-right font-runda-heading-link " >sign in/sign up</a>
+			<a href="${pageContext.request.contextPath}/home/explore" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
+			      <span class="fa fa-lg fa-newspaper-o" ></span>explore
+			 </a>
+			 
+			
+		</header>
+
 
 <div class="form-wrapper  ">
 
-<span style="margin-top:.6em; margin-left: .6em;"  class="fa fa-2x  fa-bars menu-btn menu " id="menu"></span>
 
            <ul class='tabs no-list-style small-11 large-5 medium-8 small-centered medium-centered large-centered  columns' >
             
@@ -101,8 +126,9 @@
 				
 				 <div class="row">
 					           
-					           <div class=" form-button small-12 medium-8 large-7 large-push-2 medium-push-2 columns ">
-					            <a id="login-submit" class="button-a blue-button right">
+					           <div class=" form-button small-12 medium-8 large-7 medium-centered large-centered columns ">
+					            <a id="login-submit" 
+					            class="button-a blue-button small-12 large-12 medium-12 columns">
 					             <i class="fa fa-sign-in"></i> sign in</a>
 					           </div>
 				</div>
@@ -160,8 +186,8 @@
 		</div>
 		           <div class="row">
 			           
-			           <div class=" form-button small-12 medium-8 large-7 large-push-2 medium-push-2 columns ">
-			            <a id="sign_up_button" class=" button-a blue-button right">  
+			           <div class=" form-button small-12 medium-8 large-7 large-centered medium-centered columns ">
+			            <a id="sign_up_button" class=" button-a blue-button small-12 large-12 medium-12 columns">  
 			            <i class="fa fa-sign-in"></i> sign up </a>
 			           </div>
 		</div>
@@ -200,12 +226,14 @@
 </div><!-- Container END -->
 
 
+
     
         
-       <script src='../../js/modernizr.js'></script>
+     <script src='../../js/modernizr.js'></script>
    	<script src='../../js/jquery-1.11.3.js'></script>
    	<script src='../../js/pushy.min.js'></script>
    	<script src='../../js/util.js'></script>
+   	<script src='../../js/menu.js'></script>
    	<script src='../../js/form.js'></script>
 		
         

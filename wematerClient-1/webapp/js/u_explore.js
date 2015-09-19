@@ -25,6 +25,8 @@ Explore.buildArticle = function( article){
 	      var  ex_id = 'ex_'+article.id;
 	      var et_id = 'et_'+article.id;
 	      var  dt_ref = Base64.encode(article.links[0].url);
+	      var h_ref = './article#'+"#"+article.id+article.title;
+	      log('href='+h_ref);
 	      articleStructure = "<article class=' explore-article small-12 medium-12 large-8  large-centered column'>" +
     		"<div class='explore-article-top '>" +
     		" <div class='article-date large-4 small-6 medium-4 columns '>" +
@@ -39,11 +41,11 @@ Explore.buildArticle = function( article){
     		"</div>" +
     		"</div>" +
     		"<div class='explore-article-title '>" +
-    		"<a class = '"+ex_id+"' dt-ref='"+dt_ref+"'>  "+Base64.decode(article.title)+"</a>" +
+    		"<a href='' class = '"+ex_id+"' dt-ref='"+dt_ref+"'>  "+Base64.decode(article.title)+"</a>" +
     		"</div>" +
-    		" <div  class='"+ex_id+" explore-article-cover' style = 'background: "
-			+ "linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), rgba(25, 5, 255, .1)),"
-			+ "url(" + article.src + ") no-repeat 100% 50% ; background-size:cover; cursor:pointer;'>" +
+    		" <div  class='"+ex_id+" explore-article-cover' style = 'background: "+
+			 "linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), rgba(25, 5, 255, .1)),"+
+			 "url(" + article.src + ") no-repeat 100% 50% ; background-size:cover; cursor:pointer;'>" +
     		" </div>" +
     		"<div class='explore-article-content '>" +
     		"<ul class='no-list-style'>" +
@@ -75,13 +77,13 @@ Explore.buildArticle = function( article){
 	    
 	         
 	   
-}
+};
 
 Explore.buildTag = function(index,tag){
 	       
 	      return "<small><a id = exptag_"+index+" >"+tag+"</a></small>";
 	
-}
+};
 Explore.getTopArticleString = function(article){
 	var dt_ref =Base64.encode(article.links[0].url);
 	var a_id = 'ar_'+article.id;
@@ -96,11 +98,11 @@ Explore.getTopArticleString = function(article){
 	 
 	 return string;
 	 
-}
+};
 Explore.attachTopArticles =  function(articleString){
-	  return "<dl class='dl-top-articles'>"+ articleString +"</dl>"
+	  return "<dl class='dl-top-articles'>"+ articleString +"</dl>";
 	
-}
+};
 Explore.createTopArticles = function (articleArray){
 	    
 	var str="";
@@ -112,7 +114,7 @@ Explore.createTopArticles = function (articleArray){
 	   
 	   $(".ul-explore-top").append(finalString);
 	    
-}
+};
 
 
 Explore.createArticles = function(articleArray,buildTimeLine){
@@ -122,9 +124,8 @@ Explore.createArticles = function(articleArray,buildTimeLine){
 	         
 	          for(i = 0; i< articleCount; i++ ){
 	        	   Explore.buildArticle(articleArray[i]);
-	          }
-	  
-   }
+	          }  
+   };
 
 Explore.manageTags = function(tagArray){
 	
@@ -136,7 +137,7 @@ Explore.manageTags = function(tagArray){
 	    
 	    $('.explore-tag-wrapper').append(tagString);  
 	    
-}
+};
 
 Explore.fixExploreSide = function(tag_class ){
       var scrollTop = 0;
@@ -184,7 +185,7 @@ Explore.fixExploreSide = function(tag_class ){
      
    
     
-}
+};
 
 /*
  * get base explore articles
@@ -230,7 +231,7 @@ var exploreArticlsAjax = {
 		Explore.isUpdating = false;
 		log('fail in explore ajax');
 		progressBar.error(data);
-		if(data.status = 404){
+		if(data.status === 404){
 		 Explore.isUpdating = true;
 		}
 
@@ -246,7 +247,7 @@ var exploreArticlsAjax = {
 		
 	}
 
-}
+};
 
 //tredning article
 
@@ -269,7 +270,7 @@ var topArticlsAjax = {
 		errorcode.showNoData("Not able to fetch anything",".suggest-wrapper","fa-frown-o");
 	}
 
-}
+};
 
 //end of like put
 var eachTopAjax = {
@@ -312,7 +313,7 @@ var eachTopAjax = {
 			 log(data);
 		}
 
-	}
+	};
 
 /*
  * end of ajax objects
@@ -350,7 +351,7 @@ Explore.processExplorer = function(){
 	}
     
    
-}
+};
 
 $(Explore.processExplorer());
 /* end of build explore js */

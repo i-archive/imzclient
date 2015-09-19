@@ -20,7 +20,6 @@ public class Home extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("inside the servlet startup");
 		request.getRequestDispatcher("/pages/home.jsp").forward(request, response);
 	}
 

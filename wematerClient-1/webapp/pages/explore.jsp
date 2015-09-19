@@ -25,11 +25,7 @@
     </head>
    
     <body class="home-body" >
-        <noscript >
-  		<div class="small-12 large-12 medium-12 " > <i class="fa fa-exclamation-triangle"></i>Please enable javascript. This site won't work properly</div>
-  		</noscript>
-        <!-- Pushy Menu -->
-        <!-- Pushy Menu -->
+     
 	<nav class="pushy pushy-left nav-side">
 		<ul class="ul-side  no-list-style">
 

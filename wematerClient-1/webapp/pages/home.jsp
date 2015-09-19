@@ -6,9 +6,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Home | wemater.org</title>
-<meta name="description"
-	content="Pushy is an off-canvas navigation menu for your website.">
+<title>Home | website.org</title>
+
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no">
 
@@ -20,10 +19,8 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <!-- jQuery -->
-<script src="js/modernizr.js"></script>
-<script src="js/jquery-1.11.3.js"></script>
-<script src="js/jquery-ui.js"></script>
-<link rel="stylesheet" href="css/jquery-ui.css">
+
+
 </head>
 
 <body class="home-body">
@@ -82,7 +79,7 @@
 				<span class="fa fa-lg fa-newspaper-o"></span>explore
 			</a>
 		</div>
-		<div class="poster-container tinted-image" id="mainNav">
+		<div class="poster-container  " id="mainNav">
 			<header class="app-header index-header">
 				<i class="fa fa-2x  fa-bars menu-btn " id="menu"></i> <a
 					href="${pageContext.request.contextPath}/home/user/signup"
@@ -96,14 +93,14 @@
 			</header>
 
 			<section class="poster  ">
-				<div class="poster-sub-1  ">
-					<h4 class="font-heading-para fa-lg ">wematter.org</h4>
-					<h2 class=" fa-3x font-heading-oswald-para ">freedom of
-						knowldge</h2>
-					<p class="  font-heading-msg ">Easily share your knowledge and
-						learn from others</p>
-					<a class="button-a white-button fade-border" href="#">be part of it</a>
-				</div>
+				  <ul class="no-list-style">
+				  <li><h3>website.org</h3></li>
+				  <li><h1>write for others &#38 learn from others</h1></li>
+				  <li> <h3>support each other and be part of the change!</h3></li>
+				  <li><a class='button-a  white-button' 
+				  href="${pageContext.request.contextPath}/home/user/signup">start writing</a></li>
+				  </ul>
+				 <a class='chev-down'> <i class='  fa fa-2x fa-chevron-down'></i></a>
 			</section>
 		</div>
 
@@ -112,10 +109,10 @@
 
 
 			<!-- card row -->
-			<section class=" card-row">
+			<section id='cards' class=" card-row">
 
 				<!-- trending articles -->
-				<div id="trending-articles" class="headline white-background">
+				<div id="trending-articles" class="headline trending-underline white-background">
 					<h4 class="font-runda-heading fa-lg text-center">trending
 						articles</h4>
 
@@ -124,28 +121,8 @@
 
 
 				<!-- card START -->
-
-				<article class=" card columns small-12 medium-6 large-3 ">
-					<div class="inner-card ">
-						<div id="trendImage" class="inner-image"
-							onclick="location.href='http://www.example.com';"></div>
-						<div class="inner-link-info ">
-							<ul class="no-list-style object-info">
-								<li><a><span class="fa fa-external-link"></span>mannual
-										labrinth of location foccused</a></li>
-								<li><a><span class="fa fa-user"></span>author name</a></li>
-							</ul>
-							<ul class="no-list-style comment-like">
-								<li>
-								<li><a><span class="fa fa-heart"></span><b>100</b></a></li>
-								<li>
-								<li><a><span class="fa fa-comment"></span><b>100</b></a></li>
-
-							</ul>
-
-						</div>
-					</div>
-				</article>
+		        <div class='home-trends '></div> 
+				
 				<!-- card END-->
 
 			</section>
@@ -155,7 +132,7 @@
 
 			<section class="latest-row ">
 
-				<div id="latest-articles" class="headline white-background">
+				<div id="latest-articles" class="headline trending-underline white-background">
 					<h4 class="font-runda-heading fa-lg text-center">latest
 						articles</h4>
 
@@ -163,50 +140,7 @@
 
 
 				<!-- book row starts -->
-				<article
-					class="small-12 large-6 medium-6 columns latestContent-wrapper ">
-					<div class="small-12 large-6 medium-12 latest-img  columns ">
-
-					</div>
-
-
-					<div class="small-12 large-6 medium-12 columns latest-content">
-						<div class="content ">
-							<a class="title font-runda-heading-link"> <span
-								class="fa fa-lg fa-external-link"></span> first new article
-								title here
-							</a>
-
-							<p class="font-heading-para">Few years ago, again the great
-								politcal ambitions of the roiters had raised in the consolium
-								and had reached to the worth to mention. Even because it was not
-								that good ew years ago, again the great politcal ambitions of
-								the roiters had raised in the consolium and had reached to the
-								worth to mention. Even because it was not that good ew years
-								ago, again the great politcal ambitions of the roiters had
-								raised in the consolium and had reached to the worth to mention.
-								Even because it was not that good ew years ago, again the great
-								politcal ambitions of the roiters had raised in the consolium
-								and had reached to the worth to mention. Even because it was not
-								that good ew years ago, again the great politcal ambitions of
-								the roiters had raised in the consolium and had reached to the
-								worth to mention. Even because it was not that good</p>
-						</div>
-						<div class="content-info ">
-							<ul class="no-list-style object-info">
-								<li><a><span class="fa fa-user"></span>name of author</a></li>
-							</ul>
-							<ul class="no-list-style comment-like">
-								<li>
-								<li><a><span class="fa fa-heart"></span><b>100</b></a></li>
-								<li>
-								<li><a><span class="fa fa-comment"></span><b>100</b></a></li>
-
-							</ul>
-
-						</div>
-					</div>
-				</article>
+				<div class='home-latest'></div>
 				<!-- book row ends -->
 
 
@@ -297,9 +231,13 @@
 	</footer>
 
 	<!-- Pushy JS -->
-	<script src="js/pushy.min.js"></script>
+	  <script src='js/modernizr.js'></script>
+   	<script src='js/jquery-1.11.3.js'></script>
+	<script src="js/modernizr.js"></script>
+  	<script src="js/pushy.min.js"></script>
 	<script src="js/util.js"></script>
 	<script src="js/menu.js"></script>
+	<script src="js/home.js"></script>
 
 </body>
 </html>

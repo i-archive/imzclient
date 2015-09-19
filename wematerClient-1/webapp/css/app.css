@@ -137,16 +137,20 @@ border-bottom: 1px solid rgba(0,0,0,0.3);
 	position: relative;
 	margin-top: 1em;
 	
+	
 }
-
+.home-trends{
+	width: 90%;
+	margin-left: 5%;
+}
 
 .trending-underline{
 	
 	margin:0 auto;
 	display:block;
-	width:200px;
+	width:100px;
 	height:1px;
-	border-bottom:3px dotted #333;
+	border-bottom:1px solid rgba(0,0,0,0.3);
 	margin-bottom: 2em;
 }
 .container-g{
@@ -154,7 +158,7 @@ border-bottom: 1px solid rgba(0,0,0,0.3);
 	position: relative;
 	width: 100%;
 	min-height: 100%;
-	background: #e5e5e5;
+	background: #f1f1f1;
 	padding-top: 1em;
 	
 	
@@ -1127,7 +1131,6 @@ ul.tabs{
 ul.tabs li.auth-head{	
    position: relative;
 	list-style: none;
-    margin-top:-2.5em;
     border: 1px solid rgba(0,0,0,.3);
     border-bottom-color: transparent;
     padding-left: 1em;
@@ -1424,7 +1427,8 @@ ul.user-prof-cont li ul li input[type='password']{
 .poster-container{
 	position: relative;
 	width: 100%;
-	height: 500px;
+	height: 570px;
+    background: #333;
 	
 }
 
@@ -1752,15 +1756,21 @@ ul.home-header-ul li{
 .poster{
 	position: relative;
 	width : 100%;
-	height: 400px;
+	height: 510px;
 	background : transparent;
 	text-align: center;
-	padding: 2em;
-	
-	
+	padding: 2em;	
 }
-
-
+.poster ul, .poster ul li h1, .poster ul li h3  {
+	color: rgba(255,255,255,0.7);
+}
+a.chev-down{
+	position: absolute;
+	top: 480px;
+	left: 48%;
+	color: rgba(255,255,255,0.7);
+}
+a.chev-down i:HOVER{ color: rgba(0,255,100,0.5);}
 .poster-sub-1{
 	position: relative;
 	top: 70px;
@@ -1771,12 +1781,7 @@ ul.home-header-ul li{
 
    
 }
-.poster-sub-1 > h4{
-	color: #dbe9ee;
-}
-.poster-sub-1 > h2{
-	color: #dbe9ee;
-}
+
 .clearfix:before, .clearfix:after {
   content: " ";
   display: table; }
@@ -1833,7 +1838,7 @@ ul.home-header-ul li{
   -moz-appearance: none;
   border-radius: 4px;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   
   cursor: pointer;
   font-family: "Oswald";
@@ -1881,7 +1886,7 @@ ul.home-header-ul li{
 
  .blue-button{
   color: #333;
-  border-color: #333;
+  border-color: rgba(0,0,0,0.8);
  }
  .blue-button:HOVER{
     color: white;
@@ -2705,13 +2710,19 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
 /* #### Mobile Phones Portrait ####  480px  */
 @media all and (min-width : 16em) and (max-width: 30em){
-	.hide-for-small{display: none;}
-	.poster-sub-1{
-	     top: 10px;
-	     margin: 0 0 0 0;
-	     padding: 0 0 0 0;
+	a.chev-down{
+	 
+	  left: 43%;
 	}
-	
+	.hide-for-small{display: none;}
+   
+   .poster ul, .poster ul li h1 {
+     font-size: 1.3em;
+   }
+   .poster ul li h3 {
+    font-size: .8em;
+   }
+
 	.card-row{padding:.5em;}
 	.footer em{ font-size: .6em;}
     .your-articles{	margin-left: 0%; }
@@ -2761,10 +2772,14 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
 /* #### Mobile Phones Landscape #### */
 @media  all and (min-width : 30em ) and (max-width: 40em) { 
-	  div.preview-container{
-     padding-left:2em;
-     padding-right:2em;
+	
+	.poster ul, .poster ul li h1 {
+     font-size: 1.6em;
    }
+   .poster ul li h3 {
+    font-size: .9em;
+   }
+	
 	 div.preview-container  p, div.preview-container p em, div.preview-container p strong,
 	  .main-content  p, .main-content p em, .main-content p strong
 	 {
