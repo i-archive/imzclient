@@ -202,16 +202,22 @@ MainArticle.validateCommentOnSubmit = function() {
 
 MainArticle.getTopArticleString = function(article) {
             var tr_id = 'tr_'+article.id;
+            var fp =  article.id+'#'+article.user.username+'#'+article.title;
+  
+    	  var h_href = "./article#"+Base64.encodeObase(fp);
             
-	var string= "<dt><a  id="+tr_id+" dt-ref='"+Base64.encode(article.links[0].url)+"'>" +
+	var string= "<dt><a  id= '"+tr_id+"'>" +
 			Base64.decode(article.title) + "</a></dt>"+
 			 "<dd><a><span class='fa fa-user'></span>"+
 			 article.user.name + "</a></dd>";
 	
 	$('.suggest-wrapper').on('click','#'+tr_id,function(){
-		eachTrendingAjax.url =Base64.decode($('#'+tr_id).attr('dt-ref'));
-
-		Ajax.GET(eachTrendingAjax);
+		$("html, body").animate({ scrollTop: 0 }, 300);
+		setTimeout(function(){
+			location.href = h_href;
+			location.reload();
+		}, 1000);
+		
 		
 		
 	});
@@ -360,50 +366,6 @@ var  mainArticleAjax = {
 	};
 
 
-
-
-
-//end of like put
-var eachTrendingAjax = {
-		url : "",
-		encodedAuth : "",
-		prejax : function() {
-			log("here in each ajax");
-			progressBar.append = false;
-			progressBar.height = 3;
-			progressBar.position= 'fixed';
-			progressBar.build('body', 0);
-			log("url is:" + this.url);
-		},	
-		progress : function(event) {
-			if (event.lengthComputable) {
-				progressBar.set_MIN_MAX_with();
-			}
-			progressBar.progress(event);
-		},
-		loadStart : function(event) {
-			progressBar.initialize(event);
-		},
-		loadEnd : function(event) {
-			progressBar.end(event);
-		},
-		success : function(obj) {
-			progressBar.success(obj);
-			log("trending success each");
-			log(obj);
-			util.storeObjectInSession('_cA', obj);
-			MainArticle.article = obj;
-			MainArticle.commentcount = obj.commentCount;
-			$("html, body").animate({ scrollTop: 0 }, 1000);
-	        MainArticle.buildCurrentArticle(obj);
-			},
-		error : function(data) {
-			progressBar.error(data);
-			log('fail in trending Each');
-			 log(data);
-		}
-
-	};
 
 var getcommentAjax = {
 	url : "",

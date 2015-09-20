@@ -20,14 +20,16 @@ Explore.buildTimeLine = function(){
 };
 
 Explore.buildArticle = function( article){
-	      var articleStructure="";
-	      var articleContent = Base64.decode(article.content);
-	      var  ex_id = 'ex_'+article.id;
-	      var et_id = 'et_'+article.id;
-	      var  dt_ref = Base64.encode(article.links[0].url);
-	      var h_ref = './article#'+"#"+article.id+article.title;
-	      log('href='+h_ref);
-	      articleStructure = "<article class=' explore-article small-12 medium-12 large-8  large-centered column'>" +
+	  
+			var a_id = "a_" + article.id;
+			var t_id = "t_" + article.id;
+			var p_id = "t_" + article.id;
+			var c_id = "c_" + article.id;
+	      var fp =  article.id+'#'+article.user.username+'#'+article.title;
+	    	log(fp);
+	  	 var h_href = "./article#"+Base64.encodeObase(fp);
+	      
+	     var articleStructure = "<article id ='"+a_id+"' class=' explore-article small-12 medium-12 large-8  large-centered column'>" +
     		"<div class='explore-article-top '>" +
     		" <div class='article-date large-4 small-6 medium-4 columns '>" +
     		"<span><i class='fa fa-lg fa-calendar'></i>" +
@@ -41,21 +43,21 @@ Explore.buildArticle = function( article){
     		"</div>" +
     		"</div>" +
     		"<div class='explore-article-title '>" +
-    		"<a href='' class = '"+ex_id+"' dt-ref='"+dt_ref+"'>  "+Base64.decode(article.title)+"</a>" +
+    		"<a  href='"+h_href+"' id = '"+t_id+"'>  "+Base64.decode(article.title)+"</a>" +
     		"</div>" +
-    		" <div  class='"+ex_id+" explore-article-cover' style = 'background: "+
+    		" <div  class='"+p_id+" explore-article-cover' style = 'background: "+
 			 "linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2), rgba(25, 5, 255, .1)),"+
 			 "url(" + article.src + ") no-repeat 100% 50% ; background-size:cover; cursor:pointer;'>" +
     		" </div>" +
     		"<div class='explore-article-content '>" +
     		"<ul class='no-list-style'>" +
     		"<li>" +
-    		"<div class='exp-content'> "+articleContent+" </div>" +
+    		"<div class='exp-content'> "+Base64.decode(article.content)+" </div>" +
     		"</li>" +
     		"<li>" +
     		" <ul>" +
     		"<li><a><span class = 'fa fa-user'></span>"+article.user.name+"</a></li>" +
-    		" <li class='continue-read'><a class='"+ex_id+"'>continue reading	</a> </li>" +
+    		" <li class='continue-read'><a class='"+c_id+"'>continue reading	</a> </li>" +
     		"</ul>" +
     		"</li>" +
     		"</ul>" +
@@ -66,16 +68,9 @@ Explore.buildArticle = function( article){
 	    
 	         $('.explore-timeline').append(articleStructure);   
 	         
-	         $('.explore-timeline').on('click','.'+ex_id,function(){
-	        	 log('article is clicked');
-	        	 var url = Base64.decode($('.'+ex_id).attr('dt-ref'));
-	        	 log('url in each top article  '+url);
-	        	 eachTopAjax.url = url;
-	        	 Ajax.GET(eachTopAjax);
+	         $('.'+p_id+" , "+'.'+c_id).on('click',function(){
+	        	  window.location.href = h_href;
 	         });
-	         
-	    
-	         
 	   
 };
 
@@ -85,15 +80,17 @@ Explore.buildTag = function(index,tag){
 	
 };
 Explore.getTopArticleString = function(article){
-	var dt_ref =Base64.encode(article.links[0].url);
+	
 	var a_id = 'ar_'+article.id;
-	 var string =  "<dt><a id='"+a_id+"' dt-ref='"+dt_ref+"'>"+Base64.decode(article.title)+"</a></dt>"+
+	  var fp =  article.id+'#'+article.user.username+'#'+article.title;
+		log(fp);
+	  var h_href = "./article#"+Base64.encodeObase(fp);
+  
+	 var string =  "<dt><a id='"+a_id+"'>"+Base64.decode(article.title)+"</a></dt>"+
 			"<dd><a><span class='fa fa-user'></span>"+article.user.name+"</a></dd>"; 
 	 
 	 $(".ul-explore-top").on('click','#'+a_id,function(){
-		 var url = Base64.decode($('#'+a_id).attr('dt-ref'));
-		 eachTopAjax.url = url;
-		 Ajax.GET(eachTopAjax);
+		window.location.href = h_href;
 	 });
 	 
 	 return string;
@@ -124,7 +121,8 @@ Explore.createArticles = function(articleArray,buildTimeLine){
 	         
 	          for(i = 0; i< articleCount; i++ ){
 	        	   Explore.buildArticle(articleArray[i]);
-	          }  
+	          }
+	  
    };
 
 Explore.manageTags = function(tagArray){
@@ -239,11 +237,7 @@ var exploreArticlsAjax = {
 	complete : function(jqxhr, status){
 		log('COMPLETE AJAX articles');
 		log(status);
-		log("Response text= "+jqxhr.reponseText);
-		log(jqxhr.getAllResponseHeaders());
-		log("ETAG"+jqxhr.getResponseHeader('Etag'));
-   
-		
+	
 		
 	}
 
@@ -272,59 +266,12 @@ var topArticlsAjax = {
 
 };
 
-//end of like put
-var eachTopAjax = {
-		url : "",
-		encodedAuth : "",
-		prejax : function() {
-			log("here in each ajax");
-			progressBar.append = false;
-			progressBar.height = 3;
-			progressBar.position= 'fixed';
-			progressBar.build('body', 0);
-			this.encodedAuth = sessionStorage.getItem('_auth');
-			log("url is:" + this.url);
-		},	
-		progress : function(event) {
-			if (event.lengthComputable) {
-				progressBar.set_MIN_MAX_with();
-			}
-			progressBar.progress(event);
-		},
-		loadStart : function(event) {
-			progressBar.initialize(event);
-		},
-		loadEnd : function(event) {
-			progressBar.end(event);
-		},
-		beforeSend : function(request) {
-			request.setRequestHeader('Authorization', this.encodedAuth);
-		},
-		success : function(obj) {
-			progressBar.success(obj);
-			log("trending success in explorere");
-			log(obj);
-			util.storeObjectInSession('_cA', obj);
-	         location.href = './article';
-			},
-		error : function(data) {
-			progressBar.error(data);
-			log('fail in trending Each in explorer' );
-			 log(data);
-		}
-
-	};
-
-/*
- * end of ajax objects
- * 
- */
 
 
 Explore.processExplorer = function(){
-	if(Auth.isLoggedIn()){
+
 		this.init();
-		userheader.processHeader(this.user); 
+		userheader.processHeader(this.user);
 		  var tags = ['arminau', 'fifa', 'secular', 'politics', 'insurance', 'media', 'geography',
 		              'secularism', 'media crooks', 'advertisement','insterst','java', 'servlets'];
 		  Explore.manageTags(tags);
@@ -348,10 +295,9 @@ Explore.processExplorer = function(){
 		}); //add at the end
 	    Explore.fixExploreSide(".explore-side");
 		
-	}
+	};
     
    
-};
 
 $(Explore.processExplorer());
 /* end of build explore js */

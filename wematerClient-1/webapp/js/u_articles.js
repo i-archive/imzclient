@@ -15,7 +15,7 @@ userarticle.buildSearch = function() {
 	$('.your-articles').prepend(searchString).hide().fadeIn(1000);
 
 };
-userarticle.getArticleString = function(article, a_id, p_id, t_id){
+userarticle.getArticleString = function(article, a_id, p_id, t_id,href){
 	
 	var img = article.src;
 
@@ -31,7 +31,7 @@ userarticle.getArticleString = function(article, a_id, p_id, t_id){
 				" rgba(25, 5, 255, .1)), " +
 			 "url(" + img + ") no-repeat 100% 50% ; background-size:cover;'>"+
 			 " <ul class='no-list-style object-info '>" + " <li>" +
-			 "<a id='" + t_id+
+			 "<a  href ='"+href+"' id='" + t_id+
 			 "' class='art-info-title'>"+
 			 Base64.decode(article.title) + "</a></li>" + "</ul>"+
 			 "</div>" + 
@@ -81,14 +81,16 @@ userarticle.buildArticleWithEvents = function(article) {
 	var a_id = "a_" + article.id;
 	var t_id = "t_" + article.id;
 	var p_id = "t_" + article.id;
+    var fp =  article.id+'#'+article.user.username+'#'+article.title;
+
+	 var h_href = "./article#"+Base64.encodeObase(fp);
 	
-   var articleString = this.getArticleString(article, a_id, p_id, t_id);
+   var articleString = this.getArticleString(article, a_id, p_id, t_id,h_href);
    $('.your-articles').append(articleString);
    
 	$('#' + a_id).hide().slideDown(300);
 	$('.your-articles').on('click', '#' + t_id, function() {  
-		fullArticleAjax.url = Base64.decode($('#'+a_id).attr('dt-ref'));
-		Ajax.GET(fullArticleAjax);
+		 window.location.href = h_href;
 
 	});
    //initialize articlecount 
@@ -160,54 +162,10 @@ var userArticlesAjax = {
 		if(data.status === errorcode.NOT_FOUND)
 			util.showNoArticles('.your-articles');
 		else util.showProblemStatement(".your-articles", ".user-wrapper");
-	},
-	complete : function(jqxhr, status){
-		log('COMPLETE AJAX articles');
-		log(status);
-		log("Response text= "+jqxhr.reponseText);
-		log(jqxhr.getAllResponseHeaders());
-		log("ETAG"+jqxhr.getResponseHeader('Etag'));
-   	
 	}
 
 };
 
-var fullArticleAjax = {
-	url : "",
-	encodedAuth : "",
-	urlMap : [],
-	prejax : function(){
-		progressBar.build(".body", 0);
-		this.encodedAuth = sessionStorage.getItem('_auth');
-		log("full article ajax in side build :" + this.url);
-	},
-	progress : function(event) {
-		if (event.lengthComputable) {
-			progressBar.set_MIN_MAX_with();
-		}
-		progressBar.progress(event);
-	},
-	loadStart : function(event) {
-		progressBar.initialize(event);
-	},
-	loadEnd : function(event) {
-		progressBar.end(event);
-	},
-	beforeSend : function(request) {
-		request.setRequestHeader('Authorization', this.encodedAuth);
-	},
-	success : function(obj) {
-		progressBar.success(obj);
-		util.storeObjectInSession('_cA', obj);
-		location.href = './article';
-	},
-	error : function(data) {
-		progressBar.error(data);
-		log('fail in full ajax');
-		log(data);
-	}
-
-};
 
 userarticle.processUserArticles = function() {
 	if (Auth.isLoggedIn()) { log("user logged in");

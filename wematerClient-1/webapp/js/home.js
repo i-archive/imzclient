@@ -60,11 +60,10 @@ home.getTrendingArticle = function(article){
 	var a_id = "a_" + article.id;
 	var t_id = "t_" + article.id;
 	var p_id = "t_" + article.id;
-	
+
 	var fp =  article.id+'#'+article.user.username+'#'+article.title;
 	log(fp);
 	var h_href = "./home/user/article#"+Base64.encodeObase(fp);
-	
 	var img = article.src;
 
 	 var x =  "<article id='"+
@@ -81,11 +80,18 @@ home.getTrendingArticle = function(article){
 			 article.likes + "</b></a></li>"+
 			 "<li><li><a><span class='fa fa-comment-o'></span><b>"+
 			 article.commentCount + "</b></a></li>"+
-			 "<li><li><a><span class='fa fa-trash'></span></a></li>"+
+			 "<li>"+
 			 "</ul> </div>  </div> </article> ";
 	   $('.home-trends').append(x);
+	   
 	   $('#'+p_id).on('mouseover', function(){$(this).css('opacity',"0.9");});
 	   $('#'+p_id).on('mouseout', function(){$(this).css('opacity',"0.7");});
+	   
+	   $('#'+a_id).on('click',function(){
+		   window.location.href = h_href;
+	   });
+		
+		
 };
 
 home.getlatestArticle = function(article){
