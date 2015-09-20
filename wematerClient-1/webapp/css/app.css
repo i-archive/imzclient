@@ -1441,15 +1441,11 @@ ul.user-prof-cont li ul li input[type='password']{
 	
 }
 
-
-
 .app-header{
 	top: 0px;
 	padding: .5em 1em .5em 1em;
 	background: #f1f1f1;
-	border-bottom: 1px solid rgba(0,0,0,0.3);
-	
-	
+	border-bottom: 1px solid rgba(0,0,0,0.3);	
 
 }
 
@@ -1763,6 +1759,10 @@ ul.home-header-ul li{
 }
 .poster ul, .poster ul li h1, .poster ul li h3  {
 	color: rgba(255,255,255,0.7);
+	    font-family: 'Oswald', sans-serif;
+	    font-weight: 800;
+	    text-transform: capitalize;
+	    text-shadow: 1px 1px 1px  rgba(240, 255, 200, 0.2);
 }
 a.chev-down{
 	position: absolute;
@@ -1770,7 +1770,21 @@ a.chev-down{
 	left: 48%;
 	color: rgba(255,255,255,0.7);
 }
-a.chev-down i:HOVER{ color: rgba(0,255,100,0.5);}
+a.chev-down-a{
+ position: relative;
+ top: -25px;
+}
+a#chev-footer{
+	top:0;
+}
+a.chev-down i:HOVER,a.chev-down-a:hover{
+	color: rgba(0,255,200,0.5);
+	-webkit-transition: all 0.5s linear;
+       -moz-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+         -o-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+	}
 .poster-sub-1{
 	position: relative;
 	top: 70px;
@@ -2093,10 +2107,7 @@ section.card-row{
 }
 .latest-row{
 	position:relative;
-	width: 90%;
-	margin-left: 5%;
-	
-	
+	width: 100%;
 	height: auto;
 	
 	
@@ -2298,12 +2309,37 @@ h1.preview-title{
 .latestContent-wrapper{
 	margin-top: 1em;
 }
+.columns-a {
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 100%;
+  float: left; }
+
 .latest-img{
-	
-	background:url(../img/3.jpeg);
    height: 500px;
    background-size: cover;
+   margin-left:0px;
+	margin-right: 0px;
+	padding: 0px;
+	background: #222;
 }
+
+.latest-img  img{
+	height: 100%;
+	width: 100%;
+	display: block;
+	cursor: pointer;
+	opacity:0.9;
+	-webkit-transition: all 0.5s linear;
+       -moz-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+         -o-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+}
+
+
+
+
 .latest-content{
 	
 	background: white;
@@ -2342,11 +2378,29 @@ h1.preview-title{
 
 .content a{
 	color: #333;
+	padding-right:.3em;
 	transition: color 300ms ease-out;
 	cursor: pointer;
-	
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+	padding-left: .3em;
+	display: block;	
 }
-
+ .latest-content{
+ padding: .2em;
+ }
+.latest-content  h1, .latest-content  h2,
+ .latest-content  h3, .latest-content  h4,
+  .latest-content  h5{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  }  
+  .latest-content blockquote{
+   padding: 0px;
+   border-width: 0px;
+   
+  }
 .content a:HOVER , .content a:focus{
 	
 	color: #1481BA;
@@ -2399,9 +2453,9 @@ h1.preview-title{
  min-height: 10%;
  position: relative;
  top: 60%;
- font-family: 'Coda', cursive;
+ font-family: inherit;
  line-height: 1.1em;
- font-size: 1.2em;
+ font-size: 1.1em;
  }
  
  ul.comment-like li{ 
@@ -2423,8 +2477,7 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
  }
  
  .inner-link-info ul.object-info li a, .content-info ul.object-info li a{
-  font-variant: small-caps;
-  font-weight:bold;
+  font-family: 'Oswald', sans-serif;
   font-size: .8em;
  }
  
@@ -2438,7 +2491,8 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
  
  article.user-article{
    padding: .5em .5em .5em .5em;
-   height: 300px;
+   min-height: 390px;
+   height:auto;	
    display: block;
    height: auto;
    cursor: pointer;
@@ -2471,10 +2525,41 @@ ul.object-info  li > a:hover, ul.comment-like > li a:hover{
   height: 330px;
   border-top-left-radius:2px;
   border-top-right-radius:2px;
+  background: #222;
   
   }
+  
+  
   .user-article-pic:HOVER{
     cursor: pointer;
+  }
+  .user-article-pic img{
+  display: block;
+  height: 100%;
+  width: 100%;
+  	opacity:0.7;
+  	 -webkit-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+        -ms-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+  }
+  
+  .user-article-pic h5  {
+   	font-family: "Oswald",sans-serif;
+	font-style: normal;
+	font-weight: 800;
+	color: rgba(255, 255, 255, 0.9);
+	text-transform: capitalize;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  	margin-left:.6em;
+  	position: absolute; 
+   	top: 60%;  
+   	width: 90%; 
+  
+  }
+  .user-article-pic h5 a{
+    color: rgba(255, 255, 255, 0.9);
   }
   .user-article-pic, .user-article-pic-list{
   background-size : contain;

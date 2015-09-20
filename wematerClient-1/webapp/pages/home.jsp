@@ -30,6 +30,8 @@
 			This site won't work properly
 		</div>
 	</noscript>
+	
+	
 	<!-- Pushy Menu -->
 	<nav class="pushy pushy-left nav-side">
 		<ul class="ul-side  no-list-style">
@@ -100,7 +102,7 @@
 				  <li><a class='button-a  white-button' 
 				  href="${pageContext.request.contextPath}/home/user/signup">start writing</a></li>
 				  </ul>
-				 <a class='chev-down'> <i class='  fa fa-2x fa-chevron-down'></i></a>
+				 <a class='chev-down'> <i class='  fa fa-lg fa-chevron-down'></i></a>
 			</section>
 		</div>
 
@@ -113,8 +115,8 @@
 
 				<!-- trending articles -->
 				<div id="trending-articles" class="headline trending-underline white-background">
-					<h4 class="font-runda-heading fa-lg text-center">trending
-						articles</h4>
+					<h4 class="font-runda-heading fa-lg text-center">trending articles</h4>
+					 <a id='chev1' class='chev-down-a right'> <i  class='  fa fa-lg fa-chevron-down'></i></a>	
 
 				</div>
 
@@ -130,12 +132,11 @@
 
 
 
-			<section class="latest-row ">
+			<section id='lat-cards' class="latest-row ">
 
 				<div id="latest-articles" class="headline trending-underline white-background">
-					<h4 class="font-runda-heading fa-lg text-center">latest
-						articles</h4>
-
+					<h4 class="font-runda-heading fa-lg text-center">latest articles</h4>
+				 <a id='chev2' class='chev-down-a right'> <i  class='  fa fa-lg fa-chevron-down'></i></a>	
 				</div>
 
 
@@ -147,11 +148,11 @@
 			</section>
 			<!-- latest article end -->
 
-			<section class="featured-article ">
+			<section id='fea-cards' class="featured-article ">
 
-				<div id="quick-articles" class="headline white-background">
+				<div id="quick-articles" class="headline trending-underline white-background">
 					<h4 class="font-runda-heading fa-lg text-center">quick reads</h4>
-
+					 <a id='chev3' class='chev-down-a right'> <i  class='  fa fa-lg fa-chevron-down'></i></a>	
 				</div>
 
 				<!-- newspaper start  -->
@@ -222,8 +223,8 @@
 
 
 
-	<footer class=" small-12 large-12 medium-12 columns">
-
+	<footer id='footer' class=" small-12 large-12 medium-12 columns">
+<a id='chev-footer' class='chev-down-a right'> <i  class='  fa fa-2x fa-chevron-circle-up'></i></a>	
 		<i class="fa fa-copyright"></i><em>Copyright 2001-2014
 			wemater.org - All Rights Reserved </em>
 

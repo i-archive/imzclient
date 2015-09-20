@@ -311,6 +311,58 @@ var putLikes = {
 	        
 		}
 	};
+
+
+
+var  mainArticleAjax = {
+		url : "",
+		role: "",
+		progress: true,
+		prejax : function() {
+			var h_ref = window.location.href;
+			var arr = Base64.decode(h_ref.split('#')[1]).split("#");
+			var a_id = arr[0];
+			var username = arr[1];
+            this.url = Ajax.AllUserURL+"/"+username+"/articles/"+a_id;
+			log("URL part in window= "+arr);
+			log("url is:" + this.url);
+			progressBar.append = false;
+			progressBar.height = 3;
+			progressBar.position= 'fixed';
+			progressBar.build('body', 0);
+		},
+		progress : function(event) {
+			if (event.lengthComputable) {
+				progressBar.set_MIN_MAX_with();
+			}
+			progressBar.progress(event);
+		},
+		loadStart : function(event) {
+			progressBar.initialize(event);
+		},
+		loadEnd : function(event) {
+			progressBar.end(event);
+		},
+		success : function(obj) {
+			progressBar.success(obj);
+			log("success in mainarticle");
+			log(obj); 
+			util.storeObjectInSession('_cA', obj);
+			this.progress = false;
+		},
+		error : function(data) {
+			progressBar.error(data);
+			this.progress = false;
+			log('fail in mainarticle');
+			log(data);
+		}
+
+	};
+
+
+
+
+
 //end of like put
 var eachTrendingAjax = {
 		url : "",
@@ -501,20 +553,35 @@ var trendingArticlsAjax = {
 
 };
 
-
-
-MainArticle.processAllArticle = function() {
-
-	//call function when u have data
-    log("hree article "+this.article);
+MainArticle.preprocess = function(){
 	MainArticle.init();
-	log("sometime back "+ this.article);
 	MainArticle.buildCurrentArticle(this.article);
 	MainArticle.activeCommentLength();
 	MainArticle.showHideComments();
 	MainArticle.getMoreComments();
 	MainArticle.validateCommentOnSubmit();
 	MainArticle.buildtopArticles();
+};
+
+MainArticle.processAllArticle = function() {
+
+     if(util.isUrlPresent()){
+    	 Ajax.GET(mainArticleAjax);
+    	 var t = setInterval(function(){
+    		 log('plling in main article');
+    		 if(mainArticleAjax.progress === false){
+    			
+    			 MainArticle.preprocess();
+    			 clearInterval(t);
+    		 }
+    		 
+    	 }, 5);
+    	 
+     }
+     else MainArticle.preprocess();
+	  
+
+    
 	
 
 };

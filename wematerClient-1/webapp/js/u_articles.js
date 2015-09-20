@@ -16,9 +16,9 @@ userarticle.buildSearch = function() {
 
 };
 userarticle.getArticleString = function(article, a_id, p_id, t_id){
-	var img;
-	if(article.src) img = article.src;
-	else img = article.image;
+	
+	var img = article.src;
+
 	 var x =  "<article id='"+
 			  a_id+"'"+
 			" dt-ref='"+Base64.encode(article.links[0].url)+
