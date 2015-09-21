@@ -114,7 +114,7 @@
 			<section id='cards' class=" card-row">
 
 				<!-- trending articles -->
-				<div id="trending-articles" class="headline trending-underline white-background">
+				<div id="trending-articles" class="headline  white-background">
 					<h4 class="font-runda-heading fa-lg text-center">trending articles</h4>
 					 <a id='chev1' class='chev-down-a right'> <i  class='  fa fa-lg fa-chevron-down'></i></a>	
 
@@ -132,9 +132,9 @@
 
 
 
-			<section id='lat-cards' class="latest-row ">
+			<section id='lat-cards' class="latest-row  ">
 
-				<div id="latest-articles" class="headline trending-underline white-background">
+				<div id="latest-articles" class="headline  white-background">
 					<h4 class="font-runda-heading fa-lg text-center">latest articles</h4>
 				 <a id='chev2' class='chev-down-a right'> <i  class='  fa fa-lg fa-chevron-down'></i></a>	
 				</div>
@@ -150,53 +150,16 @@
 
 			<section id='fea-cards' class="featured-article ">
 
-				<div id="quick-articles" class="headline trending-underline white-background">
+				<div id="quick-articles" class="headline  white-background">
 					<h4 class="font-runda-heading fa-lg text-center">quick reads</h4>
 					 <a id='chev3' class='chev-down-a right'> <i  class='  fa fa-lg fa-chevron-down'></i></a>	
 				</div>
 
-				<!-- newspaper start  -->
-				<article
-					class="small-12 large-3 medium-5 columns  left feature-content">
-					<div class="content-news ">
-
-						<p class="font-heading-para">Few years ago, again the great
-							politcal ambitions of the roiters had raised in the consolium and
-							had reached to the worth to mention. Even because it was not that
-							good ew years ago, again the great politcal ambitions of the
-							roiters had raised in the consolium and had reached to the worth
-							to mention. Even because it was not that goodFew years ago, again
-							the great politcal ambitions of the roiters had raised in the
-							consolium and had reached to the worth to mention. Even because
-							it was not that good ew years ago, again the great politcal
-							ambitions of the roiters had raised in the consolium and had
-							reached to the worth to mention. Even because it was not that
-							good ew years ago, again the great politcal ambitions of the
-							roiters had raised in the consolium and had reached to the worth
-							to mention. Even because it was not that good ew years ago, again
-							the great politcal ambitions of the roiters had raised in the
-							consolium and had reached to the worth to mention. Even because
-							it was not that good ew years ago, again the great politcal
-							ambitions of the roiters had raised in the consolium and had
-							reached to the worth to mention. Even because it was not that
-							good</p>
-					</div>
-					<div class="content-info ">
-						<ul class="no-list-style object-info">
-							<li><a><span class="fa fa-external-link"></span>big
-									title here with few words</a></li>
-							<li><a><span class="fa fa-user"></span>author name</a></li>
-						</ul>
-						<ul class="no-list-style comment-like">
-							<li>
-							<li><a><span class="fa fa-heart"></span><b>100</b></a></li>
-							<li>
-							<li><a><span class="fa fa-comment"></span><b>100</b></a></li>
-
-						</ul>
-
-					</div>
-				</article>
+				<!-- read start  -->
+				<div class='home-read'>
+				</div>
+				<!-- read end -->
+					
 
 
 			</section>
@@ -211,7 +174,8 @@
 					<input type="search" placeholder="type your email" />
 				</div>
 				<div class="small-12 large-2 medium-4 columns">
-					<a class="button-a blue-button fade-border">subscribe</a>
+					<a class="button-a small-12 blue-button fade-border">subscribe</a>
+				
 				</div>
 			</section>
 

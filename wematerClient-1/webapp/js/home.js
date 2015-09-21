@@ -74,6 +74,7 @@ home.getTrendingArticle = function(article){
 			 "<div  class='user-article-pic '  >"+
 		      "<img id='"+ p_id+  "' src ='"+img+"'/>" +
 		      "<h5><a href = '"+h_href+"'>"+Base64.decode(article.title)+"</a></h5>"+
+		      "<span class='author'><a >"+article.user.name+"</a></span>"+
 			 "<div class='user-article-info '>"+
 			 "<ul class='no-list-style comment-like '>"+
 			 "<li><li><a><span class='fa fa-heart-o'></span><b>"+
@@ -84,8 +85,8 @@ home.getTrendingArticle = function(article){
 			 "</ul> </div>  </div> </article> ";
 	   $('.home-trends').append(x);
 	   
-	   $('#'+p_id).on('mouseover', function(){$(this).css('opacity',"0.9");});
-	   $('#'+p_id).on('mouseout', function(){$(this).css('opacity',"0.7");});
+	   $('#'+p_id).on('mouseover', function(){$(this).css('opacity',"0.5");});
+	   $('#'+p_id).on('mouseout', function(){$(this).css('opacity',"0.8");});
 	   
 	   $('#'+a_id).on('click',function(){
 		   window.location.href = h_href;
@@ -102,7 +103,7 @@ home.getlatestArticle = function(article){
 	
 	var img = article.src;
 	
-	var x = "<article id='"+a_id+"' class='small-12 large-6 medium-6 columns latestContent-wrapper '>"+
+	var x = "<article id='"+a_id+"' class='small-12 large-6 medium-6 columns left latestContent-wrapper '>"+
 			"<div class='small-12 large-6 medium-12 latest-img columns-a '>" +
 			"<img id ='"+p_id+"' src='"+article.src+"' >" +
 			"</div>" +
@@ -112,7 +113,7 @@ home.getlatestArticle = function(article){
 			"<span 	class='fa fa-lg fa-external-link'></span>" +
 			Base64.decode(article.title) +
 			"</a>" +
-			"<div class=' latest-content font-heading-para'>" +
+			"<div class=' latest-content font-heading-para hide-for-small'>" +
 			Base64.decode(article.content)+
 			"</div>" +
 			"</div>" +
@@ -139,6 +140,38 @@ home.getlatestArticle = function(article){
 	   $('#'+p_id).on('mouseout', function(){$(this).css('opacity',"0.9");});
 };
  
+home.getReads = function(article){
+	var a_id = "ra_" + article.id;
+	var p_id = "rp_" + article.id;
+    var fp =  article.id+'#'+article.user.username+'#'+article.title;
+   log('inside reads');
+	 var h_href = "./home/user/article#"+Base64.encodeObase(fp);
+	 
+	var j= "<article id='"+a_id+"' class='small-12 large-10 medium-10  columns-a feature-content'>" +
+			"<img id='"+p_id+"' src ='"+article.src+"'>" +
+			"<span class='author'><a ><i class='fa fa-user'></i>"+article.user.name+"</a></span>" +
+			"<span class='title'><a href='"+h_href+"'> "+Base64.decode(article.title)+"</a></span>" +
+			" <span class='date hide-for-small'><i class='fa fa-calendar'></i>"+article.date+"</span>" +
+			"</article>";
+	
+	$('.home-read').append(j);
+	$('#'+p_id).on('mouseover', function(){$(this).css('opacity',"0.2");});
+	   $('#'+p_id).on('mouseout', function(){$(this).css('opacity',"0.4");});
+	
+	 $('#'+a_id).on('click',function(){
+		   window.location.href = h_href;
+	   });
+		
+	
+		
+};
+home.appendreadArticles = function(arr){
+	
+	for(i=0;i<arr.length ; i++){
+		var article = arr[i];
+		this.getReads(article);
+	}
+};
 
 home.appendlatestarticles = function(arr){
 	
@@ -159,7 +192,7 @@ home.appendTrendingarticles = function(arr){
 var  publicAjax = {
 		url : "",
 		role: "",
-		isInProgress: false,
+		counter: 1,
 		init : function( role){
 			this.role = role;
 		},
@@ -169,19 +202,21 @@ var  publicAjax = {
 			log("url is:" + this.url);
 		},
 		success : function(obj) {
-			log("success in trending");
+			log("success in "+this.role);
 			log(obj); 
-			this.url="";
-	       this.isInProgress = false;
 	       this.performSuccess(this.role, obj);
 
 		},
 		error : function(data) {
-			this.isInProgress = false;
+			
 			log('fail in trending');
 			log(data);
+		},
+		complete: function(jqXHR, status){
+			this.counter++;
 			this.url="";
 		}
+		
 
 	};
 
@@ -194,6 +229,9 @@ publicAjax.performSuccess = function(role, arrayObj){
 	case 'latest':
 		home.appendlatestarticles(arrayObj);
 	  break;
+	case 'reads':
+		home.appendreadArticles(arrayObj);
+	  break;  
 	}
 	
 };
@@ -203,16 +241,27 @@ home.processHome = function(){
 	this.bubbleChew();
 	publicAjax.init("trending");
 	Ajax.GET(publicAjax);
-	 var timer = setInterval(function(){
-		log('polling n interval isprogress='+publicAjax.isInProgress);
-		if(publicAjax.isInProgress === false)
+	 var t1 = setInterval(function(){
+		log('polling n interval isprogress='+publicAjax.counter);
+		if(publicAjax.counter === 2)
 		{
 		   publicAjax.init("latest");
 		   Ajax.GET(publicAjax);  
-		   clearInterval(timer);
+		   clearInterval(t1);
 		}
-		
+	
 	}, 500);
+	 
+	 var t2 = setInterval(function(){
+			log('polling n interval isprogress='+publicAjax.counter);
+			if(publicAjax.counter === 3)
+			{
+			   publicAjax.init("reads");
+			   Ajax.GET(publicAjax);  
+			   clearInterval(t2);
+			}
+		
+		}, 500); 
 
 	
 };

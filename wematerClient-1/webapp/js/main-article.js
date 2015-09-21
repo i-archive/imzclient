@@ -323,7 +323,7 @@ var putLikes = {
 var  mainArticleAjax = {
 		url : "",
 		role: "",
-		progress: true,
+		isProgress: true,
 		prejax : function() {
 			var h_ref = window.location.href;
 			var arr = Base64.decode(h_ref.split('#')[1]).split("#");
@@ -354,11 +354,11 @@ var  mainArticleAjax = {
 			log("success in mainarticle");
 			log(obj); 
 			util.storeObjectInSession('_cA', obj);
-			this.progress = false;
+			this.isProgress = false;
 		},
 		error : function(data) {
 			progressBar.error(data);
-			this.progress = false;
+			this.isProgress = false;
 			log('fail in mainarticle');
 			log(data);
 		}
@@ -531,7 +531,7 @@ MainArticle.processAllArticle = function() {
     	 Ajax.GET(mainArticleAjax);
     	 var t = setInterval(function(){
     		 log('plling in main article');
-    		 if(mainArticleAjax.progress === false){
+    		 if(mainArticleAjax.isProgress === false){
     			
     			 MainArticle.preprocess();
     			 clearInterval(t);
