@@ -16,6 +16,7 @@
 		       	<link rel='stylesheet' href='../../css/foundation.css'>
         		<link rel='stylesheet' href='../../fo/css/font-awesome.min.css'>
 		        <link rel='stylesheet' href='../../css/jquery-ui.css'>
+		        <script src='../../js/modernizr.js'></script>
     </head>
    
     <body class='article-body' >
@@ -88,30 +89,46 @@
 			
 		</header>
 
-<section class='article-wrapper  '>
+<section class='article-wrapper '>
 
-  <div class='main-article-cover small-12 large-12 medium-12 columns'> </div>
+  <div class='main-article-cover small-12 large-11 medium-11 medium-centered large-centered columns '>  </div>
     
 <div class='main-article-content-wrapper small-12 large-12 medium-12 columns '>
-     <div class='main-top-bar small-12 large-12 medium-12  columns'>
-        <a class='article-date'></a>
+    	
+     <div class=' fullRow white-bg  '> 
+     
+     <div class=' main-content small-12 large-8 medium-8  columns  '></div>
+     <div class='main-top-bar small-12 large-4 medium-4  columns '>
+       <div class=' small-12 large-12 medium-12  bcEnd columns '>
+         <div class=' article-date small-12 large-12 medium-12  columns '></div>
+          </div>
+       <div class='small-6 large-6 medium-6  columns '>
+       <div class='small-12 large-12 medium-12  columns '>bookmark</div>
+         <div class='small-12 large-12 medium-12  columns '>
+         <a href="#" data-reveal-id="bookmarkId"><i class='fa fa-lg fa-bookmark'></i></a>
+         </div>
+       
+       </div>
+       <div class='small-6 large-6 medium-6 bcEnd columns '>
+       <div class='small-12 large-12 medium-12   columns '>share</div>
+         <div class='small-12 large-12 medium-12  columns '>
+         <a href="#" data-reveal-id="shareId"><i class='fa fa-lg fa-share-alt-square'></i></a>
+         
+         </div>
+       </div>
+       <div class='text-left small-12 large-12 medium-12 bcEnd bcBottom columns '>
+       <span id='likeCount'></span> <a class='a_like right'></a></div>
+     
+     <!--    <a class='a_like button-a-trim  black-button'></a>
         <a class='bookmark' title='bookmark'><i class='fa fa-lg fa-bookmark-o'></i></a>
-	   <a class='share' title='share'><i class='fa fa-lg fa-share-alt'></i></a>
-	   <a class='a_like '> </a>
-     </div>	
+	   <a class='share ' title='share'><i class='fa fa-lg fa-share-alt'></i></a>
+	   
+	   <a class='article-date'></a>
+	    -->
+     </div>
+    
      
-     
-    <div class=' main-left small-12 large-1 medium-12 columns '> </div>
-    <div class=' main-content small-12 large-8 medium-12 columns  '></div>
-             
-     <div class=' main-right small-12 large-3 medium-12 columns '>
-				  <div class='adv small-12 large-12 medium-12'>
-				  <h1>do us a favour, add this domain to adblock whitelist</h1>
-				  </div>
-	</div>
-             
-	            
-	<div class=' main-article-info small-12 large-12 medium-12 columns  '>
+     	<div class=' main-article-info small-12 large-12 medium-12 columns  '>
 	     <div class=' main-info small-12 large-5 medium-4 columns '>
 		       <div class=' small-12 large-12 medium-12 '>
 			      <a class='article-author'></a>
@@ -121,13 +138,12 @@
 		 </div>
 		               
 		 <div class=' article-tags small-12 large-7 medium-8 columns '></div>
-</div>
-	       
-
-	         
-         
-
-
+	</div>
+      </div>
+ 
+    
+             
+    <!-- main article content and top articles -->
    
 <div class=' main-comments-wrapper small-12 large-6 medium-6 columns '> 
 		      <div class='comment-but-wrapper small-12 large-12 medium-12 '>
@@ -145,7 +161,7 @@
    
 		   <a class='comment-author'></a>
 	       <textarea id='write-comment-content' placeholder='type the comment here'></textarea>
-	       <span id='comment-content-error' class=' error-box'>something error</span>  
+	       <span id='comment-content-error' class=' error-box'>loading</span>  
 	       <a id='post-comment' class='button-a blue-button right'>  </a>  
      </div>
         
@@ -171,7 +187,30 @@
 
 </div><!-- Container END -->
 
- 
+  
+<!--  modals for different operations -->
+<div id="shareId" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h5 id="modalTitle">Share this article.</h5>
+  <div class="row ">
+  <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-facebook-official"></i></div>
+  <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-google-plus"></i></div>
+    <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-get-pocket"></i></div>  
+    <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-twiiter"></i></div>
+  <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-whatsapp"></i></div>
+    <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-medium"></i></div> 
+  
+  </div>
+  
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+<div id="bookmarkId" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">bookmark this article</h2>
+  <p class="lead">Your couch.  It is mine.</p>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<!-- modals for different operations //END -->
    
 <footer class=' small-12 large-12 medium-12 columns'>
   
@@ -179,17 +218,18 @@
   
 
 </footer>
-    
-	<script src='../../js/modernizr.js'></script>
-	<script src='../../js/jquery-1.11.3.js'></script>
-	<script src='../../js/jquery-ui.js'></script>
+    <script src='../../js/jquery-1.11.3.js'></script>
+	<script src="../../js/fastclick.js"></script>
+    <script src="../../js/foundation.min.js"></script>
 	<script src='../../js/pushy.min.js'></script>
 	<script src='../../js/util.js'></script>
 	<script src='../../js/menu.js'></script>
 	<script src="../../js/autosize.min.js"></script>
 	<script src='../../js/main-article.js'></script>
 
-
+<script>
+      $(document).foundation();
+  </script>
 </body>
 </html>
     

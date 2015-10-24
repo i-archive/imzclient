@@ -585,7 +585,9 @@ util.getItemFromSession = function(key){
 		return Base64.decode(sessionStorage.getItem(key));
 };
 
-
+util.getRandomNumber = function(min,max){
+	return  Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 util.getVerifyQueryString = function(){
 

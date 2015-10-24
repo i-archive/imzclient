@@ -155,6 +155,7 @@ var userArticlesAjax = {
 
 	},
 	error : function(data) {
+		progressBar.error(data);
 		log('fail');
 		log(data);
 		errorcode.append = true;

@@ -5,11 +5,13 @@ $(function(){
 	
 util.activateTooltip();
 
-var pathname=$(location).attr("pathname");
+var pathname= location.href;
+log(pathname);
 switch(pathname){
-case "/home/sheikh/Liberary/Dropbox/development/eclipse-workspace-3/landpage/web/pages/u_editor.html":
+case './home':
 		  userPage.processUserPage();
-	      log("this is user editor page");
+	      log("home");
+	      
   break;
 case "/home/sheikh/Liberary/Dropbox/development/eclipse-workspace-3/landpage/web/pages/preview.html":
 	menu.scrollDivShow();  

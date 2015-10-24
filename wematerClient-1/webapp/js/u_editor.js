@@ -46,7 +46,7 @@ userPage={
 			this.auth = util.getItemFromSession('_auth');
 		},
 		minViewPortWidth : 768,	
-		maxtags : 5,
+		MAX_TAGS : 5,
 		hideEditor_not : function(){
             util.showNoEditor('.editor-not');
 			$('.editor-not').hide();}
@@ -205,10 +205,10 @@ userPage.processTags = function(){
     $('input.tags').on('keyup',function(){
     	$("#tag-error").hide();//hide the error box
          var tagArray=[];
- 	     tagArray=$(this).val().split(/[,]+/); //split the string in tokens and store in array
+ 	     tagArray=$(this).val().split(/[ ,]+/); //split the string in tokens and store in array
  	 	 var count = tagArray.length;
  	 	 
- 	 	 if(count <= userPage.maxtags  ){
+ 	 	 if(count <= userPage.MAX_TAGS ){
  	 		var tagString="";
  	 		
  	 	 	for(i=0; i< count; i++){

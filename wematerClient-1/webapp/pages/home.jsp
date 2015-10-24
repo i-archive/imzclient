@@ -16,8 +16,7 @@
 <link rel="stylesheet" href="css/app.css">
 <link rel="stylesheet" href="css/app-font.css">
 <link rel="stylesheet" href="css/foundation.css">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <!-- jQuery -->
 
 
@@ -97,7 +96,7 @@
 			<section class="poster  ">
 				  <ul class="no-list-style">
 				  <li><h3>website.org</h3></li>
-				  <li><h1>write for others &#38 learn from others</h1></li>
+				  <li><h1>write for others &#38; learn from others</h1></li>
 				  <li> <h3>support each other and be part of the change!</h3></li>
 				  <li><a class='button-a  white-button' 
 				  href="${pageContext.request.contextPath}/home/user/signup">start writing</a></li>
@@ -112,18 +111,10 @@
 
 			<!-- card row -->
 			<section id='cards' class=" card-row">
-
-				<!-- trending articles -->
-				<div id="trending-articles" class="headline  white-background">
-					<h4 class="font-runda-heading fa-lg text-center">trending articles</h4>
-					 <a id='chev1' class='chev-down-a right'> <i  class='  fa fa-lg fa-chevron-down'></i></a>	
-
-				</div>
-
-
-
 				<!-- card START -->
-		        <div class='home-trends '></div> 
+		        <div class='home-trends '>
+		        
+		        </div> 
 				
 				<!-- card END-->
 
@@ -131,39 +122,6 @@
 			<!-- trending row ends here -->
 
 
-
-			<section id='lat-cards' class="latest-row  ">
-
-				<div id="latest-articles" class="headline  white-background">
-					<h4 class="font-runda-heading fa-lg text-center">latest articles</h4>
-				 <a id='chev2' class='chev-down-a right'> <i  class='  fa fa-lg fa-chevron-down'></i></a>	
-				</div>
-
-
-				<!-- book row starts -->
-				<div class='home-latest'></div>
-				<!-- book row ends -->
-
-
-			</section>
-			<!-- latest article end -->
-
-			<section id='fea-cards' class="featured-article ">
-
-				<div id="quick-articles" class="headline  white-background">
-					<h4 class="font-runda-heading fa-lg text-center">quick reads</h4>
-					 <a id='chev3' class='chev-down-a right'> <i  class='  fa fa-lg fa-chevron-down'></i></a>	
-				</div>
-
-				<!-- read start  -->
-				<div class='home-read'>
-				</div>
-				<!-- read end -->
-					
-
-
-			</section>
-			<!-- featured article END -->
 
 			<section class="subscribe small-12 large-12 medium-12 columns ">
 				<div class="subscribe-title small-12 large-5 medium-4 columns ">
@@ -178,6 +136,7 @@
 				
 				</div>
 			</section>
+		
 
 		</div>
 		<!-- container-g END -->

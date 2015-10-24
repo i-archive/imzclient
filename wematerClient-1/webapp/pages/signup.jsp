@@ -67,9 +67,9 @@
 
 	<nav class="sub-menu">
     	<i class="fa fa-2x  fa-bars menu-btn menu " id="menu"></i>
-     <a  href="${pageContext.request.contextPath}/home/user/signup"
+     <a  href="${pageContext.request.contextPath}/home"
     	 class=" button-a signUp blue-button fade-border hide-for-small 
-    	 float-right font-runda-heading-link " >sign in/sign up</a>
+    	 float-right font-runda-heading-link " >home</a>
  
 			<a href="${pageContext.request.contextPath}/home/explore"
 			    class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
@@ -81,9 +81,9 @@
 		
 		<i class="fa fa-2x black-color fa-bars menu-btn menu " id="menu"></i>
     
-			<a  href="${pageContext.request.contextPath}/home/user/signup"
+			<a  href="${pageContext.request.contextPath}/home"
     	 class=" button-a signUp blue-button fade-border hide-for-small 
-    	 float-right font-runda-heading-link " >sign in/sign up</a>
+    	 float-right font-runda-heading-link " >home</a>
 			<a href="${pageContext.request.contextPath}/home/explore" class=" header-link-black fade-border font-runda-heading-link float-right hide-for-small ">
 			      <span class="fa fa-lg fa-newspaper-o" ></span>explore
 			 </a>

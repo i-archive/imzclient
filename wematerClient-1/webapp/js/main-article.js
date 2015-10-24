@@ -63,12 +63,12 @@ MainArticle.buildCurrentArticle = function(article) {
 						"linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2)," +
 						" rgba(25, 5, 255, .1)), " +
 						" url('"+ article.src + "') no-repeat 100% 50%")
-				.css('background-size', "cover").hide().slideDown(1000);
+				.css('background-size', "cover");
 
 		$('a.article-author').html(
 				"<i class='fa fa-user'></i>" + article.user.name);
-		$('a.article-date').html(
-				"<i class='fa fa-lg fa-calendar'></i>" + article.date);
+		$('div.article-date').html(
+				"<i class='fa fa-calendar'></i> posted on  <b>&#58;</b> " + article.date);
 		$('.author-bio').html("<p><i class='fa fa fa-quote-left  fa-pull-left fa-border'></i>" +
 				  article.user.bio +  "</p>");
 		MainArticle.buildtags(article.tags, "article-tags");
@@ -260,17 +260,17 @@ MainArticle.buildtopArticles = function() {
 
 MainArticle.updateLikes = function(){
 	log('updated likes');
-	
+	$('#likeCount').html('<b>'+this.article.likes+'</b>'+ ' likes');
 	 if(Auth.loggedIn() && !this.article.isliked)
 		{ log("like--- logged in . article not liked");
-		   $('.a_like').html("<i class='fa fa-lg fa-heart-o'></i>"+this.article.likes);
+		   $('.a_like').html("<i class='fa  fa-heart-o'></i> like ");
 			MainArticle.processLikes();
 		}
 	else  if(Auth.loggedIn() && this.article.isliked){
 		log("like--- logged in . article liked");
-		$('.a_like').html("<i class='fa fa-lg fa-heart'></i>"+this.article.likes);
+		$('.a_like').html("<i class='fa  fa-heart'></i> liked").hide().fadeIn(500);
 	 }
-	else $('.a_like').html("<i class='fa fa-lg fa-heart'></i>"+this.article.likes);
+	else $('.a_like').html("").hide().fadeIn(500);
 	
 };
 MainArticle.processLikes = function(){
@@ -278,11 +278,18 @@ MainArticle.processLikes = function(){
 	$('.a_like i').on('click',function(){	
 		log('updated likes');
 		Ajax.PUT(putLikes);
-		$(this).parent().html("<i class='fa fa-lg fa-heart'></i>"+MainArticle.article.likes);
+		//here update the div content to likes
+		$(this).parent().html("<i class='fa fa-lg fa-heart'></i>");
 	});
 };
 
 
+MainArticle.animateArticle = function(){
+	$('.main-top-bar').css({'visibility':"visible"}).hide().fadeIn(1000);
+	$('.main-article-cover').css({'visibility':"visible"}).hide().fadeIn(1000);
+	$('.main-content').css({'visibility':"visible"}).hide().fadeIn(1000);
+	$('.main-comments-wrapper,.main-article-suggest-wrapper').css({'visibility':"visible"}).hide().fadeIn(1500);
+};
 var putLikes = {
 		url : "",
 		data : "{}",
@@ -518,6 +525,7 @@ var trendingArticlsAjax = {
 MainArticle.preprocess = function(){
 	MainArticle.init();
 	MainArticle.buildCurrentArticle(this.article);
+	MainArticle.animateArticle();
 	MainArticle.activeCommentLength();
 	MainArticle.showHideComments();
 	MainArticle.getMoreComments();
