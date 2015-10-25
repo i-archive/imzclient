@@ -29,12 +29,12 @@ menu.scrollDivShow = function(){
 		else if( scrollTop < lastScroll )
 		{    $("body").addClass("no-scroll");
 			$(".app-header").css({'visibility': "hidden"});
-			$('.sub-menu').css({'top':'0px', 'position': "fixed"}).slideDown(100);
+			$('.sub-menu').css({'top':'0px', 'position': "fixed"}).slideDown(300);
 		}
 		
 		
 		lastScroll = scrollTop;
 	});
     
-}
+};
 $(menu.scrollDivShow());

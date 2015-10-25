@@ -19,8 +19,8 @@ home={
 			var t1,t2,t3;
 	       setTimeout(function(){
 	    	   t1 = setInterval(function(){
-		    	   $('a.chev-down').animate({'top' : "470px"},1000);
-		    	   $('a.chev-down').animate({'top' : "480px"},1000);
+		    	   $('a.chev-down').animate({'top' : "0px"},1000);
+		    	   $('a.chev-down').animate({'top' : "10px"},1000);
 		    	   
 		       }, 2);
 	       }, 300);
@@ -78,16 +78,16 @@ home.getTrendingArticle = function(article){
 home.appendMoreString = function(div){
  var x = "<div class='home_more small-12 medium-12 large-12" +
  		"  column'>" +
- 		"<a class=' more button-a blue-button'>" +
+ 		"<a class=' more small-12 large-6 medium-6 medium-push-3 large-push-3 columns button-a blue-button'>" +
  		"<i class='fa fa-arrow-circle-o-down '>" +
- 		"</i>more articles</a></div>";
+ 		"</i>explore more articles</a></div>";
  $(div).append(x);
  
 };
 home.getMorearticles = function(){
     $('.home-trends').on('click','.more',function(){
         log('home_more clicked...'); 
-        $('.more').html("<i class='fa fa-lg fa-circle-o fa-spin'> </i> fetching..")
+        $('.more').html("<i class='fa fa-lg fa-circle-o fa-spin'> </i> fetching articles...")
                  .css({
                 	 'border-color': "#1481BA",
                       'background': "#1481BA",
@@ -138,6 +138,7 @@ publicAjax.performSuccess = function(role, arrayObj){
 	switch (role) {
 	case 'explore':
 		    log('success called from public article');
+		    $('.home-loader').fadeOut(1000).remove();
 		    home.removeMoreString();
 		    home.appendTrendingarticles(arrayObj);
 		break;
@@ -150,9 +151,11 @@ publicAjax.processError = function(role,status){
 		     if(status === errorcode.NOT_FOUND){
 		    	 log('no articles found');
 		    	 home.removeMoreString();
+		    	    $('.home-loader').fadeOut(1000).remove();
 		     }
 		     else{
 		    	 home.removeMoreString();
+		    	    $('.home-loader').fadeOut(1000).remove();
 		    	 /*
 			      *  redirect to server error page
 			      */

@@ -70,7 +70,7 @@
 
 	<!-- Your Content -->
 	<div id="container">
-		<div class="sub-menu">
+		<div class="sub-menu ">
 			<i class="fa fa-2x  fa-bars menu-btn menu " id="menu"></i> <a
 				href="${pageContext.request.contextPath}/home/user/signup"
 				class=" button-a signUp blue-button fade-border 
@@ -96,31 +96,68 @@
 			<section class="poster  ">
 				  <ul class="no-list-style">
 				  <li><h3>website.org</h3></li>
-				  <li><h1>write for others &#38; learn from others</h1></li>
-				  <li> <h3>support each other and be part of the change!</h3></li>
-				  <li><a class='button-a  white-button' 
-				  href="${pageContext.request.contextPath}/home/user/signup">start writing</a></li>
+				  <li><h1>read the words you love</h1></li>
+				  <li> <h3>discover new articles and start writing your own</h3></li>
+				  <li class='hide-for-small'><a class='chev-down'> <i class='  fa fa-lg fa-chevron-down'></i></a></li>
+				  <li>
+				  <div class="row searchHome">
+				  <div class='small-12 large-7 medium-6 columns '>
+				   <div class="row">
+					    <div class="large-12 columns">
+					      <div class="row collapse">
+					        <div class="small-9 columns">
+					          <input type="search" placeholder="Search Articles">
+					        </div>
+					        <div class="small-3 columns">
+					          <a  class="searchAddon postfix"><span class="fa fa-2x fa-search"></span>
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+				  </div>
+				  <div class=' orbridge small-12 large-1 medium-1 columns  '>
+				  or
+				 
+				  </div>
+				
+				  <div class='small-12 large-4 medium-4 columns  '>
+				  <a class='button-a left small-12 large-6 medium-12 columns white-button' 
+				  href="${pageContext.request.contextPath}/home/user/signup">start writing</a>
+				  </div>
+				  </div>
+				  
+				  
+				  </li>
 				  </ul>
-				 <a class='chev-down'> <i class='  fa fa-lg fa-chevron-down'></i></a>
+				
 			</section>
 		</div>
 
 		<div class=" container-g ">
-
+	  <section class="trending-headline small-12 large-12 medium-12 columns ">
+				<span><b>Read Now: &nbsp;&nbsp;  trending articles in community</b></span>
+		</section>
 
 
 			<!-- card row -->
 			<section id='cards' class=" card-row">
+			   
 				<!-- card START -->
 		        <div class='home-trends '>
-		        
+		            <div class=" home-loader small-12 large-12 medium-12  columns ">
+		            <img alt="loading" src="img/Preloader_10.gif">
+		            
+		            </div>
 		        </div> 
 				
 				<!-- card END-->
 
 			</section>
 			<!-- trending row ends here -->
-
+           <section class="home-invite small-12 large-12 medium-12  columns ">
+            
+           </section>
 
 
 			<section class="subscribe small-12 large-12 medium-12 columns ">
@@ -128,11 +165,21 @@
 					<span class="fa fa-lg fa-envelope-o"><b>join our mailing
 							list</b></span>
 				</div>
-				<div class="small-12 large-5 medium-4 columns">
-					<input type="search" placeholder="type your email" />
-				</div>
-				<div class="small-12 large-2 medium-4 columns">
-					<a class="button-a small-12 blue-button fade-border">subscribe</a>
+				<div class=" subscribeHome small-12 large-7 medium-8 columns">
+					<div class="row">
+					    <div class="large-10  columns">
+					      <div class="row collapse">
+					        <div class="small-9 columns">
+					          <input type="email" placeholder="type your email">
+					        </div>
+					        <div class="small-3 large-3 columns">
+					          <a  class="subAddon postfix"><span class="fa fa-2x fa-envelope"></span>
+					          
+					          </a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
 				
 				</div>
 			</section>

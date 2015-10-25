@@ -91,13 +91,14 @@
 
 <section class='article-wrapper '>
 
-  <div class='main-article-cover small-12 large-11 medium-11 medium-centered large-centered columns '>  </div>
+  <div class='main-article-cover small-12 large-12 medium-12  columns '>  </div>
     
 <div class='main-article-content-wrapper small-12 large-12 medium-12 columns '>
     	
      <div class=' fullRow white-bg  '> 
      
-     <div class=' main-content small-12 large-8 medium-8  columns  '></div>
+     <div class=' main-content  small-12 large-8 medium-8  columns-c  '></div>
+     
      <div class='main-top-bar small-12 large-4 medium-4  columns '>
        <div class=' small-12 large-12 medium-12  bcEnd columns '>
          <div class=' article-date small-12 large-12 medium-12  columns '></div>
@@ -117,7 +118,7 @@
          </div>
        </div>
        <div class='text-left small-12 large-12 medium-12 bcEnd bcBottom columns '>
-       <span id='likeCount'></span> <a class='a_like right'></a></div>
+       <span id='likeCount'>  </span> <a class='a_like right'></a></div>
      
      <!--    <a class='a_like button-a-trim  black-button'></a>
         <a class='bookmark' title='bookmark'><i class='fa fa-lg fa-bookmark-o'></i></a>
@@ -148,7 +149,7 @@
 <div class=' main-comments-wrapper small-12 large-6 medium-6 columns '> 
 		      <div class='comment-but-wrapper small-12 large-12 medium-12 '>
 		          <a id='show-comment' class=' comment-button small-12 large-4 medium-4' >
-		          <span class='fa fa-pencil-square-o'></span> past comment
+		          <span class='fa fa-pencil-square-o'></span> comments
 		          </a>
 		          <a id='write-comment' class=' comment-button small-12 large-4 medium-4' >
 		          <span class='fa fa-pencil-square-o'></span> post comment</a>
@@ -159,10 +160,10 @@
        </div>
      <div class='comment-write-wrapper  small-12 large-12 medium-12  '>
    
-		   <a class='comment-author'></a>
+		   <a class='comment-author '></a>
 	       <textarea id='write-comment-content' placeholder='type the comment here'></textarea>
 	       <span id='comment-content-error' class=' error-box'>loading</span>  
-	       <a id='post-comment' class='button-a blue-button right'>  </a>  
+	       <a id='post-comment' class=' small-12 medium-12 large-12  columns button-a blue-button right'>  </a>  
      </div>
         
        
@@ -189,15 +190,15 @@
 
   
 <!--  modals for different operations -->
-<div id="shareId" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+<div id="shareId" class="reveal-modal  small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <h5 id="modalTitle">Share this article.</h5>
-  <div class="row ">
-  <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-facebook-official"></i></div>
-  <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-google-plus"></i></div>
-    <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-get-pocket"></i></div>  
-    <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-twiiter"></i></div>
-  <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-whatsapp"></i></div>
-    <div class="small-1 large-1 medium-1 left columns"><i class="fa fa-lg fa-medium"></i></div> 
+  <div class="row shareModal ">
+  <div class="small-2 large-2 medium-2 left columns"><a href="" ><i class="fa fa-2x fa-facebook-official"></i></a></div>
+  <div class="small-3 large-2 medium-2 left columns"><a href =""><i class="fa fa-2x fa-google-plus"></i></a></div>
+    <div class="small-2 large-2 medium-2 left columns"><a href=""><i class="fa fa-2x fa-get-pocket"></i></a></div>  
+    <div class="small-2 large-2 medium-2 left columns"><a href=""><i class="fa fa-2x fa-twitter"></i></a></div>
+  <div class="small-2 large-2 medium-2 left columns"><a href=""><i class="fa fa-2x fa-whatsapp"></i></a></div>
+    <div class="small-2 large-2 medium-2 left columns"><a href=""><i class="fa fa-2x fa-medium"></i></a></div> 
   
   </div>
   
@@ -206,8 +207,8 @@
 
 <div id="bookmarkId" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <h2 id="modalTitle">bookmark this article</h2>
-  <p class="lead">Your couch.  It is mine.</p>
-  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <p class="lead">This feature is comming soon...</p>
+  
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 <!-- modals for different operations //END -->

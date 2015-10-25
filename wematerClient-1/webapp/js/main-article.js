@@ -260,7 +260,9 @@ MainArticle.buildtopArticles = function() {
 
 MainArticle.updateLikes = function(){
 	log('updated likes');
-	$('#likeCount').html('<b>'+this.article.likes+'</b>'+ ' likes');
+	var like = (this.article.likes === 1) ? " person  liked" : " people liked";
+	
+	$('#likeCount').html("<a class='likeBorder lowerCase'><b>"+this.article.likes+"</b></a> "+like);
 	 if(Auth.loggedIn() && !this.article.isliked)
 		{ log("like--- logged in . article not liked");
 		   $('.a_like').html("<i class='fa  fa-heart-o'></i> like ");
