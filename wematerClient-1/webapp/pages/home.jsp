@@ -103,12 +103,12 @@
 				  <div class="row searchHome">
 				  <div class='small-12 large-7 medium-6 columns '>
 				   <div class="row">
-					    <div class="large-12 columns">
-					      <div class="row collapse">
-					        <div class="small-9 columns">
+					    <div class="large-12 medium-12 small-12 columns">
+					      <div class="row sParent collapse ">
+					        <div class="small-9 large-11 medium-10 columns">
 					          <input type="search" placeholder="Search Articles">
 					        </div>
-					        <div class="small-3 columns">
+					        <div class="small-3 large-1 medium-2 columns">
 					          <a  class="searchAddon postfix"><span class="fa fa-2x fa-search"></span>
 					          </a>
 					        </div>
@@ -145,8 +145,8 @@
 			   
 				<!-- card START -->
 		        <div class='home-trends '>
-		            <div class=" home-loader small-12 large-12 medium-12  columns ">
-		            <img alt="loading" src="img/Preloader_10.gif">
+		            <div class=" home-loader small-12 large-2 medium-2 large-centered medium-centered   columns ">
+		            <img alt="loading" src="img/ripple.svg">
 		            
 		            </div>
 		        </div> 
@@ -156,7 +156,22 @@
 			</section>
 			<!-- trending row ends here -->
            <section class="home-invite small-12 large-12 medium-12  columns ">
+           <div class="row  ">
+           <div class=' invite-heading small-12 large-12 medium-12 columns '>
+              <h4>join the community of avid readers and writers</h4>
+              </div>
+           </div>
+              <div class="row  inviteReadWrite">
+              <div class='  small-12 large-6 medium-6 columns '>
+                <h5>share your skills with the world.</h5>
+                <p> start writing today</p>
+              </div>
+              <div class=' small-12 large-6 medium-6 columns '>
+               <h5>explore the diverse articles </h5>
+               <p>start exploring thousands of articles<p>
+              </div>
             
+              </div>
            </section>
 
 
@@ -165,15 +180,15 @@
 					<span class="fa fa-lg fa-envelope-o"><b>join our mailing
 							list</b></span>
 				</div>
-				<div class=" subscribeHome small-12 large-7 medium-8 columns">
-					<div class="row">
-					    <div class="large-10  columns">
-					      <div class="row collapse">
-					        <div class="small-9 columns">
+				<div class=" subscribeHome small-12 large-6 medium-7 columns large-pull-2 medium-pull-2">
+					<div class="row ">
+					    <div class="large-12 medium-12 small-12 columns ">
+					      <div class="row  collapse">
+					        <div class="small-9 large-11 medium-10 columns">
 					          <input type="email" placeholder="type your email">
 					        </div>
-					        <div class="small-3 large-3 columns">
-					          <a  class="subAddon postfix"><span class="fa fa-2x fa-envelope"></span>
+					        <div class="small-3 large-1 medium-2 columns">
+					          <a  class="subAddon postfix"><span class="fa fa-2x fa-envelope "></span>
 					          
 					          </a>
 					        </div>
