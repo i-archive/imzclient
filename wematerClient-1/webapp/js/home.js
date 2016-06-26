@@ -84,10 +84,19 @@ home.appendMoreString = function(div){
  $(div).append(x);
  
 };
+home.endOfArticesString = function(div){
+	 var x = "<div class='home_eoa small-12 medium-12 large-12" +
+	 		"  column'>" +
+	 		"<a class=' small-12 large-6 medium-6 medium-push-3 large-push-3 columns button-m'>" +
+	 		"Yay!<i class='fa fa-smile-o' aria-hidden='true'></i>" +
+	 		" &nbsp;&nbsp;you have explored all articles</a></div>";
+	 $(div).append(x);
+	 
+	};
 home.getMorearticles = function(){
     $('.home-trends').on('click','.more',function(){
         log('home_more clicked...'); 
-        $('.more').html("<i class='fa fa-lg fa-circle-o fa-spin'> </i> fetching articles...")
+        $('.more').html("<i class='fa fa-lg fa-cog fa-spin'> </i> fetching articles...")
                  .css({
                 	 'border-color': "#1481BA",
                       'background': "#1481BA",
@@ -99,6 +108,7 @@ home.getMorearticles = function(){
 home.removeMoreString = function(){
 	$('.home_more').remove();
 };
+
 
 home.appendTrendingarticles = function(arr){
 	
@@ -146,19 +156,18 @@ publicAjax.performSuccess = function(role, arrayObj){
 	
 };
 publicAjax.processError = function(role,status){
+	 $('.home-loader').fadeOut(1000).remove();
      switch (role) {
 	case 'explore':
 		     if(status === errorcode.NOT_FOUND){
 		    	 log('no articles found');
-		    	 home.removeMoreString();
-		    	    $('.home-loader').fadeOut(1000).remove();
+		    	   home.removeMoreString();
+		    	   home.endOfArticesString('.home-trends');
+		    	   
 		     }
 		     else{
-		    	 home.removeMoreString();
-		    	    $('.home-loader').fadeOut(1000).remove();
-		    	 /*
-			      *  redirect to server error page
-			      */
+		    	   home.removeMoreString();
+		    	
 		     }
 		     
 		break;

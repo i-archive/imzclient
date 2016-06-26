@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Home | website.org</title>
+<title>Home | imzah.com</title>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no">
@@ -95,7 +95,7 @@
 
 			<section class="poster  ">
 				  <ul class="no-list-style">
-				  <li><h3>website.org</h3></li>
+				  <li><h3 id="logo">imzah</h3></li>
 				  <li><h1>read the words you love</h1></li>
 				  <li> <h3>discover new articles and start writing your own</h3></li>
 				  <li class='hide-for-small'><a class='chev-down'> <i class='  fa fa-lg fa-chevron-down'></i></a></li>
@@ -158,7 +158,7 @@
            <section class="home-invite small-12 large-12 medium-12  columns ">
            <div class="row  ">
            <div class=' invite-heading small-12 large-12 medium-12 columns '>
-              <h4>join the community of avid readers and writers</h4>
+              <h4>join the Imzah community</h4>
               </div>
            </div>
               <div class="row  inviteReadWrite">
@@ -177,8 +177,7 @@
 
 			<section class="subscribe small-12 large-12 medium-12 columns ">
 				<div class="subscribe-title small-12 large-5 medium-4 columns ">
-					<span class="fa fa-lg fa-envelope-o"><b>join our mailing
-							list</b></span>
+					<span class="fa fa-lg fa-envelope-o"><b>Subscribe</b></span>
 				</div>
 				<div class=" subscribeHome small-12 large-6 medium-7 columns large-pull-2 medium-pull-2">
 					<div class="row ">
@@ -209,9 +208,9 @@
 
 
 	<footer id='footer' class=" small-12 large-12 medium-12 columns">
-<a id='chev-footer' class='chev-down-a right'> <i  class='  fa fa-2x fa-chevron-circle-up'></i></a>	
-		<i class="fa fa-copyright"></i><em>Copyright 2001-2014
-			wemater.org - All Rights Reserved </em>
+		<a id='chev-footer' class='chev-down-a right'> <i  class='  fa fa-2x fa-chevron-circle-up'></i></a>	
+		<i class="fa fa-copyright"></i> Copyright 2001-2016
+			<a href="www.imzah.com">imzah.com </a>- All Rights Reserved 
 
 
 	</footer>
