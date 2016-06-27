@@ -88,7 +88,7 @@ home.endOfArticesString = function(div){
 	 var x = "<div class='home_eoa small-12 medium-12 large-12" +
 	 		"  column'>" +
 	 		"<a class=' small-12 large-6 medium-6 medium-push-3 large-push-3 columns button-m'>" +
-	 		"Yay!<i class='fa fa-smile-o' aria-hidden='true'></i>" +
+	 		"Yay&nbsp;!<i class='fa fa-smile-o' aria-hidden='true'></i>" +
 	 		" &nbsp;&nbsp;you have explored all articles</a></div>";
 	 $(div).append(x);
 	 
@@ -177,6 +177,7 @@ publicAjax.processError = function(role,status){
 
 home.processHome = function(){
 	this.bubbleChew();
+
 	Ajax.GET(publicAjax);
 	this.getMorearticles();
 

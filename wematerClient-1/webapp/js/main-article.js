@@ -62,7 +62,7 @@ MainArticle.buildCurrentArticle = function(article) {
 						'background',
 						"linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2)," +
 						" rgba(25, 5, 255, .1)), " +
-						" url('"+ article.src + "') no-repeat 100% 50%")
+						" url('"+ article.src + "') no-repeat ")
 				.css('background-size', "cover");
 
 		$('a.article-author').html(

@@ -95,7 +95,7 @@
 
 			<section class="poster  ">
 				  <ul class="no-list-style">
-				  <li><h3 id="logo">imzah</h3></li>
+				  <li><h3 id="logo">i.m.z.a.h</h3></li>
 				  <li><h1>read the words you love</h1></li>
 				  <li> <h3>discover new articles and start writing your own</h3></li>
 				  <li class='hide-for-small'><a class='chev-down'> <i class='  fa fa-lg fa-chevron-down'></i></a></li>
