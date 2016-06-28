@@ -78,7 +78,7 @@
     </nav>
 	
 		<header class="app-header ">
-		<i class="fa fa-2x black-color fa-bars menu-btn menu " id="menu"></i>
+		<i class="fa fa-2x fa-bars menu-btn menu " id="menu"></i>
         <a  href="${pageContext.request.contextPath}/home/user/signup"
         class=" button-a signUp blue-button fade-border hide-for-small
          float-right font-runda-heading-link ">sign in/sign up</a>

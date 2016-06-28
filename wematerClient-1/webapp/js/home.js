@@ -46,7 +46,8 @@ home.getTrendingArticle = function(article){
 	var img = article.src;
 	log('checking the random numbers');
 	 var index =util.getRandomNumber(0, article.tags.length-1);
-
+	 
+	 
 	 var x =  "<article id='"+
 			  a_id+"' class='user-article small-12 large-3 medium-6 columns  left'>"+
 			 "<div class='user-article-inside '>"+
@@ -56,14 +57,15 @@ home.getTrendingArticle = function(article){
 		      "<span class='author'><a >"+article.user.name+"</a></span>"+
 		      "<h5><a href = '"+h_href+"'>"+Base64.decode(article.title)+"</a></h5>"+
 		      
-			 "<div class='user-article-info '>"+
+			 "<div class='user-article-info'>"+
 			 "<ul class='no-list-style comment-like '>"+
 			 "<li><li><a><span class='fa fa-heart-o'></span><b>"+
 			 article.likes + "</b></a></li>"+
 			 "<li><li><a><span class='fa fa-comment-o'></span><b>"+
 			 article.commentCount + "</b></a></li>"+
 			 "<li>"+
-			 "</ul> </div>  </div> </article> ";
+			 "</ul> </div>  </div> </article> "; 
+
 	   $('.home-trends').append(x);
 	   
 	   $('#'+p_id).on('mouseover', function(){$(this).css('opacity',"0.5");});
