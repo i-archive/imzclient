@@ -20,13 +20,13 @@ menu.scrollDivShow = function(){
 		var scrollTop=$(this).scrollTop();
 		//log("scrolling.."+ scrollTop);
 		
-		if(scrollTop === 0 || scrollTop > lastScroll){
+		if(scrollTop <= 10 || scrollTop > lastScroll){
 			$("body").addClass("no-scroll");
 			$('.sub-menu').hide();
 			$(".app-header").css({'visibility': "visible"});
 		}
 		
-		else if( scrollTop < lastScroll )
+		else if(  lastScroll - scrollTop >= 20 )
 		{    $("body").addClass("no-scroll");
 			$(".app-header").css({'visibility': "hidden"});
 			$('.sub-menu').css({'top':'0px', 'position': "fixed"}).slideDown(300);

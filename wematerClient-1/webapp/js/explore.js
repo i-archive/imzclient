@@ -195,8 +195,8 @@ var exploreArticlsAjax = {
 	next:0,
 	prejax : function() {
 		progressBar.append = false;
-		progressBar.counter = 2;
-		progressBar.height = 3;
+		progressBar.counter = 4;
+		progressBar.height = 5;
 		progressBar.build('body', 0);
 		this.url = "http://backendapi-vbr.rhcloud.com/api/public/explore?next="+this.next;
 		log("url is:" + this.url);

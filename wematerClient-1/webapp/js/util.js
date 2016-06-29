@@ -405,6 +405,8 @@ var progressBar = {
 		build : function(headerclass,top){
 			log('pb build');
 			if(top !== undefined) this.top = top;
+			
+			console.log("position is: "+this.position);
 	
 			this.headerclass = headerclass;
 			
@@ -436,7 +438,7 @@ var progressBar = {
 			
 		},
 		initialize:function(event){
-			$('.loading').css('background-color',"green");   
+			$('.loading').css('background-color'," #9c27b0");   
 			 $('.loading').css({ 'width' : this.width+'%'}); 
 			 log('loadstart');
 		},
@@ -451,7 +453,7 @@ var progressBar = {
 			
              $('.loading').css({'width': this.width+'%'});
              if(this.width  > 10)
-                 $('.loading').css('background-color',"red"); 
+                 $('.loading').css('background-color'," #9c27b0"); 
              if(this.width  > 20)
                  $('.loading').css('background-color',"#1e90ff"); 
              
@@ -459,17 +461,17 @@ var progressBar = {
 		},
 		success :function(data){
 			 this.width = 5;
-			 $('.loading').css('background-color',"blue"); 
+			 $('.loading').css('background-color',"#00e676"); 
 		},
 		error :function(data){
 			 this.width = 5;
-			 $('.loading').css('background-color',"red"); 
+			 $('.loading').css('background-color'," #f44336"); 
 		},
 		end: function(event){
 			$('.loading').css({'width' : 100+'%'});
 			log("load end : ");
 			setTimeout(function(){
-				$('.loading').hide(3000);
+				$('.loading').hide(4000);
 				$('.loading').remove();
 			}, 500);
 			

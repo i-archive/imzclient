@@ -127,20 +127,39 @@ var  publicAjax = {
 		role: "explore",
 		counter: 0,
 		prejax : function() {
+			progressBar.append = false;
+			progressBar.counter = 2;
+			progressBar.height = 5;
+			progressBar.position = "fixed";
+			progressBar.build('body', 0);
 			this.url= Ajax.publicURL+this.role+"?next="+this.counter;
 			log("url is:" + this.url);
+		},
+		progress : function(event) {
+			if (event.lengthComputable) {
+				progressBar.set_MIN_MAX_with();
+			}
+			progressBar.progress(event);
+		},
+		loadStart : function(event) {
+			progressBar.initialize(event);
+		},
+		loadEnd : function(event) {
+			progressBar.end(event);
 		},
 		success : function(obj) {
 			log("success in "+this.role);
 			log(obj); 
 	       this.performSuccess(this.role, obj);
 	       this.counter++;
+	       progressBar.success(obj);
 		},
 		error : function(data) {
 			
 			log('fail in trending');
 			log(data);
 			this.processError(this.role, data.status);
+			progressBar.error(data);
 		}
 
 	};
@@ -150,7 +169,7 @@ publicAjax.performSuccess = function(role, arrayObj){
 	switch (role) {
 	case 'explore':
 		    log('success called from public article');
-		    $('.home-loader').fadeOut(1000).remove();
+		  
 		    home.removeMoreString();
 		    home.appendTrendingarticles(arrayObj);
 		break;
@@ -158,7 +177,7 @@ publicAjax.performSuccess = function(role, arrayObj){
 	
 };
 publicAjax.processError = function(role,status){
-	 $('.home-loader').fadeOut(1000).remove();
+	
      switch (role) {
 	case 'explore':
 		     if(status === errorcode.NOT_FOUND){

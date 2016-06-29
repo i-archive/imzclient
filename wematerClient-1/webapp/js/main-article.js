@@ -51,7 +51,7 @@ MainArticle.buildCurrentArticle = function(article) {
 	
 	if (article) {
 		log("inside build article " + article.title);
-		$('#a_t').html(Base64.decode(article.title) + " | wemater.org");
+		$('#a_t').html(Base64.decode(article.title) + " | imzah.com");
 		this.updateSignupButton();
 		$('.main-content').html(Base64.decode(article.content));
 		$('.main-article-cover')
@@ -342,7 +342,7 @@ var  mainArticleAjax = {
 			log("URL part in window= "+arr);
 			log("url is:" + this.url);
 			progressBar.append = false;
-			progressBar.height = 3;
+			progressBar.height = 10;
 			progressBar.position= 'fixed';
 			progressBar.build('body', 0);
 		},
@@ -382,7 +382,7 @@ var getcommentAjax = {
 	prejax : function() {
 		progressBar.append = false;
 		progressBar.position= 'absolute';
-		progressBar.height =1;
+		progressBar.height =5;
 		progressBar.build('.comment-but-wrapper', 0);
 		this.url = MainArticle.article.links[2].url+'?next='+this.next;
 		log("url is:" + this.url);
