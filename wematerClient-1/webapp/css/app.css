@@ -123,14 +123,14 @@ span.tile-list:hover{
  top:0px;
  width: 100%;
 padding: .9em 1em .9em 1em;
- background-color: #607d8b;
+ background-color: #257399;
 border-bottom: 1px solid #26a69a;
 
  	
 	
 }
 .searchHome{
-	padding-top: 3em;
+	padding-top: 2.5em;
 }
 .searchHome div input{
 	border: 1px solid rgba(0,0,0,0);
@@ -192,8 +192,8 @@ div.sParent:hover div input{
 }
 
 @media screen and (max-width : 30em){
-.searchHome div a.searchAddon{ margin-top: 1.2em; };
-.subscribeHome div a.subAddon{ margin-top: 1.2em; };
+.searchHome div a.searchAddon{ margin-top: 2em; };
+.subscribeHome div a.subAddon{ margin-top: 2em; };
 }
 
 .home-invite{
@@ -1618,8 +1618,8 @@ ul.user-prof-cont li ul li input[type='password']{
 	position: relative;
 	width: 100%;
 	min-height: 550px;
-    background: #607d8b;
-    	background-image: url("../img/invitesack.svg");
+    background: #257399;
+    background-image: url("../img/invitesack.svg");
 	background-repeat: no-repeat;
 	background-position: 0% 18%;
     -webkit-box-shadow: -1px 10px 5px -8px rgba(0,0,0,0.37);
@@ -1649,7 +1649,7 @@ a.searchAddon:hover span {color: #3199fe;}
 	width: 100%;
 	top: 0px;
 	padding:.8em 1em 0em 1em;
-	background: #607d8b;
+	background: #257399;
 	border-bottom: 2px solid #26a69a;	
 	z-index: 9;
 
@@ -1910,10 +1910,22 @@ ul.home-header-ul li{
 	}
 
 
+.nav-badge{
+	min-height: 250px;
+	background: #257399;
+	background-image: url("../img/invitesack.svg");
+	background-repeat: no-repeat;
+	background-position:20% 20%;
+	
+}
+.nav-wrapper{
+	position: relative;
+	top: 50px;
+}
 
 .nav-side{
 	
-	padding-top: 1.5em;
+	padding-top: 0em;
 }
 
 .nav-side .ul-side{
@@ -2090,7 +2102,7 @@ a.chev-down i:HOVER,a.chev-down-a:hover{
   border-style: solid;
   border-width: 1px;
   cursor: pointer;
-  font-family: "Oswald";
+  font-family: 'Fjalla One', sans-serif;
   font-variant:small-caps;
   font-weight: normal;
   line-height: normal;
@@ -3098,9 +3110,23 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     border-radius: 3px; }
 
 
+/* #### Mobile Phones Portrait ####  480px  */
+@media all and (max-width : 16em) {
+	
+	.poster-container{
+	  min-height: 600px;
+	  height: auto;
+	}
+	
+	
+}
 
 /* #### Mobile Phones Portrait ####  480px  */
 @media all and (min-width : 16em) and (max-width: 30em){
+	
+	.poster-container{
+	  min-height: 500px;
+	}
 	a.chev-down{
 	 
 	  left: 43%;

@@ -33,7 +33,10 @@
 	
 	<!-- Pushy Menu -->
 	<nav class="pushy pushy-left nav-side">
-		<ul class="ul-side  no-list-style">
+	    <div class="small-12 large-12 medium-12 columns  nav-badge">
+	    </div>
+	    <div class="small-12 large-12 medium-12 nav-wrapper">
+	    	<ul class="ul-side  no-list-style">
 
 			<li class="nav-break"></li>
 			<li class=" font-runda-heading li-side"><a
@@ -53,17 +56,19 @@
 			<li class="nav-break"></li>
 			<li class="nav-break"></li>
 
-			<li class=" font-runda-heading li-side"><a href=""><span
-					class="fa fa-lg fa-twitter"></span> twitter</a></li>
-			<li class=" font-runda-heading li-side"><a href=""><span
-					class="fa  fa-lg fa-facebook"></span> facebook </a></li>
-			<li class=" font-runda-heading li-side"><a href=""><span
-					class="fa fa-lg fa-google-plus"></span> google<i class="fa fa-plus"></i>
-			</a></li>
-			<li class=" font-runda-heading li-side"><a href=""><span
-					class="fa fa-lg	 fa-instagram"></span> instagram</a></li>
-		</ul>
+			<li class=" font-runda-heading li-side">
+			<a href=""><span class="fa fa-2x fa-twitter"></span> </a>
+			<a href=""><span class="fa  fa-2x fa-facebook"></span>  </a>
+			
+			<a href=""><span class="fa fa-2x fa-google-plus"></span> </a>
+			<a href=""><span class="fa fa-2x fa-instagram"></span> </a>
+			</li>
 
+		</ul>
+	    	
+	    
+	    </div>
+		
 	</nav>
 	<!-- Site Overlay -->
 	<div class="site-overlay"></div>
@@ -101,28 +106,10 @@
 				  <li class='hide-for-small'><a class='chev-down'> <i class='  fa fa-lg fa-chevron-down'></i></a></li>
 				  <li>
 				  <div class="row searchHome">
-				  <div class='small-12 large-7 medium-6 columns '>
-				   <div class="row">
-					    <div class="large-12 medium-12 small-12 columns">
-					      <div class="row sParent collapse ">
-					        <div class="small-9 large-11 medium-10 columns">
-					          <input type="search" placeholder="Search Articles">
-					        </div>
-					        <div class="small-3 large-1 medium-2 columns">
-					          <a  class="searchAddon postfix"><span class="fa fa-2x fa-search"></span>
-					          </a>
-					        </div>
-					      </div>
-					    </div>
-					  </div>
-				  </div>
-				  <div class=' orbridge small-12 large-1 medium-1 columns  '>
-				  or
-				 
-				  </div>
+				  
 				
-				  <div class='small-12 large-4 medium-4 columns  '>
-				  <a class='button-a left small-12 large-6 medium-12 columns white-button' 
+				  <div class='small-12 large-12 medium-12 columns  '>
+				  <a class='button-a  small-centered medium-centered large-centered small-10 large-2 medium-3 columns white-button' 
 				  href="${pageContext.request.contextPath}/home/user/signup">start writing</a>
 				  </div>
 				  </div>
