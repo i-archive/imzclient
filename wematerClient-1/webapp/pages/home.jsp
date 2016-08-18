@@ -2,71 +2,95 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 
 <!DOCTYPE html>
-<html class="no-js">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Home | imzah.com</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta name="copyright" content="imzah is the registered trademark representing imzah.com, www.imzah.com">
+ <meta name="description" content="read the curated tutorials from different jonors of education,politics,technology. ">
+ <meta  name="keywords" content="imzah, imzah.com, www.imzah.com, tutorials,education,politics,VR,news,startup,science, medicine">
+ <meta name="robots" content="index,follow">
+ <meta name= "DC.title" content="www.imzah.com/home">
 
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no">
-
+ <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+ 
+ 
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/pushy.css">
 <link rel="stylesheet" href="css/app.css">
 <link rel="stylesheet" href="css/app-font.css">
 <link rel="stylesheet" href="css/foundation.css">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<!-- jQuery -->
 
+<script src="https://use.fontawesome.com/1083451c67.js"></script>
 
 </head>
 
 <body class="home-body">
-	<noscript>
-		<div class="small-12 large-12 medium-12 ">
-			<i class=" fa fa-exclamation-triangle"></i>Please enable javascript.
-			This site won't work properly
-		</div>
-	</noscript>
-	
+	    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->	
 	
 	<!-- Pushy Menu -->
 	<nav class="pushy pushy-left nav-side">
-	    <div class="small-12 large-12 medium-12 columns  nav-badge">
-	    </div>
-	    <div class="small-12 large-12 medium-12 nav-wrapper">
-	    	<ul class="ul-side  no-list-style">
-
-			<li class="nav-break"></li>
-			<li class=" font-runda-heading li-side"><a
-				href="${pageContext.request.contextPath}/home"><span
-					class="fa fa-lg fa-home"></span> home</a></li>
-			<li class=" font-runda-heading li-side"><a
-				href="${pageContext.request.contextPath}/home/explore"><span
-					class="fa fa-lg fa-newspaper-o"></span> explore</a></li>
-			<li class=" font-runda-heading li-side"><a
-				href="${pageContext.request.contextPath}/home/user/editor"><span
-					class="fa  fa-lg fa-pencil "></span> write articles</a></li>
-			<li class="nav-break"></li>
-			<li class="nav-break"></li>
-			<li class=" font-runda-heading li-side"><a
-				href="${pageContext.request.contextPath}/home/user/signup"><span
-					class="fa fa-lg fa-sign-in"></span>sign in/sign up</a></li>
-			<li class="nav-break"></li>
-			<li class="nav-break"></li>
-
-			<li class=" font-runda-heading li-side">
-			<a href=""><span class="fa fa-2x fa-twitter"></span> </a>
-			<a href=""><span class="fa  fa-2x fa-facebook"></span>  </a>
-			
-			<a href=""><span class="fa fa-2x fa-google-plus"></span> </a>
-			<a href=""><span class="fa fa-2x fa-instagram"></span> </a>
-			</li>
-
-		</ul>
+	
+	    <div class="small-12 large-12 medium-12  nav-badge">
 	    	
+	    	<div class="box">IMZAH</div>
 	    
+	    </div>
+	    <div class="small-12 large-12 medium-12 nav-wrapper "> 
+	    
+	    	 <ul class="side-nav" role="navigation" >
+			   <li role="menuitem">
+				   <a href="${pageContext.request.contextPath}/">
+				   		<i class="fa fa-lg fa-home align" aria-hidden="true"></i>home
+				   </a>
+			   </li>
+			   <li role="menuitem">
+				   	<a href="${pageContext.request.contextPath}/home/explore">
+				   		<i class="fa fa-lg fa-industry align" aria-hidden="true"></i>explore
+				   	</a>
+			   	</li>
+			   <li role="menuitem">
+				   	<a href="${pageContext.request.contextPath}/home/user/editor">
+				   		<i class="fa fa-lg fa-pencil-square-o align" aria-hidden="true"></i>write
+				   	</a>
+			   </li>
+			   <li role="menuitem">
+				   	<a href="${pageContext.request.contextPath}/home/user/signup">
+				   		<i class="fa fa-lg fa-sign-in align" aria-hidden="true"></i>sign-in
+				   	</a>
+			   	</li>
+			  
+				<li class="nav-break"></li>
+				 <li class="divider"></li>
+				 
+			 </ul>
+			 
+			 <ul class="inline-list social">
+				  <li><a href="#"><i class="fa  fa-facebook align" aria-hidden="true"></i></a></li>
+				  <li><a href="#"><i class="fa  fa-google-plus align" aria-hidden="true"></i></a></li>
+				  <li><a href="#"><i class="fa  fa-twitter align" aria-hidden="true"></i></a></li>
+				  <li><a href="#"><i class="fa  fa-medium align" aria-hidden="true"></i></a></li>
+				  <li><a href="#"><i class="fa  fa-instagram align" aria-hidden="true"></i></a></li>
+			</ul>
+			 <ul class="side-nav" role="navigation" >
+				 <li class="divider"></li>
+			</ul>
+			<ul class="inline-list side-nav-footer">
+			  <li><a href="#">about</a></li>
+			  <li><a href="#">privacy</a></li>
+			  <li><a href="#">feedback</a></li>
+			
+			</ul>	
+			 
 	    </div>
 		
 	</nav>
@@ -122,11 +146,11 @@
 		</div>
 
 		<div class=" container-g ">
-	    <div class = "card-row">
+	    <div class = "card-row" id="i_cards">
 	       <section class="trending-headline small-12 large-2 medium-3 columns ">
 	       
 				
-				<h3>trending articles</h3>
+				<h3>latest writeups</h3>
 			
 			
 			
@@ -167,25 +191,31 @@
 
 	</div>
 	<!-- Container END -->
-
-
-
-	<footer id='footer' class=" small-12 large-12 medium-12 columns">
-		<a id='chev-footer' class='chev-down-a right'> <i  class='  fa fa-2x fa-chevron-circle-up'></i></a>	
+	<footer id='footer' class=" small-12 large-12 medium-12 columns">	
 		<i class="fa fa-copyright"></i> Copyright 2001-2016
 			<a href="www.imzah.com">imzah.com </a>- All Rights Reserved 
-
-
 	</footer>
 
 	<!-- Pushy JS -->
-	  <script src='js/modernizr.js'></script>
    	<script src='js/jquery-1.11.3.js'></script>
 	<script src="js/modernizr.js"></script>
   	<script src="js/pushy.min.js"></script>
 	<script src="js/util.js"></script>
 	<script src="js/menu.js"></script>
 	<script src="js/home.js"></script>
+	
+	
+	<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-80383703-1', 'auto');
+		  ga('send', 'pageview');
+
+</script>
+        
 
 </body>
 </html>

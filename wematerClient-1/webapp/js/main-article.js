@@ -50,21 +50,23 @@ var MainArticle = {
 MainArticle.buildCurrentArticle = function(article) {
 	
 	if (article) {
+		
 		log("inside build article " + article.title);
+		var title = "<h1>"+Base64.decode(article.title)+"</h1>";
 		$('#a_t').html(Base64.decode(article.title) + " | imzah.com");
 		this.updateSignupButton();
-		$('.main-content').html(Base64.decode(article.content));
+	
 		$('.main-article-cover')
-				.html(
-						"<h1 class='uploaded-image-title'>"+
-								 Base64.decode(article.title) + "</h1>")
-				.css(
-						'background',
-						"linear-gradient(rgba(255, 255, 255, 0.1), rgba(25, 155, 255, .2)," +
-						" rgba(25, 5, 255, .1)), " +
-						" url('"+ article.src + "') no-repeat ")
-				.css('background-size', "cover");
-
+		   .css({ "visibility" : 'visible'})
+		    .html("<img style='width: 100%;' src='"+article.src+"'> " );
+		
+		
+		  var tk = this.resizeHeight('.main-article-cover');
+		 log("taken height= "+ tk);
+		$('.main-article-content-wrapper').css({"top":tk});
+		$('.main-content')
+		.html(title+Base64.decode(article.content));
+		
 		$('a.article-author').html(
 				"<i class='fa fa-user'></i>" + article.user.name);
 		$('div.article-date').html(
@@ -82,6 +84,16 @@ MainArticle.buildCurrentArticle = function(article) {
 	}
 	
 
+};
+
+MainArticle.resizeHeight = function(clazz){
+	
+	 var takenHeight = $(clazz).height();
+	if(takenHeight > 550){
+		return (-(takenHeight)/3 )+"px";
+	}
+	else return "";
+	
 };
 
 MainArticle.getMoreButton = function(){
@@ -202,9 +214,9 @@ MainArticle.validateCommentOnSubmit = function() {
 
 MainArticle.getTopArticleString = function(article) {
             var tr_id = 'tr_'+article.id;
-            var fp =  article.id+'#'+article.user.username+'#'+article.title;
+            var fp =   article.id+'/'+article.user.username+'/'+Base64.decode(article.title).split(" ").join("-");
   
-    	  var h_href = "./article#"+Base64.encodeObase(fp);
+    	  var h_href = "./article#"+fp;
             
 	var string= "<dt><a  id= '"+tr_id+"'>" +
 			Base64.decode(article.title) + "</a></dt>"+
@@ -334,8 +346,8 @@ var  mainArticleAjax = {
 		role: "",
 		isProgress: true,
 		prejax : function() {
-			var h_ref = window.location.href;
-			var arr = Base64.decode(h_ref.split('#')[1]).split("#");
+			 var h_ref = window.location.href;
+			var arr = h_ref.split('#')[1].split("/");
 			var a_id = arr[0];
 			var username = arr[1];
             this.url = Ajax.AllUserURL+"/"+username+"/articles/"+a_id;

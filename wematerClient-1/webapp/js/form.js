@@ -42,7 +42,7 @@ formjax.addPostMessage = function(clazz,msg){
     " </div></div>";
 	$("#register").remove();
 	$(".form-class").prepend(message);
-	$("#register").hide().slideDown();
+	//$("#register").hide().slideDown();
 	
 	setTimeout(function(){ $('#register').slideUp();}, 4000);
 	$("#post_msg").on('click', function(){$(this).parent().slideUp(200);});
@@ -163,7 +163,7 @@ var loginValidation = {
 				log(" error login User");
 	 	    	log('error thrown is:');
 	 	    	log(data);
-	 	    	formjax.addVerifyMessage("verify-fail", data.responseJSON.error_message,"fa-exclamation-circle");
+	 	    	formjax.addVerifyMessage("verify-fail","Invalid username or password","fa-exclamation-circle");
 				}
 		
 };
@@ -214,11 +214,15 @@ var registerUser = {
 			log(" error");
 	    	log(data);
 	    	progressBar.error(data);
-	    	if(data.status === errorcode.CONFLICT)
+	    	/*
+	    	 * if(data.status === errorcode.CONFLICT)
 	    	 { 
 	    		var error = data.responseJSON;
 	    		formjax.addPostMessage("register-fail", error.error_message);
-	    	 }	
+	    	 }
+	    	 * 
+	    	 */	
+	    	formjax.addPostMessage("register-fail", "error happened while registering");
 		}
 };
 
@@ -238,10 +242,10 @@ Form={
     passwordInvalidlength : "<i class='fa fa-unlock'></i> password should be 8 - 25 characters",
     passwordDoesNotMatch : "<i class='fa fa-thumbs-down'></i> Passwords does not match",
     passwordMatch : "<i class='fa fa-thumbs-up'></i> Passwords matched",
-    borderSuccess : "2px solid #1d4e66",
-    borderFailure : "2px solid #880000  ",
-    failureColor : "#880000",
-    successColor : "#1d4e66",
+    borderSuccess : "2px solid #26a69a",
+    borderFailure : "2px solid #D12B42  ",
+    failureColor : "#D12B42",
+    successColor : "#26a69a",
     emailNotAvailable: "<i class='fa fa-thumbs-down'></i> Email already registered",
     emailAvailable: "<i class='fa fa-thumbs-up  '></i> Email is available",
 	

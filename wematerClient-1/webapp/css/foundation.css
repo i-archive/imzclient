@@ -3257,7 +3257,7 @@ ul.pagination {
     font-weight: normal;
     margin: 0 0 0.4375rem 0; }
     .side-nav li a:not(.button) {
-      color: rgba(0,0,0,0.5);
+      color: rgba(0,0,0,0.65); /* updaed here */
       display: block;
       margin: 0;
       padding: 0.4375rem 0.875rem; }

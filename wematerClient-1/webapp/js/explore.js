@@ -25,9 +25,13 @@ Explore.buildArticle = function( article){
 			var t_id = "t_" + article.id;
 			var p_id = "t_" + article.id;
 			var c_id = "c_" + article.id;
-	      var fp =  article.id+'#'+article.user.username+'#'+article.title;
-	    	log(fp);
-	  	 var h_href = "./user/article#"+Base64.encodeObase(fp);
+			
+			var fp =  article.id+'/'+article.user.username+'/'+Base64.decode(article.title).split(" ").join("-");
+			  log(fp);
+			  var h_href = "./user/article#"+fp;
+
+	  	var f_content = "<p>"+$(Base64.decode(article.content)).text().split(" ").slice(0, 80).join(" ")+"...<p>";
+
 	      
 	     var articleStructure = "<article id ='"+a_id+"' class=' explore-article small-12 medium-12 large-8  large-centered column'>" +
     		"<div class='explore-article-top '>" +
@@ -52,11 +56,11 @@ Explore.buildArticle = function( article){
     		"<div class='explore-article-content '>" +
     		"<ul class='no-list-style'>" +
     		"<li>" +
-    		"<div class='exp-content'> "+Base64.decode(article.content)+" </div>" +
+    		"<div class='exp-content font-heading-oswald-para'> "+f_content+" </div>" +
     		"</li>" +
     		"<li>" +
     		" <ul>" +
-    		"<li><a><span class = 'fa fa-user'></span>"+article.user.name+"</a></li>" +
+    		"<li><a><span class = 'fa fa-user'></span><span class='font-runda-explore-link'>"+article.user.name+"</span></a></li>" +
     		" <li class='continue-read'><a class='"+c_id+"'>continue reading	</a> </li>" +
     		"</ul>" +
     		"</li>" +
@@ -82,9 +86,9 @@ Explore.buildTag = function(index,tag){
 Explore.getTopArticleString = function(article){
 	
 	var a_id = 'ar_'+article.id;
-	  var fp =  article.id+'#'+article.user.username+'#'+article.title;
+	  var fp =   article.id+'/'+article.user.username+'/'+Base64.decode(article.title).split(" ").join("-");
 		log(fp);
-	  var h_href = "./user/article#"+Base64.encodeObase(fp);
+	  var h_href = "./user/article#"+fp;
   
 	 var string =  "<dt><a id='"+a_id+"'>"+Base64.decode(article.title)+"</a></dt>"+
 			"<dd><a><span class='fa fa-user'></span>"+article.user.name+"</a></dd>"; 
@@ -158,7 +162,7 @@ Explore.fixExploreSide = function(tag_class ){
 		 else if(scrollTop >= 400 && scrollTop < (bottom-200)  && docWidth > 1024 ){
 			 // log(" > 365 and scrolltip < bottom-200");
 			 
-			 $('.explore-side').css({'top' : scrollTop});
+			 $('.explore-side').css({'top' : (scrollTop+50)+"px"});
 			 $('.explore-tag-wrapper').hide();
 			 $('.explore-top-articles-wrapper').show();
 			 

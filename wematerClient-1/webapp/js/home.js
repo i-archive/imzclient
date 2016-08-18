@@ -26,7 +26,7 @@ home={
 	       }, 300);
 	       
 	       $('a.chev-down').on('click',function(){
-	    	    home.scrollToDiv("cards");
+	    	    home.scrollToDiv("i_cards");
 	    	   
 	       });
 	       
@@ -41,11 +41,10 @@ home.getTrendingArticle = function(article){
 	var t_id = "t_" + article.id;
 	var p_id = "t_" + article.id;
 
-	var fp =  article.id+'#'+article.user.username+'#'+article.title;
-	var h_href = "./home/user/article#"+Base64.encodeObase(fp);
+	var fp =  article.id+'/'+article.user.username+'/'+Base64.decode(article.title).split(" ").join("-");
+	var h_href = "./home/user/article#"+fp;
 	var img = article.src;
-	log('checking the random numbers');
-	 var index =util.getRandomNumber(0, article.tags.length-1);
+	var index =util.getRandomNumber(0, article.tags.length-1);
 	 
 	 
 	 var x =  "<article id='"+
