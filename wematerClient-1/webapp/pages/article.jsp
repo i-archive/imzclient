@@ -14,8 +14,8 @@
 		        <link rel='stylesheet' href='../../css/app.css'>
 				<link rel='stylesheet' href='../../css/app-font.css'>
 		       	<link rel='stylesheet' href='../../css/foundation.css'>
-        		<link rel='stylesheet' href='../../fo/css/font-awesome.min.css'>
 		        <link rel='stylesheet' href='../../css/jquery-ui.css'>
+		        <script src="https://use.fontawesome.com/1083451c67.js"></script>
 		        <script src='../../js/modernizr.js'></script>
     </head>
    
@@ -26,40 +26,63 @@
   		</noscript>
         <!-- Pushy Menu -->
     <!-- Pushy Menu -->
-	<nav class='pushy pushy-left nav-side'>
-		<ul class='ul-side  no-list-style'>
-
-			<li class='nav-break'></li>
-			<li class=' font-runda-heading li-side'><a
-				href='${pageContext.request.contextPath}/home'><span
-					class='fa fa-lg fa-home'></span> home</a></li>
+<nav class="pushy pushy-left nav-side">
+	
+	    <div class="small-12 large-12 medium-12  nav-badge">
+	    	<div class="box">IMZAH</div>
+	    </div>
+	    <div class="small-12 large-12 medium-12 nav-wrapper "> 
+	    
+	    	 <ul class="side-nav" role="navigation" >
+			   <li role="menuitem">
+				   <a href="${pageContext.request.contextPath}/">
+				   		<i class="fa fa-lg fa-home align" aria-hidden="true"></i>home
+				   </a>
+			   </li>
+			   <li role="menuitem">
+				   	<a href="${pageContext.request.contextPath}/home/explore">
+				   		<i class="fa fa-lg fa-industry align" aria-hidden="true"></i>explore
+				   	</a>
+			   	</li>
+			   <li role="menuitem">
+				   	<a href="${pageContext.request.contextPath}/home/user/editor">
+				   		<i class="fa fa-lg fa-pencil-square-o align" aria-hidden="true"></i>write
+				   	</a>
+			   </li>
+			   <li role="menuitem">
+				   	<a href="${pageContext.request.contextPath}/home/user/signup">
+				   		<i class="fa fa-lg fa-sign-in align" aria-hidden="true"></i>sign-in
+				   	</a>
+			   	</li>
+			  
+				<li class="nav-break"></li>
+				 <li class="divider"></li>
+				 
+			 </ul>
+			 
+			 <ul class="inline-list social">
+				  <li><a href="#"><i class="fa  fa-facebook align" aria-hidden="true"></i></a></li>
+				  <li><a href="#"><i class="fa  fa-google-plus align" aria-hidden="true"></i></a></li>
+				  <li><a href="#"><i class="fa  fa-twitter align" aria-hidden="true"></i></a></li>
+				  <li><a href="#"><i class="fa  fa-medium align" aria-hidden="true"></i></a></li>
+				  <li><a href="#"><i class="fa  fa-instagram align" aria-hidden="true"></i></a></li>
+			</ul>
+			 <ul class="side-nav" role="navigation" >
+				 <li class="divider"></li>
+			</ul>
+			<ul class="inline-list side-nav-footer">
+			  <li><a href="#">about</a></li>
+			  <li><a href="#">privacy</a></li>
+			  <li><a href="#">feedback</a></li>
+			
+			</ul>	
+			 
+	    </div>
 		
-			<li class=' font-runda-heading li-side'><a
-				href='${pageContext.request.contextPath}/home/explore'><span
-					class='fa fa-lg fa-newspaper-o'></span> explore</a></li>
-			<li class=' font-runda-heading li-side'><a
-				href='${pageContext.request.contextPath}/home/user/editor'><span
-					class='fa  fa-lg fa-pencil '></span> write articles</a></li>
-			<li class='nav-break'></li>
-			<li class='nav-break'></li>
-			<li class=' font-runda-heading li-side'><a
-				href='${pageContext.request.contextPath}/home/user/signup'><span
-					class='fa fa-lg fa-sign-in'></span>sign in/sign up</a></li>
-			<li class='nav-break'></li>
-			<li class='nav-break'></li>
-
-			<li class=' font-runda-heading li-side'><a href=''><span
-					class='fa fa-lg fa-twitter'></span> twitter</a></li>
-			<li class=' font-runda-heading li-side'><a href=''><span
-					class='fa  fa-lg fa-facebook'></span> facebook </a></li>
-			<li class=' font-runda-heading li-side'><a href=''><span
-					class='fa fa-lg fa-google-plus'></span> google<i class='fa fa-plus'></i>
-			</a></li>
-			<li class=' font-runda-heading li-side'><a href=''><span
-					class='fa fa-lg	 fa-instagram'></span> instagram</a></li>
-		</ul>
-
 	</nav>
+
+        
+
     
         <!-- Site Overlay -->
         <div class='site-overlay'></div>
@@ -91,9 +114,9 @@
 
 <section class='article-wrapper '>
 
-  <div class='main-article-cover small-12 large-12 medium-12  columns '>  </div>
+  <div class='main-article-cover small-12 large-12 medium-12 '>  </div>
     
-<div class='main-article-content-wrapper small-12 large-12 medium-12 columns '>
+<div class='main-article-content-wrapper small-12 large-12 medium-12 columns'>
     	
      <div class=' fullRow white-bg  '> 
      

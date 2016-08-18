@@ -3,11 +3,14 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic,700,700italic,800,800italic);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,700,300|Coda:400,800);
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,900,900italic,700italic,500italic,300italic,300,400italic);
 .gfontslist{
 	 font-family: 'Open Sans Condensed', sans-serif;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Coda', cursive;
     font-family: 'Oswald', sans-serif;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Roboto', sans-serif;
     
 }
 
@@ -88,6 +91,12 @@
 .font-runda-heading-link{
 	font-family: "Oswald";
 	font-variant: small-caps;
+	letter-spacing: 0.1em;
+	font-size: .9em;
+	
+}
+.font-runda-explore-link{
+	font-family: "Oswald";
 	letter-spacing: 0.1em;
 	font-size: .9em;
 	
